@@ -1,0 +1,30 @@
+
+header.top ul {
+    margin: 0;
+    padding: 1em;
+  }
+  
+  header.top nav li {
+    display: inline-block;
+    margin-right: 1.5em;
+  }
+
+  header.top{
+    background-color: black;
+    padding-left:3em;
+    margin:0em;
+    padding-top:0.6em;
+    padding-bottom:0.6em;
+    /* border-top-left-radius:0.4em; */
+    width:100%;
+    position:fixed;
+    z-index: 20;
+
+  }
+
+  header.top a{
+    color:white;
+    text-decoration:none;
+  }
+
+
