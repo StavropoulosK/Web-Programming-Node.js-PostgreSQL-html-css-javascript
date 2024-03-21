@@ -1,0 +1,107 @@
+body {
+    margin: 0;
+	background-color: rgb(244, 243, 243);
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+}
+
+.container {
+	padding: 6em 2em 0 2em;
+}
+
+.slider-wrapper {
+	position: relative;
+	max-width: 84rem;
+	margin:0 auto;
+}
+
+.slider {
+	display: flex;
+	aspect-ratio: 16 / 9;
+	overflow-x: auto;
+	scroll-snap-type: x mandatory;
+	scroll-behavior: smooth;
+	box-shadow: 0 1.5rem 3rem -0.75rem hsla(0, 0%, 0%, 0.25);
+	border-radius: 0.5rem;
+	-ms-overflow-style: none; /* Hide scrollbar IE and Edge */
+	scrollbar-width: none; /* Hide scrollbar Firefox */
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.slider::-webkit-scrollbar {
+	display: none;
+}
+
+.slider img {
+	flex: 1 0 100%;
+	scroll-snap-align: start;
+	object-fit: cover;
+}
+
+.slider-nav {
+	display: flex;
+	column-gap: 1rem;
+	position: absolute;
+	bottom: 1.25rem;
+	left: 50%;
+	transform: translateX(-50%);
+	z-index: 1;
+}
+
+.slider-nav a {
+	width: 0.5rem;
+	height: 0.5rem;
+	border-radius: 50%;
+	background-color: #fff;
+	opacity: 0.75;
+	transition: opacity ease 250ms;
+}
+
+.slider-nav a:hover {
+	opacity: 1;
+}
+
+.room-title{
+    background-color: rgb(245, 245, 245);
+    margin: 0;
+    text-align: left;
+    padding: 1vh 10vw;
+}
+
+.room-title > h2{
+    font-size: 2.4em;
+}
+
+.room-title > p{
+    font-size: 1.2em;
+}
+
+.bed-choice{
+    position: relative;
+    display: flex;
+    gap: 1em;
+
+}
+
+.bed-choice select{
+    width: 25em;
+    min-height: 3.5em;
+    border-radius: 0.75em;
+    border: 0.1em solid rgb(160, 160, 160);
+    outline: none;
+    padding: 0 0.5em;
+    cursor:pointer;
+}
+
+.bed-choice button{
+    width: 7.5em;
+    border-radius: 1.5em;
+    border: 0.05em solid rgb(160, 160, 160);
+    color:white;
+    background-color:black;
+    font-size: 1em;
+
+}
+
+.bed-choice button:hover{
+    background-color: rgb(60, 60, 60);
+}
