@@ -146,17 +146,20 @@ section.welcome-photo{
 
 
   .description{
-    text-align: left;
+    text-align: justify;
     margin-left:1rem;
-    font-size:1.2em;
+    margin-right:0.6em;
   }
-
+  
   .advantages{
     display:inline;
     font-size: 1.4em;
     margin-left:1rem;
     font-weight: normal;
     }
+
+   
+    
 
 
     
