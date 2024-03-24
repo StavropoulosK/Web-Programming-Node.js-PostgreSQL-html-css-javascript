@@ -1,0 +1,190 @@
+:root{
+  font-size:16px;
+}
+
+body {
+
+    margin:0;
+    background: white;
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+    padding:0;
+  }
+
+
+section.welcome-photo{
+    /* background-color: red; */
+  
+    background-position:43% 70%;
+    background-image: url("resources/start_page_photos/initial-photo.jpg");
+    height:50em;
+    background-size:cover;
+    position:relative;
+}
+
+#welcome-photo-text{
+    position:absolute;
+    bottom:1.8em;
+    padding-left:12vw;
+    margin:0;
+    font-size:2.6em; 
+    color:rgb(12, 14, 9);
+    font-style:Andale Mono, monospace;
+    font-weight:normal;
+}
+
+#welcome-photo-text::first-letter{
+  font-size: 3.5rem;
+  font-weight: normal;
+}
+
+.cover-text p{
+    margin:0;
+    text-align: left;
+    padding-left:12vw;
+    padding-right:20vw;
+
+    padding-top:2em;
+    padding-bottom:4em;;
+    font-size:1.6em;
+
+    
+}
+@media  (max-width: 1050px) {
+    .cover-text p {
+        padding-left: 3vw;
+
+    }
+
+    #welcome-photo-text{
+        padding-left:3vw;
+        
+    }
+
+    .room-container.room-container{
+      padding-left:3vw;
+      padding-right:4vw;
+
+      /* background-color: rgb(137, 137, 37); */
+    }
+
+}
+
+.cover-text{
+    background-color: rgb(244, 243, 243);
+
+}
+
+
+
+.room-container {
+    display: grid;
+    gap: 4em;
+    margin:0;
+    padding-left:12vw;
+    padding-right:14vw;
+    
+
+  }
+  
+  .room-container .room {
+    
+    background-color: rgb(244, 243, 243);
+  }
+  
+  @media only screen and (min-width: 750px) {
+    .room-container {
+      grid-template-columns: repeat(2, 1fr);
+        }
+  }
+
+  .room{
+    margin-top:7em;
+
+  }
+
+  .room:nth-child(n +3){
+    margin-top:1em;
+  }
+
+
+   .background-image{
+    width: 100%;
+    height: 15em; 
+    background-size:  cover;                   
+    background-position:center;
+  }
+
+  #r1{
+    background-image: url("resources/start_page_photos/presidential_suit.jpg");
+
+  }
+
+  #r2{
+    background-image: url("resources/start_page_photos/deluxe_2_room.jpg");
+
+  }
+   #r3{
+    background-image: url("resources/start_page_photos/deluxe_1_room.jpg");
+
+  }
+  #r4{
+    background-image: url("resources/start_page_photos/apartment_2_room.jpg");
+
+  }
+  #r5{
+    background-image: url("resources/start_page_photos/apartment_1_room.jpg");
+
+  }
+  
+
+  .name {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-top: 1.2em;
+    margin-left:1rem;
+  }
+
+
+  .description{
+    text-align: left;
+    margin-left:1rem;
+    font-size:1.2em;
+  }
+
+  .advantages{
+    display:inline;
+    font-size: 1.4em;
+    margin-left:1rem;
+    font-weight: normal;
+    }
+
+
+    
+
+
+  .room_description .seperator{
+    position:relative;
+    bottom:1.2em;
+  }
+
+  .room-container .seperator {
+    width:90%;
+    background-color: rgba(0,0,0,0.1);
+    
+    height:0.1em;
+    margin:0 auto;
+    border:none;
+  }
+  .room-container .anchor-container{
+    
+    text-align: right;
+    padding-right:4em;
+    margin:1em;
+  }
+
+  .room-container a{
+      text-decoration:none;
+      text-align: right;
+      font-size: 1.5em;
+      color:black;
+  }
