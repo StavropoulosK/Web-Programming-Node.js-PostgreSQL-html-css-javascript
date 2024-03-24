@@ -27,19 +27,21 @@ body {
 	scrollbar-width: none; /* Hide scrollbar Firefox */
 }
 
-@media  (min-width: 1450px) {
+@media  (min-width: 1600px)  {
 	.slider.slider {
-		height:45em;
+		height:38em;
 	}
 }
 
-@media  (max-width: 1450px) and (min-width:1000px) {
+@media  (min-width: 400px) and (max-width:1600px) {
 	.slider.slider {
-		height:30em;
+		height:28em;
 	}
 }
 
-@media  (max-width:400px) {
+
+
+@media  (max-width:400px) and (min-width:250px) {
 	.slider.slider {
 		height:15em;
 	}
