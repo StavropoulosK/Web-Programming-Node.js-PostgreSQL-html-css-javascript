@@ -1,6 +1,12 @@
+body{
+    margin-left:0;
+}
+
 .paymentForm{
     /* background-color: red; */
     max-width:550px;
+    padding-top:10em;
+    padding-left:20vw;
 }
 .container{
 display:grid;
