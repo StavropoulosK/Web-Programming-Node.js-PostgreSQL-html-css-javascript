@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+    <link rel="stylesheet" href="contactFormStyle.css">
+</head>
+<body>
+    
+   <section class="contactForm">  
+
+        <form>
+            
+            <div class="container">
+                
+                <div class="field-holder required">
+                    <input type="text" id="firstName"  name="firstName" required>
+                    <label for="firstName">  Όνομα</label>
+                </div>
+
+                <div class="field-holder required">
+                    <input type="text" id="lastName"  name="lastName" required>
+                    <label for="lastName">  Επώνυμο</label>
+                </div>
+
+                <div class="field-holder required">
+                    <input type="email" value="" id="email" name="email" onchange="this.setAttribute('value', this.value);" />
+                    <label for="email">Email</label>
+                </div>
+
+                
+            </div>
+
+            <div class="field-holder required">
+                <input type="email" value="" id="email" name="email" onchange="this.setAttribute('value', this.value);" />
+                <label for="email">Email</label>
+            </div>
+
+            
+        </form>
+
+   </section>
+    
+</body>
+</html>

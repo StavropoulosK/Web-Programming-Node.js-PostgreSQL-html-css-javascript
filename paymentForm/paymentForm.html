@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+    <link rel="stylesheet" href="paymentFormStyle.css">
+    <script src="paymentFormJs.js" defer> </script>
+</head>
+<body>
+    
+   <section class="paymentForm">  
+
+        <form>
+            
+            <label class="title">  Στοιχεία Πελάτη</label>
+
+            <div class="container">
+                
+                <div class="field-holder required">
+                    <input type="text" id="firstName"  name="firstName" required>
+                    <label for="firstName">  Όνομα</label>
+                </div>
+
+                <div class="field-holder required">
+                    <input type="text" id="lastName"  name="lastName" required>
+                    <label for="lastName">  Επώνυμο</label>
+                </div>
+
+                <div class="field-holder required">
+                    <input type="email" value="" id="email" name="email" onchange="this.setAttribute('value', this.value);" />
+                    <label for="email">Email</label>
+                </div>
+
+                <div class="field-holder required">
+                    <input type="tel" id="tel" name="tel" required>
+                    <label for="tel">Τηλέφωνο</label>
+                </div>
+            </div>
+
+
+            <label class="title title2">  Στοιχεία Κάρτας</label>
+
+            <div class="container">
+            
+                <div class="field-holder required">
+                    <input type="text" id="cardHolderName"  name="cardHolderName" required>
+                    <label for="cardHolderName">  Όνομα Κατόχου</label>
+                </div>
+
+                <div class="field-holder required">
+                    <input type="text" id="cardNumber" value="" name="creditCard" pattern="[0-9]{16}" maxlength="16" onchange="this.setAttribute('value', this.value);" required>
+                    <label for="cardNumber">  Νούμερο κάρτας</label>
+                </div>
+
+                <div class="field-holder required">
+                    <input type="text" id="date" value="" name="date" maxlength="5" pattern="\d{2}/\d{2}" onchange="this.setAttribute('value', this.value);" required>
+                    <label for="date">Ημερομηνία Λήξης</label>
+                </div>
+
+                <div class="field-holder required">
+                    <input type="text" id="cvv" value="" name="cvv" pattern="\d{3,4}" maxlength="4" onchange="this.setAttribute('value', this.value);" required>
+                    <label for="cvv">cvv</label>
+                </div>
+            </div>
+
+            <label class="title title2 title3">  Πρωινό</label>
+
+            <div class="field-holder" >
+                <label class="aa" for="checkbox1" onclick="return false;">Κόστος πρωινού ανά ενήλικα: 5€</label>
+                <input type="checkbox" id="checkbox1" name="checkbox1">
+            </div>
+
+            <label class="title title2 title4">  Όροι και πολιτική</label>
+
+            <div class="field-holder">
+                <label  for="checkbox2" onclick="return false;">
+                    <div>Συμφωνώ ότι αποδέχομαι <a href="terms.txt" target="text_file">τους όρους</a> του ομίλου <b> Bay Hotel llc</b></div>
+                
+                </label>
+                <input type="checkbox" id="checkbox2" name="checkbox1"  required >
+
+            </div>
+
+            <div>
+                <hr id="hr1">
+            </div>
+
+            <div class="field-holder down">
+                <span class="left">Ξενοδοχείο</span>
+                <span class="right">100€</span>
+            </div>
+
+            <div class="field-holder down">
+                <span class="left smaller">Πρωινό</span>
+                <span class="right smaller">20€</span>
+            </div>
+
+            <div id="d1">
+                <hr id="hr2">
+             </div>
+             <br>
+             <div class="field-holder down">
+                <span class="left sinolo">Σύνολο</span>
+                <span class="right">120€</span>
+            </div>
+
+            <div class="field-holder down" id="checkout">
+                    <button>
+                        Κράτηση
+                    </button>
+
+            </div>
+
+
+
+            
+        </form>
+
+   </section>
+    
+</body>
+</html>
