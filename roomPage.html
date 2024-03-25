@@ -2,64 +2,128 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="header.css">
-    <link rel="stylesheet" href="room.css">
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link rel="stylesheet" href="header.css" />
+  <link rel="stylesheet" href="room.css" />
 </head>
 
 <body>
-    <header class="top">
-        <nav>
-            <ul>
-                <li><a href="index.html"> <img src="resources/sofa.png"></a></li>
-                <li><a href="roomPage.html">Explore </a></li>
-            </ul>
-        </nav>
-    </header>
+  <header class="top">
+    <nav>
+      <ul>
+        <li>
+          <a href="index.html"> <img src="resources/sofa.png" /></a>
+        </li>
+        <li><a href="roomPage.html">Explore </a></li>
+      </ul>
+    </nav>
+  </header>
 
-    <section class="container">
-        <div class="slider-wrapper">
-            <div class="slider">
-                <img id="slide-1" src="resources/room.jpg" alt="Hotel Room Main" />
-                <img id="slide-2" src="resources/bathroom.jpg" alt="Hotel Room Bathroom" />
-                <img id="slide-3" src="resources/balcony.jpg" alt="Hotel Room Balcony" />
-            </div>
-            <div class="slider-nav">
-                <a href="#slide-1"></a>
-                <a href="#slide-2"></a>
-                <a href="#slide-3"></a>
-            </div>
-        </div>
-    </section>
+  <section class="container">
+    <div class="slider-wrapper">
+      <div class="slider">
+        <img id="slide-1" src="resources/room.jpg" alt="Hotel Room Main" />
+        <img id="slide-2" src="resources/bathroom.jpg" alt="Hotel Room Bathroom" />
+        <img id="slide-3" src="resources/balcony.jpg" alt="Hotel Room Balcony" />
+      </div>
+      <div>
+        <button class="slider-button prev">&#60;</button>
+        <button class="slider-button next">&#62;</button>
+      </div>
+      <div class="slider-nav">
+        <a href="#slide-1"></a>
+        <a href="#slide-2"></a>
+        <a href="#slide-3"></a>
+      </div>
+    </div>
+  </section>
 
-    <section class="room-title">
-        <h2>Room Name</h2>
-        <p>basic information about room</p>
-        <div class="bed-choice">
-            <select name="bed-type" id="bed-type">
-                <option value="1TB">1 Twin Bed</option>
-                <option value="2SB">2 Single Beds</option>
-            </select>
-            <button>Book</button>
-        </div>
-    </section>
+  <section class="room-title">
+    <h2>Room Name</h2>
+    <p>basic information about room</p>
+    <div class="bed-choice">
+      <select name="bed-type" id="bed-type">
+        <option value="1TB">1 Twin Bed</option>
+        <option value="2SB">2 Single Beds</option>
+      </select>
+      <button>Book</button>
+    </div>
+  </section>
 
-    <section class="room-info">
-        <h3>Details</h3>
-        <p>more important details test test test test test test test test test</p>
-        <section class="amenities">
-            <div>
-                <header>Highlights</header>
+  <section class="room-info">
+    <h3>Details</h3>
+    <p>more important details test test test test test test test test test</p>
+    <div class="benefits-box">
+      <div class="highlights">
+        <header>Highlights</header>
+        <ul>
+          <li>
+            <span style="background-image: url(resources/test-icon.png)"></span>
+            <p>Testing</p>
+          </li>
+          <li>
+            <span style="background-image: url(resources/test-icon.png)"></span>
+            <p>Testing</p>
+          </li>
+          <li>
+            <span style="background-image: url(resources/test-icon.png)"></span>
+            <p>Testing larger text</p>
+          </li>
+          <li>
+            <span style="background-image: url(resources/test-icon.png)"></span>
+            <p>Testing</p>
+          </li>
+          <li>
+            <span style="background-image: url(resources/test-icon.png)"></span>
+            <p>Testing longer text inputs</p>
+          </li>
 
-            </div>
-            <div>
+          <li>
+            <span style="background-image: url(resources/test-icon.png)"></span>
+            <p>Testing</p>
+          </li>
+        </ul>
+      </div>
+      <div class="amenities">
+        <header>Amenities</header>
+        <ul>
+          <li>
+            <span style="background-image: url(resources/test-icon.png)"></span>
+            <p>Testing</p>
+          </li>
+          <li>
+            <span style="background-image: url(resources/test-icon.png)"></span>
+            <p>Testing</p>
+          </li>
 
-            </div>
-        </section>
-    </section>
+          <li>
+            <span style="background-image: url(resources/tv.png)"></span>
+            <p>Testing</p>
+          </li>
+        </ul>
+      </div>
+      <div class="accessibility">
+        <header>Accessibility</header>
+        <ul>
+          <li>
+            <span style="background-image: url(resources/tv.png)"></span>
+            <p>Disabled Emergency Plan</p>
+          </li>
+          <li>
+            <span style="background-image: url(resources/tv.png)"></span>
+            <p>Testing</p>
+          </li>
+
+          <li>
+            <span style="background-image: url(resources/tv.png)"></span>
+            <p>Testing larger text</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
 </body>
 
 </html>
