@@ -1,0 +1,138 @@
+body{
+    margin:0em;
+
+}
+
+.contactForm{
+    
+    max-width:600px;
+    padding-left:2em;
+
+}
+.container{
+    padding-top:6.5em;
+    display:grid;
+    gap:.5em;
+}
+
+@media only screen and (min-width: 600px) {
+    .container {
+      grid-template-columns: repeat(2, 1fr);
+
+        }
+  }
+
+
+.field-holder{
+    margin-top:1em;
+    width:240px;
+    position:relative;
+    padding-left:0;
+}
+
+label{
+    position:absolute;
+    top:0;
+    left:0;
+    color: #424242;
+    display:flex;
+    align-items: center;
+    cursor:text;
+    transition: 0.15s ease-in-out;
+    
+}
+
+input{
+    padding-left: 8px;
+    outline:none;
+    width:240px;
+    border-radius: 4px;
+    border: 1px solid  black; /* Explicitly set border style and width */
+    margin-right:1em;
+    margin-left:1em;
+
+
+}
+
+.required label::after{
+    content:"*";
+    color:red;
+}
+
+input,label{
+    font-size:1em;
+    height:2.8rem;
+
+}
+
+label{
+    margin-left:20px;
+}
+
+input:focus + label,
+input:valid + label,
+#email+label{
+    color:#424242;
+    font-size: 0.75em;
+    top:-14px;
+
+}
+
+#email[value=""]:not(:focus) +label,
+#cardNumber[value=""]:not(:focus) +label,
+#date[value=""]:not(:focus) +label{
+    top:0;
+    left:0;
+    font-size: 1em;
+}
+
+
+label,
+textarea {
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+}
+
+textarea {
+  max-width:580px;
+
+  margin-left:1em;
+  width: 33em;
+  line-height: 1.5;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  box-shadow: 1px 1px 1px #999;
+  border:1px solid black;
+  outline:none;
+}
+
+#checkout{
+    width:100%;
+    position:relative;
+    display:flex;
+
+}
+
+button{
+    position:relative;
+    margin-top: 1em;
+    margin-bottom:2em;
+    right:1em;
+    height:3em;
+    width:9em;
+
+
+    border-radius: 1.5em;
+    border: 0.05em solid rgb(160, 160, 160);
+    color:white;
+    background-color:black;
+    font-size: 1em;
+    margin-left: auto;
+
+  }
+    
+    
+    #checkout button:hover{
+        background-color: rgb(60, 60, 60);
+    }
+  
