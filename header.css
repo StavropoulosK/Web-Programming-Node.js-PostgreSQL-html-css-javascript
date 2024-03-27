@@ -1,30 +1,50 @@
+header.top {
+  background-color: black;
+  padding: 0.6em 3em; /* Adjust padding as needed */
+  width: 100%;
+  position: fixed;
+  z-index: 20;
+  display: flex;
+  justify-content: space-between; /* Align items with space between */
+  align-items: center; /* Align items vertically */
+  white-space: nowrap; /* Prevent wrapping */
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+}
 
-header.top ul {
-    margin: 0;
-    padding: 1em;
-  }
-  
-  header.top nav li {
-    display: inline-block;
-    margin-right: 1.5em;
-  }
+header.top nav {
+  margin: 0;
+  padding: 0;
+}
 
-  header.top{
-    background-color: black;
-    padding-left:3em;
-    margin:0em;
-    padding-top:0.6em;
-    padding-bottom:0.6em;
-    /* border-top-left-radius:0.4em; */
-    width:100%;
-    position:fixed;
-    z-index: 20;
+header.top nav ul {
+  list-style-type: none;
+  display: flex; /* Added flexbox for nav items */
+  align-items: center; /* Center items vertically */
+  margin: 0; /* Added margin */
+  padding: 1em; /* Added padding */
+}
 
-  }
+header.top nav li {
+  margin-right: 1.5em;
+}
 
-  header.top a{
-    color:white;
-    text-decoration:none;
-  }
+header.top a {
+  color: white;
+  text-decoration: none;
+}
 
+.booking-button {
+	border: none;
+  margin-right: 5.5em; /* Adjust margin as needed */
+  padding: 0.6em 1em; /* Adjust padding as needed */
+  width: 4em;
+	border-radius: 2em;
+  text-align: center;
+	background-color: rgb(105, 0, 0);
+  color: white;
+	font-size: 1em;
+}
 
+.booking-button:hover {
+	background-color: rgb(155, 0, 0);
+}
