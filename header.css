@@ -48,3 +48,37 @@ header.top a {
 .booking-button:hover {
 	background-color: rgb(155, 0, 0);
 }
+
+.dropdown{
+  position: relative;
+}
+
+.booking-wrapper{
+  position: fixed;
+  max-height: 720px;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  right: 0;
+  z-index: 600;
+  background-color: white;
+  border-radius: .25rem;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-10px);
+  transition: min-width 550ms ease,max-width 550ms ease,width 550ms ease;
+}
+
+@media only screen and (min-width: 1024px){
+.booking-widget-wrapper {
+    min-width: 810px;
+    width: auto;
+}
+}
+
+.dropdown.active > .booking-button + .booking-wrapper{
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
