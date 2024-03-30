@@ -19,13 +19,39 @@
         <li><a href="/contactForm/contactForm.html">Επικοινωνία </a></li>
       </ul>
     </nav>
-    <div class="dropdown" booking-dropdown>
-      <button  class="booking-button" booking-dropdown-button>Book</button>
+    <div class="dropdown header" booking-dropdown>
+      <button  class="booking-button header" booking-dropdown-button>Book</button>
       <div class="booking-wrapper">
-        <div class="booking-header">
-          
-          
+        <div class="main-booking-info">
+          <div class="arrival-date">
+            <p>Date of Arrival</p> 
+            <span class="arrivalDate">01/01/2024</span>           
+          </div>
+          <div class="departure-date">
+            <p>Date of Departure</p>
+            <span class="departureDate">01/07/2024</span>            
+          </div>
+          <div class="adult-count">
+            <p>Adults</p> 
+            <div class="numRow">
+              <button class="countButton less">&#8722;</button>
+              <span class="numAdults">2</span>
+              <button class="countButton more">&#43;</button> 
+            </div>  
+          </div>
+          <!-- <div class="child-count">
+            <p>Childs</p>
+            <div class="numRow">
+              <button class="countButton less">&#8722;</button>
+              <span class="numChild">0</span>
+              <button class="countButton more">&#43;</button> 
+            </div>         
+          </div> -->
+          <div class="continue-button">
+            <button>Continue</button>
+          </div>
         </div>
+        <div class="calendar"></div>        
       </div>
     </div>
   </header>
@@ -57,7 +83,41 @@
         <option value="1TB">1 Twin Bed</option>
         <option value="2SB">2 Single Beds</option>
       </select>
-      <button type="submit">Book</button>
+      <div class="dropdown body" booking-dropdown>
+        <button  class="booking-button body" booking-dropdown-button>Book</button>
+        <div class="booking-wrapper">
+          <div class="main-booking-info">
+            <div class="arrival-date">
+              <p>Date of Arrival</p> 
+              <span class="arrivalDate">01/01/2024</span>           
+            </div>
+            <div class="departure-date">
+              <p>Date of Departure</p>
+              <span class="departureDate">01/07/2024</span>            
+            </div>
+            <div class="adult-count">
+              <p>Adults</p> 
+              <div class="numRow">
+                <button class="countButton less">&#8722;</button>
+                <span class="numAdults">2</span>
+                <button class="countButton more">&#43;</button> 
+              </div>  
+            </div>
+            <!-- <div class="child-count">
+              <p>Childs</p>
+              <div class="numRow">
+                <button class="countButton less">&#8722;</button>
+                <span class="numChild">0</span>
+                <button class="countButton more">&#43;</button> 
+              </div>         
+            </div> -->
+            <div class="continue-button">
+              <button>Continue</button>
+            </div>
+          </div>
+          <div class="calendar"></div>        
+        </div>
+      </div>
     </div>
   </section>
 
