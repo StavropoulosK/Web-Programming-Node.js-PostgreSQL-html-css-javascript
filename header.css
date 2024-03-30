@@ -11,12 +11,29 @@ header.top {
   font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
 }
 
-header.top nav {
+header.secondary {
+  background-color: rgb(98, 98, 28);
+  padding: 0.6em 3em; /* Adjust padding as needed */
+  width: 100%;
+  position: fixed;
+  top: 4.9em;
+  min-height: 2.5rem;
+  z-index: 20;
+  display: flex;
+  justify-content: space-between; /* Align items with space between */
+  align-items: center; /* Align items vertically */
+  white-space: nowrap; /* Prevent wrapping */
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+}
+
+header.top nav,
+header.secondary nav {
   margin: 0;
   padding: 0;
 }
 
-header.top nav ul {
+header.top nav ul,
+header.secondary nav ul {
   list-style-type: none;
   display: flex; /* Added flexbox for nav items */
   align-items: center; /* Center items vertically */
@@ -24,11 +41,13 @@ header.top nav ul {
   padding: 1em; /* Added padding */
 }
 
-header.top nav li {
+header.top nav li,
+header.secondary nav li{
   margin-right: 1.5em;
 }
 
-header.top a {
+header.top a,
+header.secondary a {
   color: white;
   text-decoration: none;
 }
@@ -37,7 +56,7 @@ header.top a {
 	border: none;
   margin-right: 5.5em; /* Adjust margin as needed */
   padding: 0.6em 1em; /* Adjust padding as needed */
-  width: 4em;
+  width: 100px;
 	border-radius: 2em;
   text-align: center;
 	background-color: rgb(98, 98, 28);
@@ -117,7 +136,8 @@ header.top a {
 .check-in-date,
 .check-out-date,
 .adult-count,
-.continue-button button{
+.continue-button button,
+.close-button button{
   margin: 1em;
   text-align: center;
   font-size: 1.2rem;
@@ -131,7 +151,8 @@ header.top a {
   background-color: black;
 }
 
-.continue-button button {
+.continue-button button,
+.close-button button {
   padding: 10px 20px;
   margin-right: 2rem;
   background-color: rgb(98, 98, 28);
@@ -139,9 +160,11 @@ header.top a {
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  
 }
 
-.continue-button button:hover {
+.continue-button button:hover,
+.close-button button:hover {
   background-color: rgb(131, 131, 31);
 }
 
@@ -153,3 +176,4 @@ header.top a {
   font-size: 1.5rem;
   width: 1.5rem;
 }
+

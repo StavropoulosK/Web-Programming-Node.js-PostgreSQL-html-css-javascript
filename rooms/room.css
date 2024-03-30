@@ -268,3 +268,7 @@ body {
 	font-size: 1em;
 	margin-bottom: 0;
 }
+
+.booking-button.header{
+	width:68px !important;
+}

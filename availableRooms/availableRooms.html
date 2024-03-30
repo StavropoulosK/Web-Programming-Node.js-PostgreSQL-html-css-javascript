@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../header.css" />
+    <link rel="stylesheet" href="availableRooms.css">
+    <script src="../booking-menu.js" defer></script>
+</head>
+
+<body>
+    <header class="top">
+        <nav>
+            <ul>
+                <li><a href="../index.html"> <img src="../resources/sofa.png"></a></li>
+            </ul>
+        </nav>
+    </header>
+    <header class="secondary">
+        <nav>
+            <ul>
+                <li>
+                    <p>check-inDate</p>
+                </li>
+                <li>
+                    <p>-</p>
+                </li>
+                <li>
+                    <p>check-outDate</p>
+                </li>
+                <li>
+                    <p>Adults: 2</p>
+                </li>
+                <li>
+                    <div class="dropdown body" booking-dropdown>
+                        <button  class="booking-button body" booking-dropdown-button>Configure</button>
+                        <div class="booking-wrapper">
+                        <div class="main-booking-info">
+                            <div class="check-in-date">
+                            <p>Check In</p> 
+                            <span class="check-inDate">01/01/2024</span>           
+                            </div>
+                            <div class="check-out-date">
+                            <p>Check Out</p>
+                            <span class="check-outDate">01/07/2024</span>            
+                            </div>
+                            <div class="adult-count">
+                            <p>Adults</p> 
+                            <div class="numRow">
+                                <button class="countButton less">&#8722;</button>
+                                <span class="numAdults">2</span>
+                                <button class="countButton more">&#43;</button> 
+                            </div>  
+                            </div>
+                            <!-- <div class="child-count">
+                            <p>Childs</p>
+                            <div class="numRow">
+                                <button class="countButton less">&#8722;</button>
+                                <span class="numChild">0</span>
+                                <button class="countButton more">&#43;</button> 
+                            </div>         
+                            </div> -->
+                            <div class="close-button" booking-dropdown-close>
+                                <button>Changes Completed</button>
+                            </div>
+                        </div>
+                        <div class="calendar"></div>        
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </nav>  
+    </header>
+
+    <div class="rooms-wrapper">
+        <div class="available-rooms">
+            <div class="room">
+                <header>
+                    Deluxe Room - 1 Bedroom
+                </header>
+                <div class="room-info">
+                    <div class="room-images">
+                        <img src="../resources/start_page_photos/deluxe_1_room.jpg" alt="Deluxe 1 Bedroom">
+                    </div>
+                    <div class="information">
+                        
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
