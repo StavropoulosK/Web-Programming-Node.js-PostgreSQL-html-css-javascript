@@ -1,64 +1,93 @@
 *,
 :after,
 :before {
-	box-sizing: inherit;
-	margin: 0;
-	padding: 0;
+    box-sizing: inherit;
+    margin: 0;
+    padding: 0;
 }
 
-body{
-    margin:0;
+body {
+    margin: 0;
     font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
 }
 
-header.secondary{
+header.secondary {
     color: white;
     font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
 }
 
 .booking-button.body {
-	width: 7.5em;
-	height: 2.0rem;
-	border-radius: 1.5em;
-	border: none;
-	color: white;
-	background-color: black;
-	font-size: 1em;
+    width: 7.5em;
+    height: 2.0rem;
+    border-radius: 1.5em;
+    border: none;
+    color: white;
+    background-color: black;
+    font-size: 1em;
 
 }
 
 .booking-button.body:hover {
-	background-color: rgb(50, 50, 50);
+    background-color: rgb(50, 50, 50);
 }
 
-.rooms-wrapper{
+.rooms-wrapper {
     padding: 12em 8em;
 }
 
-.available-rooms{
+.available-rooms {
     background-color: none;
-    border: 0.5px solid rgba(0,0,0,0.2);
+    border: 0.5px solid rgba(0, 0, 0, 0.2);
 }
 
-.room header{
+.room header {
     font-size: 1.5rem;
     margin: 1rem;
 }
 
-.room-info{
+.room-info {
     display: flex;
-	flex-direction: row;
-	justify-content: space-between;
-	flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
     margin: 1rem;
 }
 
-.room-images{
+.room-images {
     width: 30%;
 }
 
-.room-images img{
-    max-width: 500px; 
+.room-images img {
+    max-width: 500px;
     max-height: 250px;
-    
+
+}
+
+.room-info {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.select-room {
+    align-self: flex-end;
+    margin-left: 0;
+}
+
+.select-room button {
+    border: none;
+    /* Adjust margin as needed */
+    padding: 0.6em 1em;
+    /* Adjust padding as needed */
+    width: 5rem;
+    border-radius: 2em;
+    text-align: center;
+    background-color: rgb(98, 98, 28);
+    color: white;
+    font-size: 1em;
+}
+
+.select-room button:hover {
+    background-color: rgb(131, 131, 31);
 }
