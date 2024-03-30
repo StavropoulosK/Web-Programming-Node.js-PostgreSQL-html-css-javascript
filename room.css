@@ -161,18 +161,19 @@ body {
 	cursor: pointer;
 }
 
-.bed-choice button {
+.bed-choice .booking-button.body {
 	width: 7.5em;
+	height: 3.0rem;
 	border-radius: 1.5em;
 	border: 0.05em solid rgb(160, 160, 160);
 	color: white;
-	background-color: black;
+	background-color: rgb(98, 98, 28);
 	font-size: 1em;
 
 }
 
-.bed-choice button:hover {
-	background-color: rgb(60, 60, 60);
+.bed-choice .booking-button.body:hover {
+	background-color: rgb(131, 131, 31);
 }
 
 .benefits-box {
@@ -201,6 +202,7 @@ body {
 	font-size: 1.4em;
 	font-style: italic;
 	margin-bottom: 0.25em;
+	color: rgb(98, 98, 28);
 }
 
 .amenities,
@@ -235,10 +237,8 @@ body {
 	}
 
 	.benefits-box div:first-child {
-		border-right: 1px solid #ccc;
-		/* Add a border to the right of each div */
+		border-right: 1px solid rgb(98, 98, 28);
 		padding-right: 1em;
-		/* Add some padding to separate the content from the border */
 	}
 
 	.amenities {

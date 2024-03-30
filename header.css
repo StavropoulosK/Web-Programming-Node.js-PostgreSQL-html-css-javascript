@@ -33,7 +33,7 @@ header.top a {
   text-decoration: none;
 }
 
-.booking-button {
+.booking-button.header {
 	border: none;
   margin-right: 5.5em; /* Adjust margin as needed */
   padding: 0.6em 1em; /* Adjust padding as needed */
@@ -49,18 +49,19 @@ header.top a {
 	background-color: rgb(131, 131, 31);
 }
 
-.dropdown{
+.dropdown.header{
   position: relative;
 }
 
 .booking-wrapper{
   position: fixed;
-  max-height: 620px;
+  max-height: 32rem;
+  max-width: 70rem;
   width: 100%;
   height: 100%;
-  top: 0;
+  top: 4.9em;
   right: 0;
-  z-index: 600;
+  z-index: 6;
   background-color: white;
   border-radius: .25rem;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.1);
@@ -72,7 +73,7 @@ header.top a {
 
 @media only screen and (min-width: 1024px){
 .booking-widget-wrapper {
-    min-width: 810px;
+    min-width: 650px;
     width: auto;
 }
 }
@@ -81,4 +82,50 @@ header.top a {
   opacity: 1;
   transform: translateY(0);
   pointer-events: auto;
+}
+
+
+.booking-wrapper {
+  display: flex;
+  flex-direction: column; 
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  width: 100%; 
+}
+
+.main-booking-info{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items:center;
+  width: 100%;
+}
+
+.arrival-date,
+.departure-date,
+.adult-count,
+.continue-button{
+  margin: 1em;
+}
+
+.calendar {
+  width: 40rem;
+  height: 25rem;
+  left: 0;
+  margin: 1rem 2.5rem;
+  background-color: black;
+}
+
+.continue-button button {
+  padding: 10px 20px;
+  background-color: rgb(98, 98, 28);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.continue-button button:hover {
+  background-color: rgb(131, 131, 31);
 }
