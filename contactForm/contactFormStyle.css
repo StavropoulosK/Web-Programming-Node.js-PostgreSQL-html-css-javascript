@@ -112,7 +112,7 @@ textarea {
     line-height: 1.5;
     border-radius: 5px;
     border: 1px solid #ccc;
-    box-shadow: 1px 1px 1px #999;
+    box-shadow: 3px 1px 5px  #999;
     border: 1px solid black;
     outline: none;
 }
@@ -122,6 +122,14 @@ textarea {
     position: relative;
     display: flex;
 
+}
+label{
+    font-size: 16px;
+
+}
+
+#formText{
+    width:270px;
 }
 
 .contactForm button {

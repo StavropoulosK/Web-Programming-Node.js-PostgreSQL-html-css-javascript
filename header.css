@@ -1,39 +1,24 @@
 header.top {
   background-color: black;
-  padding: 0.6em 3em; /* Adjust padding as needed */
+  padding: 0.6em 3em; 
   width: 100%;
   position: fixed;
   z-index: 20;
   display: flex;
-  justify-content: space-between; /* Align items with space between */
-  align-items: center; /* Align items vertically */
-  white-space: nowrap; /* Prevent wrapping */
+  align-items: center; 
+  white-space: nowrap; 
   font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
 }
 
-header.secondary {
-  background-color: rgb(98, 98, 28);
-  padding: 0.6em 3em; /* Adjust padding as needed */
-  width: 100%;
-  position: fixed;
-  top: 4.9em;
-  min-height: 2.5rem;
-  z-index: 20;
-  display: flex;
-  justify-content: space-between; /* Align items with space between */
-  align-items: center; /* Align items vertically */
-  white-space: nowrap; /* Prevent wrapping */
-  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
-}
 
-header.top nav,
-header.secondary nav {
+
+header.top nav{
   margin: 0;
   padding: 0;
 }
 
-header.top nav ul,
-header.secondary nav ul {
+header.top nav ul {
+  
   list-style-type: none;
   display: flex; /* Added flexbox for nav items */
   align-items: center; /* Center items vertically */
@@ -41,20 +26,54 @@ header.secondary nav ul {
   padding: 1em; /* Added padding */
 }
 
-header.top nav li,
-header.secondary nav li{
+header.top nav li{
   margin-right: 1.5em;
 }
 
-header.top a,
-header.secondary a {
+header.top a{
   color: white;
   text-decoration: none;
+}
+header ul button{
+  padding:0;
+  margin:0;
+  height: 2.6em;
+  min-width:3em;
+  border:none;
+}
+
+
+
+
+header ul button img{
+  object-fit: cover;
+  padding:0px;
+  margin:0px;
+  height:100%;
+  width:100%;
+}
+
+button.eggrafi{
+
+    background-color:transparent;
+    border:none;
+    color:white;
+    margin-right:5em;
+    font-size:1em;
+    padding: 0.6em 1em; /* Adjust padding as needed */
+
+
+}
+
+.buttons{
+  margin-left:auto;
+  display:flex;
+  float:right;
 }
 
 .booking-button.header {
 	border: none;
-  margin-right: 5.5em; /* Adjust margin as needed */
+  margin-right: 2em; /* Adjust margin as needed */
   padding: 0.6em 1em; /* Adjust padding as needed */
   width: 100px;
 	border-radius: 2em;
@@ -68,6 +87,10 @@ header.secondary a {
 	background-color: rgb(131, 131, 31);
 }
 
+button.eggrafi:hover{
+  color:rgb(189, 178, 53);
+}
+
 .dropdown.header{
   position: relative;
 }
@@ -78,7 +101,7 @@ header.secondary a {
   max-width: 70rem;
   width: 100%;
   height: 100%;
-  top: 4.9em;
+  top: 5.9em;
   right: 0;
   z-index: 6;
   background-color: white;
@@ -90,24 +113,45 @@ header.secondary a {
   transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
-@media only screen and (min-width: 1024px){
-  .booking-wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+@media  (max-width: 1200px) {
+   header.top .outer a{
+    display:none;
   }
-  .booking-widget-wrapper {
-    position: fixed;
-    top: 4.9em; /* Adjust according to your layout */
-    left: 25%;
-    transform: translateX(-50%);
-    min-width: 650px;
-    max-width: 70rem;
-    width: auto;
+
+  .buttons{
+    flex-direction:column;
+    text-align: left;
+  
   }
+
+  button.eggrafi{
+    margin-right:4em;
+    padding-left:0;
+  }
+
+  .booking-button.header {
+    margin:0;
+  }
+
+  header.top {
+    padding: 0.6em 1em; 
+  }
+
 }
 
-.dropdown.active > .booking-button + .booking-wrapper{
+@media (min-width:1200px){
+  header ul li:first-child{
+    display:none; 
+}
+
+
+}
+
+
+
+
+
+.dropdown.active .booking-wrapper{
   opacity: 1;
   transform: translateY(0);
   pointer-events: auto;
@@ -176,4 +220,48 @@ header.secondary a {
   font-size: 1.5rem;
   width: 1.5rem;
 }
+
+
+.info-wrapper{
+  height:100%;
+
+}
+
+.display_info{
+    position: fixed;
+    left:0em;
+    background-color: rgb(7, 5, 5);
+    top:6em;
+    height: 24em;
+    width: 15em;
+    pointer-events:none;
+    opacity: 0;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.display_info.active{
+  opacity: 0.8;
+  pointer-events: auto;
+}
+
+
+
+.display_info ul{
+  
+  height:100%;
+  display:flex;
+  flex-direction: column;
+}
+
+.display_info ul li{
+  
+  width:100%;
+  margin-bottom:2em;
+  left:0;
+  padding-left:3em;
+  
+}
+
+
+
 

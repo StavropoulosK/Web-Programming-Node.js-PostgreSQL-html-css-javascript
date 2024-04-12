@@ -5,58 +5,79 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="header.css">
     <link rel="stylesheet" href="start_page.css">
-    <script src="booking-menu.js" defer></script>
+    <link rel="stylesheet" href="footer/footer.css">
+
+    <script src="header_buttons.js" defer></script>
+    <script src="index.js" defer></script>
+    <script src="header.js" defer></script>
+
 
     <title>Document</title>
 </head>
 <body>
-  <header class="top">
+
+
+  <header class="top" id="header">
+
     <nav>
       <ul>
-        <li><a href="index.html"> <img src="resources/sofa.png"></a></li>
-        <li><a href="rooms/roomPage.html">Δραστηριότητες </a></li>
-        <li><a href="contactForm/contactForm.html">Επικοινωνία </a></li>
+        <li>
+          <button id="info_button"><img src="resources/icons/choice.png" id="pressed_image"> </button>
+          <div class="display_info" id="info_container">
+            <ul>
+              <li><a href="index.html"> <img src="resources/sofa.png"></a></li>
+              <li><a href="aksiotheata/aksiotheata.html">Αξιοθέατα </a></li>
+              <li><a href="contactForm/contactForm.html">Επικοινωνία </a></li>
+            </ul>
+          </div>
+        </li>
+        <li class="outer"><a href="index.html"> <img src="resources/sofa.png"></a></li>
+        <li class="outer"><a href="aksiotheata/aksiotheata.html">Αξιοθέατα </a></li>
+        <li class="outer"><a href="contactForm/contactForm.html">Επικοινωνία </a></li>
       </ul>
     </nav>
-    <div class="dropdown header" booking-dropdown>
-      <button  class="booking-button header" booking-dropdown-button>Book</button>
-      <div class="booking-wrapper">
-        <div class="main-booking-info">
-          <div class="check-in-date">
-            <p>Check In</p> 
-            <span class="check-inDate">01/01/2024</span>           
+    <div class="buttons">
+      <div class="dropdown header" id="dropdown_book">
+        <button  class="booking-button header" id="book_button">Book</button>
+        <div class="booking-wrapper">
+          <div class="main-booking-info">
+            <div class="check-in-date">
+              <p>Check In</p> 
+              <span class="check-inDate">01/01/2024</span>           
+            </div>
+            <div class="check-out-date">
+              <p>Check Out</p>
+              <span class="check-outDate">01/07/2024</span>            
+            </div>
+            <div class="adult-count">
+              <p>Adults</p> 
+              <div class="numRow">
+                <button class="countButton less">&#8722;</button>
+                <span class="numAdults">2</span>
+                <button class="countButton more">&#43;</button> 
+              </div>  
+            </div>
+            
+            <div class="continue-button">
+              <form action="availableRooms/availableRooms.html">
+                <button>Check Rooms</button>
+              </form>
+            </div>
           </div>
-          <div class="check-out-date">
-            <p>Check Out</p>
-            <span class="check-outDate">01/07/2024</span>            
-          </div>
-          <div class="adult-count">
-            <p>Adults</p> 
-            <div class="numRow">
-              <button class="countButton less">&#8722;</button>
-              <span class="numAdults">2</span>
-              <button class="countButton more">&#43;</button> 
-            </div>  
-          </div>
-          <!-- <div class="child-count">
-            <p>Childs</p>
-            <div class="numRow">
-              <button class="countButton less">&#8722;</button>
-              <span class="numChild">0</span>
-              <button class="countButton more">&#43;</button> 
-            </div>         
-          </div> -->
-          <div class="continue-button">
-            <form action="availableRooms/availableRooms.html">
-              <button>Check Rooms</button>
-            </form>
-          </div>
+          <div class="calendar"></div>        
         </div>
-        <div class="calendar"></div>        
       </div>
+  
+      <button class="eggrafi">Εγγραφή / Σύνδεση</button>
+
     </div>
+
   </header>
 
+   
+
+
+  
   <section class="welcome-photo">
 
     <article>
@@ -72,12 +93,94 @@
 
   <section class="cover-text">
     <p>
-      Εκεί όπου ο ορίζοντας χάνεται στη θάλασσα, η αμμουδιά ενώνεται με τα κύματα και ο ήλιος ακουμπάει τη Μεσόγειο βρίσκεται τοποθετημένο το ξενοδοχείο μας.. Bay Hotel
+      Εκεί όπου ο ορίζοντας χάνεται στη θάλασσα, η αμμουδιά ενώνεται με τα κύματα και ο ήλιος ακουμπάει το Αιγαίο βρίσκεται τοποθετημένο το ξενοδοχείο μας.. Bay Hotel
     </p>
     
+    <div class="icons">
+      <div class="row">
+        <div class="elem">
+          <img src="resources/icons/parking.png">
+          <span>Δωρεάν πάρκινγ</span>
+        </div>
+
+        <div class="elem">
+          <img src="resources/icons/pool.png">
+          <span>Πισίνα</span>
+        </div>
+
+        <div class="elem">
+          <img src="resources/icons/wine_bar.png">
+          <span>Κοκτέιλ μπαρ</span>
+        </div>
+        
+      </div>
+      <div class="row second">
+        
+        <div class="elem">
+          <img src="resources/icons/wifi.png">
+          <span>Δωρεάν wifi</span>
+        </div>
+        <div class="elem">
+          <img src="resources/icons/Amea.png">
+          <span>AμεA</span>
+        </div>
+
+
+      </div>
+    </div>
   </section>
 
-  <section class="room-container">
+  <section class="pictures">
+
+      <div class="image-row">
+        <img src="resources/start-page-gallery/room1.jpg"  class="image-item" onclick="enlargeImage(this.src)">
+        <img src="resources/start-page-gallery/swimming-pool.jpg"  class="image-item" onclick="enlargeImage(this.src)">
+        <img src="resources/start-page-gallery/room2.jpg"  class="image-item" onclick="enlargeImage(this.src)">
+        <img src="resources/start-page-gallery/room3.jpg"  class="image-item" onclick="enlargeImage(this.src)">
+        <img src="resources/start-page-gallery/room4.jpg"  class="image-item" onclick="enlargeImage(this.src)">
+        <img src="resources/start-page-gallery/coffee.jpg"  class="image-item" onclick="enlargeImage(this.src)">
+        <img src="resources/start-page-gallery/cookies.jpg"  class="image-item" onclick="enlargeImage(this.src)">
+        <img src="resources/start-page-gallery/croissant.jpg"  class="image-item" onclick="enlargeImage(this.src)">
+
+        <img src="resources/start-page-gallery/eggs.jpg"  class="image-item" onclick="enlargeImage(this.src)">
+        <img src="resources/start-page-gallery/pancakes.jpg"  class="image-item" onclick="enlargeImage(this.src)">
+        <img src="resources/start-page-gallery/breakfast-room.jpg"  class="image-item" onclick="enlargeImage(this.src)">
+
+        
+
+    </div>
+    
+    <div id="enlarged-image-container">
+      <div class="wrapper">
+        
+        <img id="enlarged-image">
+        <button class="close">x</button>
+
+        <button class="left-arrow arrow"><</button>
+        <button class="right-arrow arrow">></button>
+
+      </div>
+    </div>
+
+  </section>
+
+  <section class="map">
+
+    <div class="maps">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d20814.733770215214!2d23.849199550651804!3d39.14905460145885!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMznCsDA4JzQ5LjQiTiAyM8KwNTInMTguNiJF!5e0!3m2!1sen!2sgr!4v1712845790504!5m2!1sen!2sgr"
+        width="100%"
+        height="500"
+        style="border:0;"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
+
+  </section>
+  
+    <section class="room-container">
 
         <div class="room">
             <div class="background-image" id="r1"></div>
@@ -172,6 +275,30 @@
   </section>
    
       
+
+  <footer>
+    <div class="outer">
+      <div class="flex">
+        <div class="icon">
+          <img src="resources/sofa_large.png">
+        </div>
+
+        <div class="info">
+          <span>Bay Hotel</span>
+          <span> Bay Hotel, Βυζαντίου 54, Αλόννησος,  Ελλάδα</span>
+          <span>+3069999999999</span>
+          <span>BayHotel@outlook.com.gr</span>
+
+        </div>      
+      </div>
+
+      <hr>
+
+    </div>
+
+
+  </footer>
+
 
       
 </body>

@@ -8,58 +8,70 @@
     <base href="../">
     <link rel="stylesheet" href="contactForm/contactFormStyle.css">
     <link rel="stylesheet" href="header.css">
-    <script src="booking-menu.js" defer></script>
+    <script src="../header_buttons.js" defer></script>
 
 </head>
 
 <body>
 
-    <header class="top">
-        <nav>
+    
+  <header class="top" id="header">
+
+    <nav>
+      <ul>
+        <li>
+          <button id="info_button"><img src="../resources/icons/choice.png" id="pressed_image"> </button>
+          <div class="display_info" id="info_container">
             <ul>
-                <li><a href="index.html"> <img src="resources/sofa.png"></a></li>
-                <li><a href="rooms/roomPage.html">Δραστηριότητες </a></li>
-                <li><a href="contactForm/contactForm.html">Επικοινωνία </a></li>
+              <li><a href="../index.html"> <img src="../resources/sofa.png"></a></li>
+              <li><a href="../aksiotheata/aksiotheata.html">Αξιοθέατα </a></li>
+              <li><a href="contactForm.html">Επικοινωνία </a></li>
             </ul>
-        </nav>
-        <div class="dropdown header" booking-dropdown>
-            <button class="booking-button header" booking-dropdown-button>Book</button>
-            <div class="booking-wrapper">
-                <div class="main-booking-info">
-                    <div class="check-in-date">
-                        <p>Check In</p>
-                        <span class="check-inDate">01/01/2024</span>
-                    </div>
-                    <div class="check-out-date">
-                        <p>Check Out</p>
-                        <span class="check-outDate">01/07/2024</span>
-                    </div>
-                    <div class="adult-count">
-                        <p>Adults</p>
-                        <div class="numRow">
-                            <button class="countButton less">&#8722;</button>
-                            <span class="numAdults">2</span>
-                            <button class="countButton more">&#43;</button>
-                        </div>
-                    </div>
-                    <!-- <div class="child-count">
-                <p>Childs</p>
-                <div class="numRow">
-                  <button class="countButton less">&#8722;</button>
-                  <span class="numChild">0</span>
-                  <button class="countButton more">&#43;</button> 
-                </div>         
-              </div> -->
-                    <div class="continue-button">
-                        <form action="availableRooms/availableRooms.html">
-                            <button>Check Rooms</button>
-                        </form>
-                    </div>
-                </div>
-                <div class="calendar"></div>
+          </div>
+        </li>
+        <li class="outer"><a href="../index.html"> <img src="../resources/sofa.png"></a></li>
+        <li class="outer"><a href="../aksiotheata/aksiotheata.html">Αξιοθέατα </a></li>
+        <li class="outer"><a href="../contactForm/contactForm.html">Επικοινωνία </a></li>
+      </ul>
+    </nav>
+    <div class="buttons">
+      <div class="dropdown header" id="dropdown_book">
+        <button  class="booking-button header" id="book_button">Book</button>
+        <div class="booking-wrapper">
+          <div class="main-booking-info">
+            <div class="check-in-date">
+              <p>Check In</p> 
+              <span class="check-inDate">01/01/2024</span>           
             </div>
+            <div class="check-out-date">
+              <p>Check Out</p>
+              <span class="check-outDate">01/07/2024</span>            
+            </div>
+            <div class="adult-count">
+              <p>Adults</p> 
+              <div class="numRow">
+                <button class="countButton less">&#8722;</button>
+                <span class="numAdults">2</span>
+                <button class="countButton more">&#43;</button> 
+              </div>  
+            </div>
+            
+            <div class="continue-button">
+              <form action="../availableRooms/availableRooms.html">
+                <button>Check Rooms</button>
+              </form>
+            </div>
+          </div>
+          <div class="calendar"></div>        
         </div>
-    </header>
+      </div>
+  
+      <button class="eggrafi">Εγγραφή / Σύνδεση</button>
+
+    </div>
+
+  </header>
+
 
     <section class="contactForm">
 
@@ -87,7 +99,7 @@
             </div>
 
             <div class="field-holder required" id="text">
-                <label for="story">Πείτε μας τι θα θέλατε να μάθετε</label><br><br>
+                <label for="story" id="formText">Πείτε μας τι θα θέλατε να μάθετε</label><br><br>
 
                 <textarea id="story" name="story" rows="9" cols="33"></textarea>
 
