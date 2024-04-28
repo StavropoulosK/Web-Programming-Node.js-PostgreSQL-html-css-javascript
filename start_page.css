@@ -117,11 +117,14 @@ section.welcome-photo{
 }
 
 .image-item {
+  flex:1;
   height: 5em; 
   margin-right: 1.4em; 
   margin-top:1.4em;
   cursor: pointer;
+  max-width: 14em;
 }
+
 
 #enlarged-image-container {
 
