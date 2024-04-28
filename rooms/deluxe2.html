@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link rel="stylesheet" href="../header.css" />
+  <link rel="stylesheet" href="room.css" />
+  <link rel="stylesheet" href="../footer/footer.css">
+
+  <script src="../header_buttons.js" defer></script>
+  <script src="../header_calendar.js" defer></script>
+
+  <script src="roomPage.js" defer></script>
+
+</head>
+
+<body>
+
+  <header class="top" id="header">
+
+    <nav>
+      <ul>
+        <li>
+          <button id="info_button"><img src="../resources/icons/choice.png" id="pressed_image"> </button>
+          <div class="display_info" id="info_container">
+            <ul>
+              <li><a href="../index.html"> <img src="../resources/sofa.png"></a></li>
+              <li><a href="../aksiotheata/aksiotheata.html">Αξιοθέατα </a></li>
+            </ul>
+          </div>
+        </li>
+        <li class="outer"><a href="../index.html"> <img src="../resources/sofa.png"></a></li>
+        <li class="outer"><a href="../aksiotheata/aksiotheata.html">Αξιοθέατα </a></li>
+      </ul>
+    </nav>
+    <div class="buttons">
+      <div class="dropdown header" id="dropdown_book">
+        <button  class="booking-button header" id="book_button">Κράτηση</button>
+
+
+        <form action="../availableRooms/availableRooms.html">
+        
+        <div class="booking-wrapper">
+          <div class="main-booking-info">
+            
+
+            <div class="check-in-date">
+              <p>Ημερ. Άφιξης</p> 
+              <span class="check-inDate">-</span>           
+            </div>
+
+            <div class="check-out-date">
+              <p>Ημερ. Αναχώρησης</p>
+              <span class="check-outDate">-</span>            
+            </div>
+
+            <div class="Amea">
+              <label for="amea" id="ameaLabel">ΑμεΑ</label>
+              <input type="checkbox" name="checkbox" id="amea" class="checkbox-field">
+              <label for="amea" class="checkbox-label"></label>
+            </div>
+
+            <div class="adult-count">
+              <p>Άτομα</p> 
+              <div class="numRow">
+                <button type="button" class="countButton less">&#8722;</button>
+                <button type="button" class="countButton more">&#43;</button> 
+                <span class="numAdults" >2</span>
+              </div>  
+            </div>
+
+            <div class="continue-button">
+              <button>Συνέχεια</button>
+            </div>
+        
+          </div>
+
+          <div class="calendar">
+            <div class="calendar-wrapper">
+              <button id="prevBtn" type="button">
+                  <span class=""><</span>
+              </button>
+              <div class="monthYear" id="monthYear"></div>
+              <button id="nextBtn" type="button">
+                <span class="">></span> 
+              </button>
+            </div>
+            <div class="days">
+              <div class="day">Δευτ</div>
+              <div class="day">Τρ</div>
+              <div class="day">Τετ</div>
+              <div class="day">Πέμ</div>
+              <div class="day">Παρ</div>
+              <div class="day">Σάβ</div>
+              <div class="day">Κυρ</div>
+            </div>
+            <div class="dates" id="dates">
+            </div>
+
+
+
+
+          </div> 
+                 
+        </div>
+      </form>
+
+      </div>
+      <button class="eggrafi">Εγγραφή / Σύνδεση</button>
+
+    </div>
+
+  </header>
+
+  <section class="container">
+    <div class="spacer"></div>
+    <div class="slider-wrapper">
+      <div class="slider">
+        <img id="slide-1" src="../resources/room_photos/deluxe_2_room/deluxe_2_room.jpg" class="displayed" alt="Hotel Room Main" />
+        <img id="slide-2" src="../resources/room_photos/deluxe_2_room/break-649351_1280.jpg" class="invisible" alt="Hotel Room Bathroom" />
+        <img id="slide-3" src="../resources/room_photos/deluxe_2_room/sim2.jpg" class="invisible" alt="Hotel Room Balcony" />
+
+        <button class="left-arrow arrow"><</button>
+        <button class="right-arrow arrow">></button>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="room-title">
+    <h2>Deluxe Σουίτα 2 Υπνοδωματίων</h2>
+    <p>Ζήστε το απόγειο της πολυτέλειας στην μοντέρνα και αναζωογονητική σουίτα δύο υπνοδωματίων.  </p>
+    <div class="bed-choice">
+      <select name="bed-type" id="bed-type">
+        <option value="2SB">Χωρίς Προτίμηση</option>
+
+        <option value="1TB">1 Διπλό Κρεβάτι, 2 Μονά Κρεβάτια</option>
+        <option value="2SB">4 Μονά Κρεβάτια</option>
+      </select>
+      <button  class="booking-button body">Book</button>
+
+    </div>
+  </section>
+
+  <section class="room-info">
+    <h3>Στοιχεία</h3>
+    <p id="descr"> 50 τ.μ.,  2 μπάνια, με όλες τις ανέσεις </p>
+    <div class="benefits-box">
+      <div class="highlights">
+        <p class="header">Ανέσεις</p>
+        <ul>
+          
+          <li>
+            <span style="background-image: url(../resources/icons/iaponikes_toualetes.png)"></span>
+            <p>Ιαπωνικές Τουαλέτες</p>
+          </li>
+          <li>
+            <span style="background-image: url(../resources/icons/tv.png)"></span>
+            <p>40' τηλεόραση</p>
+          </li>
+          <li>
+            <span style="background-image: url(../resources/icons/kentites_kourtines.png)"></span>
+            <p>Κεντητά υφάσματα</p>
+          </li>
+          
+        </ul>
+      </div>
+
+      <div class="amenities">
+        <p class="header"> Μηχανές</p>
+        <ul>
+          <li>
+            <span style="background-image: url(../resources/icons/cafe.png)"></span>
+            <p>Καφέ</p>
+          </li>
+          <li>
+            <span style="background-image: url(../resources/icons/ksiristiki.png)"></span>
+            <p>Ξυριστική</p>
+          </li>
+
+          <li>
+            <span style="background-image: url(../resources/icons/tsai.png)"></span>
+            <p>Τσάι</p>
+          </li>
+        </ul>
+      </div>
+      <div class="accessibility">
+        <p class="header">Προσβασιμότητα</p>
+        
+            
+        <p>Η deluxe σουίτα  δύο υπνοδωματίων διατίθεται και τροποποιημένη για να φιλοξενήσει άτομα ΑΜΕΑ</p>
+         
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="outer">
+      <div class="flex">
+        <div class="icon">
+          <img src="../resources/sofa_large.png">
+        </div>
+
+        <div class="info">
+          <span>Bay Hotel</span>
+          <span> Bay Hotel, Βυζαντίου 54, Αλόννησος,  Ελλάδα</span>
+          <span>+3069999999999</span>
+          <span>BayHotel@outlook.com.gr</span>
+
+        </div>      
+      </div>
+
+      <hr>
+
+    </div>
+
+
+  </footer>
+
+
+</body>
+
+</html>

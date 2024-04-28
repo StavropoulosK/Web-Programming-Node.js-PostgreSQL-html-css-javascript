@@ -79,6 +79,8 @@ section.welcome-photo{
   width:70%;
   /* background-color:blue; */
   margin:0 auto;
+  padding-top:0.2em;
+
 }
 
 .icons .second button{
@@ -142,7 +144,7 @@ section.welcome-photo{
 }
 
 #enlarged-image{
-  position:absolute;
+    position:absolute;
     max-height: 1100px;
     width:100%;
     height:100%;
@@ -240,7 +242,7 @@ section.welcome-photo{
 
 }
 
-@media  (max-width: 400px) {
+@media  (max-width: 600px) {
   section.welcome-photo{
     height:30em;
 
@@ -311,24 +313,24 @@ section.welcome-photo{
   }
 
   #r1{
-    background-image: url("resources/start_page_photos/presidential_suit.jpg");
+    background-image: url("resources/room_photos/yperpoliteli/presidential_suit.jpg");
 
   }
 
   #r2{
-    background-image: url("resources/start_page_photos/deluxe_2_room.jpg");
+    background-image: url("resources/room_photos/deluxe_2_room/deluxe_2_room.jpg");
 
   }
    #r3{
-    background-image: url("resources/start_page_photos/deluxe_1_room.jpg");
+    background-image: url("resources/room_photos/deluxe_1_room/deluxe_1_room.jpg");
 
   }
   #r4{
-    background-image: url("resources/start_page_photos/apartment_2_room.jpg");
+    background-image: url("resources/room_photos/simple_2_room/apartment_2_room.jpg");
 
   }
   #r5{
-    background-image: url("resources/start_page_photos/apartment_1_room.jpg");
+    background-image: url("resources/room_photos/simple_1_room/apartment_1_room.jpg");
 
   }
   

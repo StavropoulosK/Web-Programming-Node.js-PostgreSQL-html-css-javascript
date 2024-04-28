@@ -1,3 +1,5 @@
+'use strict'
+
 function enlargeImage(src) {
     document.getElementById("enlarged-image").src = src;
     document.getElementById("enlarged-image-container").style.display = "flex";
@@ -11,18 +13,16 @@ function closeImage() {
 }
 
 function changeImage(event){
-    el=event.target
-    current_img=document.getElementById("enlarged-image")
-    console.log(current_img.src)
+    let el=event.target
+    let current_img=document.getElementById("enlarged-image")
 
     let images = document.querySelectorAll('.pictures .image-item');
-    console.log(images)
 
     let i=0;
     
+    // trexei to buffer
     for(;i<images.length;i++){
         if(images[i].src===current_img.src){
-            console.log(i)
             break;
         }
     }
@@ -44,7 +44,7 @@ function changeImage(event){
         }
     }
 
-    new_src=images[i].src
+    let new_src=images[i].src
 
     enlargeImage(new_src)
 
@@ -56,5 +56,5 @@ function changeImage(event){
 document.querySelectorAll("#enlarged-image-container .arrow").forEach(el => el.addEventListener("click", changeImage));
 
 
-button_close=document.querySelector("#enlarged-image-container button")
+const button_close=document.querySelector("#enlarged-image-container button")
 button_close.addEventListener("click",closeImage)

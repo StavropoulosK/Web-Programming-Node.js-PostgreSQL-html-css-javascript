@@ -9,7 +9,7 @@
 
     <script src="header_buttons.js" defer></script>
     <script src="index.js" defer></script>
-    <script src="header.js" defer></script>
+    <script src="header_calendar.js" defer></script>
 
 
     <title>Document</title>
@@ -27,48 +27,91 @@
             <ul>
               <li><a href="index.html"> <img src="resources/sofa.png"></a></li>
               <li><a href="aksiotheata/aksiotheata.html">Αξιοθέατα </a></li>
-              <li><a href="contactForm/contactForm.html">Επικοινωνία </a></li>
             </ul>
           </div>
         </li>
         <li class="outer"><a href="index.html"> <img src="resources/sofa.png"></a></li>
         <li class="outer"><a href="aksiotheata/aksiotheata.html">Αξιοθέατα </a></li>
-        <li class="outer"><a href="contactForm/contactForm.html">Επικοινωνία </a></li>
       </ul>
     </nav>
+
     <div class="buttons">
-      <div class="dropdown header" id="dropdown_book">
-        <button  class="booking-button header" id="book_button">Book</button>
-        <div class="booking-wrapper">
-          <div class="main-booking-info">
-            <div class="check-in-date">
-              <p>Check In</p> 
-              <span class="check-inDate">01/01/2024</span>           
-            </div>
-            <div class="check-out-date">
-              <p>Check Out</p>
-              <span class="check-outDate">01/07/2024</span>            
-            </div>
-            <div class="adult-count">
-              <p>Adults</p> 
-              <div class="numRow">
-                <button class="countButton less">&#8722;</button>
-                <span class="numAdults">2</span>
-                <button class="countButton more">&#43;</button> 
-              </div>  
-            </div>
-            
-            <div class="continue-button">
-              <form action="availableRooms/availableRooms.html">
-                <button>Check Rooms</button>
-              </form>
-            </div>
-          </div>
-          <div class="calendar"></div>        
-        </div>
-      </div>
-  
+      <button  class="booking-button header" id="book_button">Κράτηση</button>
+ 
       <button class="eggrafi">Εγγραφή / Σύνδεση</button>
+
+    </div>
+
+    <div class="dropdown header" id="dropdown_book">
+
+
+      <form action="availableRooms/availableRooms.html">
+      
+      <div class="booking-wrapper">
+        <div class="main-booking-info">
+          
+
+          <div class="check-in-date">
+            <p>Ημερ. Άφιξης</p> 
+            <span class="check-inDate">-</span>           
+          </div>
+
+          <div class="check-out-date">
+            <p>Ημερ. Αναχώρησης</p>
+            <span class="check-outDate">-</span>            
+          </div>
+
+          <div class="Amea">
+            <label for="amea" id="ameaLabel">ΑμεΑ</label>
+            <input type="checkbox" name="checkbox" id="amea" class="checkbox-field">
+            <label for="amea" class="checkbox-label"></label>
+          </div>
+
+          <div class="adult-count">
+            <p>Άτομα</p> 
+            <div class="numRow">
+              <button type="button" class="countButton less">&#8722;</button>
+              <button type="button" class="countButton more">&#43;</button> 
+              <span class="numAdults" >2</span>
+            </div>  
+          </div>
+
+          <div class="continue-button">
+            <button>Συνέχεια</button>
+          </div>
+          
+      
+        </div>
+
+        <div class="calendar">
+          <div class="calendar-wrapper">
+            <button id="prevBtn" type="button">
+                <span class=""><</span>
+            </button>
+            <div class="monthYear" id="monthYear"></div>
+            <button id="nextBtn" type="button">
+              <span class="">></span> 
+            </button>
+          </div>
+          <div class="days">
+            <div class="day">Δευτ</div>
+            <div class="day">Τρ</div>
+            <div class="day">Τετ</div>
+            <div class="day">Πέμ</div>
+            <div class="day">Παρ</div>
+            <div class="day">Σάβ</div>
+            <div class="day">Κυρ</div>
+          </div>
+          <div class="dates" id="dates">
+          </div>
+
+
+
+
+        </div> 
+               
+      </div>
+      </form>
 
     </div>
 
@@ -191,12 +234,12 @@
               <li>Θέα στη Θάλασσα</li>
               <li>Ζακούζι</li>
               <li>Ιαπωνικές Τουαλέτες</li>
-              <li>3 Υπνωδωμάτια</li>
+              <li>3 Υπνoδωμάτια</li>
             </ul>
             <hr class="seperator"> 
             <div class="anchor-container">
 
-              <a href="rooms/roomPage.html">View </a>
+              <a href="rooms/yperpoliteli.html">View </a>
 
             </div>
         </div>
@@ -212,11 +255,12 @@
               <li>Θέα στη Θάλασσα</li>
               <li>Ιαπωνικές Τουαλέτες</li>
               <li>Μοντέρνος σχεδιασμός</li>
+              <li>Προσφέρεται για ΑμεΑ</li>
             </ul>
             <hr class="seperator"> 
             <div class="anchor-container">
 
-              <a href="rooms/roomPage.html">View </a>
+              <a href="rooms/deluxe2.html">View </a>
 
             </div>
         </div>
@@ -233,7 +277,7 @@
             <hr class="seperator"> 
             <div class="anchor-container">
 
-              <a href="rooms/roomPage.html">View </a>
+              <a href="rooms/deluxe1.html">View </a>
 
             </div>
         </div>
@@ -246,11 +290,13 @@
               <li>Νησιώτικη αρχιτεκτονική</li>
               <li>30' τηλεόραση</li>
               <li>Κλιματισικό</li>
+              <li>Προσφέρεται για ΑμεΑ</li>
+
             </ul>
             <hr class="seperator"> 
             <div class="anchor-container">
 
-              <a href="rooms/roomPage.html">View </a>
+              <a href="rooms/simple2.html">View </a>
 
             </div>
         </div>
@@ -267,7 +313,7 @@
             <hr class="seperator"> 
             <div class="anchor-container">
 
-              <a href="rooms/roomPage.html">View </a>
+              <a href="rooms/simple1.html">View </a>
 
             </div>
         </div>

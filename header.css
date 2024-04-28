@@ -20,10 +20,10 @@ header.top nav{
 header.top nav ul {
   
   list-style-type: none;
-  display: flex; /* Added flexbox for nav items */
-  align-items: center; /* Center items vertically */
-  margin: 0; /* Added margin */
-  padding: 1em; /* Added padding */
+  display: flex; 
+  align-items: center; 
+  margin: 0; 
+  padding: 1em; 
 }
 
 header.top nav li{
@@ -60,7 +60,7 @@ button.eggrafi{
     color:white;
     margin-right:5em;
     font-size:1em;
-    padding: 0.6em 1em; /* Adjust padding as needed */
+    padding: 0.6em 1em; 
 
 
 }
@@ -72,12 +72,12 @@ button.eggrafi{
 }
 
 .booking-button.header {
+  box-sizing: content-box;
 	border: none;
   margin-right: 2em; /* Adjust margin as needed */
   padding: 0.6em 1em; /* Adjust padding as needed */
   width: 100px;
 	border-radius: 2em;
-  text-align: center;
 	background-color: rgb(98, 98, 28);
   color: white;
 	font-size: 1em;
@@ -97,10 +97,8 @@ button.eggrafi:hover{
 
 .booking-wrapper{
   position: fixed;
-  max-height: 32rem;
-  max-width: 70rem;
+  max-width: 60rem;
   width: 100%;
-  height: 100%;
   top: 5.9em;
   right: 0;
   z-index: 6;
@@ -111,6 +109,8 @@ button.eggrafi:hover{
   pointer-events: none;
   transform: translateY(-10px);
   transition: opacity 0.3s ease, transform 0.3s ease;
+  border-bottom-left-radius: 10px;
+
 }
 
 @media  (max-width: 1200px) {
@@ -118,8 +118,13 @@ button.eggrafi:hover{
     display:none;
   }
 
+  .buttons .eggrafi{
+    position: relative;
+    left:0.4em;
+  }
+
   .buttons{
-    flex-direction:column;
+    flex-direction:column-reverse;
     text-align: left;
   
   }
@@ -142,12 +147,8 @@ button.eggrafi:hover{
 @media (min-width:1200px){
   header ul li:first-child{
     display:none; 
+  }
 }
-
-
-}
-
-
 
 
 
@@ -158,21 +159,13 @@ button.eggrafi:hover{
 }
 
 
-.booking-wrapper {
-  display: flex;
-  flex-direction: column; 
-  justify-content: space-between;
-  align-items: center;
-  height: 100%;
-  width: 100%; 
-}
+
 
 .main-booking-info{
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
   align-items:center;
-  width: 100%;
   background-color: rgb(15,15,15);
   color: white;
 }
@@ -181,34 +174,342 @@ button.eggrafi:hover{
 .check-out-date,
 .adult-count,
 .continue-button button,
-.close-button button{
-  margin: 1em;
+.Amea
+{
+  margin: 0em;
   text-align: center;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
+  margin-bottom:1em;
+
 }
+
+
+
+.adult-count p{
+  position: relative;
+  right:10px; 
+  top:0.08em;
+}
+
+
+
+
+/* blepe https://codepen.io/AllThingsSmitty/pen/WjZVjo */
+
+
+.Amea{
+  position: relative;
+}
+
+#ameaLabel{
+  display: block;
+
+  /* na mi ginetai highlight */
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+      -khtml-user-select: none; /* Konqueror HTML */
+        -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+    margin-bottom:2em;
+    position: relative;
+    top:1.05em;
+}
+
+
+.checkbox-field{
+  opacity:1;
+  appearance: none;;
+}
+
+.checkbox-label{
+  position: relative;
+  cursor:pointer;
+  padding-left:1.5em;
+  color:white;
+}
+
+.checkbox-label::before{
+  content:'';
+  position:absolute;
+  left:0;
+  width:1em;
+  height:1em;
+  border-radius: 100%;
+  background: rgb(131, 131, 31);
+}
+
+.checkbox-label::after{
+  content:'';
+  position:absolute;
+  left:8px;
+  top:4px;
+  width:5px;
+  height:12px;
+  border:solid rgb(45, 51, 40);
+  border-width:0 4px 4px 0;
+  transition: 0.2 ease;
+
+}
+
+@media (max-width:600px){
+  .checkbox-label::after{
+    left:4px;
+    top:0px;
+  }
+
+  
+.calendar-wrapper{
+
+  padding-top:0.4em  !important;
+  padding-bottom:0 !important;
+
+  }
+  .calendar {
+    max-height:550px !important;
+    margin-right:0.2em !important; 
+
+  } 
+
+  .date{
+    padding-left:0em !important;
+    padding-right:0em !important;
+    width:2.4em !important;
+    height:1.2em !important;
+    padding-top:0.5em !important;
+
+  }
+
+  .days{
+    margin:0 !important;
+  }
+
+  .main-booking-info{
+      display:grid !important;
+      grid-template-areas:
+      "top_left  top_right"
+      "middle_left middle_right"
+      "bottom_left  bottom_right";
+
+      grid-template-rows:0.5fr 1fr 1fr !important ;
+      grid-template-columns: 1fr 1fr  !important;
+
+  }
+
+  .check-in-date{
+    grid-area:bottom_left ;
+    margin-bottom:0.5em !important;
+
+    
+  }
+
+  .check-out-date{
+    grid-area:bottom_right ;
+    margin-bottom:0.5em !important;
+  }
+
+  .Amea{
+    grid-area:middle_right;
+  }
+
+  .adult-count{
+    grid-area:middle_left;
+
+  }
+
+  
+  .main-booking-info  div{
+    margin:0;
+    padding:0;
+    font-size: 1.2em !important;
+    
+    
+    
+  }
+  
+  .continue-button{
+    grid-area: top_right;
+    margin-bottom:0 !important;
+    grid-column: 1/3;
+   
+    margin:0 auto !important;
+    position: relative;
+    top:1.3em;
+  }
+
+  .continue-button button{
+    font-size: 1em ;
+    /* background-color:  red !important; */
+
+  }
+
+  .adult-count p{
+    position: relative;
+    right:10px; 
+    top:0em;
+  }
+  
+  
+  
+
+}
+
+
+.checkbox-field:not(:checked) + .checkbox-label::after{
+  opacity:0;
+}
+
+
+.checkbox-field:checked + .checkbox-label::after{
+  transform: rotate(35deg) scale(1);
+  opacity:1;
+}
+
+span.numAdults{
+  margin-left:0.5em;
+  font-size:1.5rem;
+}
+
+
+
+
+
+
 
 .calendar {
-  width: 40rem;
-  height: 25rem;
-  left: 0;
-  margin: 0 2.5rem 1rem;
-  background-color: black;
+
+  display:flex;
+  flex-direction: column;
+  padding:10px;
+  background-color: rgb(255, 255, 255);;
+  justify-content: center;
+  border-bottom-left-radius: 10px;
+  box-shadow: 0 0 10px -1em rgba(0, 0, 0, 0.3);
+  height:auto;
+  width:auto;
+  margin: 0 auto; 
+  margin-right:1em ;
+  
+
+
 }
 
-.continue-button button,
-.close-button button {
+.calendar-wrapper{
+  width:20em;
+  margin:0 auto;
+  padding:1em;
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+
+
+}
+
+.calendar-wrapper button{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    border:none;
+    border-radius: 50%;
+    cursor:pointer;
+    
+    width:1.8em;
+    height:1.8em;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+}
+
+.days{
+  display:grid;
+  grid-template-columns: repeat(7,1fr);
+}
+
+.day{
+  text-align:center;
+  padding:5px;
+  color: #999fa6
+}
+
+.dates{
+  display: grid;
+  grid-template-columns: repeat(7,1fr);
+  gap:0.5em;
+
+}
+
+.date{
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding:1em;
+  margin:auto;
+  border-radius: 50%;
+  width:0.9em;
+  height:0.9em;
+  transition: 0.2s;
+
+}
+
+.date:not(.inactive):hover, .date.active{
+  background: rgb(131, 131, 31);
+;
+  color:#fff;
+}
+
+.date{
+  display:flex;
+  flex-direction: column;
+}
+.date span:first-child{
+  font-size: 1.2em;;
+  margin-top:0.4em;
+ 
+}
+.date span:last-child{
+  font-size:0.8em;
+}
+
+.date.inactive{
+  font-weight: thin;
+  opacity:0.4;
+  pointer-events: none
+
+}
+
+.date.full{
+  pointer-events: none;
+}
+
+.date:not(.inactive):not(.full){
+  cursor: pointer;
+}
+
+.date.full{
+  background-color: rgb(243, 112, 112);
+}
+
+
+
+.monthYear{
+  text-align: center;
+  font-weight: bold;
+}
+
+
+
+.continue-button button{
   padding: 10px 20px;
-  margin-right: 2rem;
   background-color: rgb(98, 98, 28);
   color: white;
   border: none;
-  border-radius: 5px;
+  border-radius: 1.5em;
   cursor: pointer;
   
 }
 
 .continue-button button:hover,
-.close-button button:hover {
+.countButton:hover {
   background-color: rgb(131, 131, 31);
 }
 
@@ -217,9 +518,15 @@ button.eggrafi:hover{
   background-color: rgb(98, 98, 28);
   color: white;
   border-radius: 0.5rem;
+  margin-left:0.07em;
   font-size: 1.5rem;
   width: 1.5rem;
+  position: relative;
+  bottom:0.05em;
 }
+
+
+
 
 
 .info-wrapper{
