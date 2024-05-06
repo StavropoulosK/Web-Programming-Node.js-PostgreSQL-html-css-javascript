@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../header.css">
+    <link rel="stylesheet" href="../footer/footer.css">
+    <link rel="stylesheet" href="paymentFormStyle.css">
+
+    <script src="../header_buttons.js" defer></script>
+    <script src="secondPaymentForm.js" defer></script>
+    <script src="../header_calendar.js" defer></script>
+</head>
+<body>
+    <header class="top" id="header">
+
+        <nav>
+          <ul>
+            <li>
+              <button id="info_button"><img src="../resources/icons/choice.png" id="pressed_image"> </button>
+              <div class="display_info" id="info_container">
+                <ul>
+                  <li><a href="../index.html"> <img src="../resources/sofa.png"></a></li>
+                  <li><a href="../aksiotheata/aksiotheata.html">Αξιοθέατα </a></li>
+                </ul>
+              </div>
+            </li>
+            <li class="outer"><a href="../index.html"> <img src="../resources/sofa.png"></a></li>
+            <li class="outer"><a href="../aksiotheata/aksiotheata.html">Αξιοθέατα </a></li>
+          </ul>
+        </nav>
+    
+        <div class="buttons">
+          <button  class="booking-button header" id="book_button">Κράτηση</button>
+     
+          <button class="eggrafi">Εγγραφή / Σύνδεση</button>
+    
+        </div>
+    
+        <div class="dropdown header" id="dropdown_book">
+    
+    
+          <form action="../availableRooms/availableRooms.html">
+          
+          <div class="booking-wrapper">
+            <div class="main-booking-info">
+              
+    
+              <div class="check-in-date">
+                <p>Ημερ. Άφιξης</p> 
+                <span class="check-inDate">-</span>           
+              </div>
+    
+              <div class="check-out-date">
+                <p>Ημερ. Αναχώρησης</p>
+                <span class="check-outDate">-</span>            
+              </div>
+    
+              <div class="Amea">
+                <label for="amea" id="ameaLabel">ΑμεΑ</label>
+                <input type="checkbox" name="checkbox" id="amea" class="checkbox-field">
+                <label for="amea" class="checkbox-label"></label>
+              </div>
+    
+              <div class="adult-count">
+                <p>Άτομα</p> 
+                <div class="numRow">
+                  <button type="button" class="countButton less">&#8722;</button>
+                  <button type="button" class="countButton more">&#43;</button> 
+                  <span class="numAdults" >2</span>
+                </div>  
+              </div>
+    
+              <div class="continue-button">
+                <button>Συνέχεια</button>
+              </div>
+              
+          
+            </div>
+    
+            <div class="calendar">
+              <div class="calendar-wrapper">
+                <button id="prevBtn" type="button">
+                    <span class=""><</span>
+                </button>
+                <div class="monthYear" id="monthYear"></div>
+                <button id="nextBtn" type="button">
+                  <span class="">></span> 
+                </button>
+              </div>
+              <div class="days">
+                <div class="day">Δευτ</div>
+                <div class="day">Τρ</div>
+                <div class="day">Τετ</div>
+                <div class="day">Πέμ</div>
+                <div class="day">Παρ</div>
+                <div class="day">Σάβ</div>
+                <div class="day">Κυρ</div>
+              </div>
+              <div class="dates" id="dates">
+              </div>
+    
+    
+    
+    
+            </div> 
+                   
+          </div>
+          </form>
+    
+        </div>
+    
+    </header>
+
+    <main>
+        <div class="picture_container">
+            <img src="../resources/start-page-gallery/swimming-pool2.jpg">
+            <p>Bay Hotel</p>
+        </div>
+
+        <div class="wrapper">
+
+            <section class="paymentForm">  
+                <!-- Ftiaxtike stin arxi tou eksaminou opote i css  den exei grafti me ton kalitero tropo. -->
+            
+                    <form>
+                        
+                        <fieldset style="border-width: 2px;">
+                            <legend >Στοιχεία Πληρωμής</legend>
+                        <label class="title title2">  Στοιχεία Κάρτας</label>
+            
+                        <div class="container">
+                        
+                            <div class="field-holder required onomaKatoxou">
+                                <input type="text" id="cardHolderName" value=""  name="cardHolderName" required oninvalid="setCustomValidity('Παρακαλώ συμπληρώστε το όνομα κατόχου της κάρτας.')"
+                                oninput="this.setCustomValidity('')">
+                                <label for="cardHolderName">  Όνομα Κατόχου</label>
+                            </div>
+            
+                            <div class="field-holder required">
+                                <input type="text" id="cardNumber" value="" name="creditCard" pattern="[0-9]{16}" maxlength="16" minlength="16" onchange="this.setAttribute('value', this.value);" required oninvalid="setCustomValidity('Παρακαλώ συμπληρώστε τον αριθμό της κάρτα σας (16 ψηφία).')"
+                                oninput="this.setCustomValidity('')">
+                                <label for="cardNumber">  Νούμερο κάρτας</label>
+                            </div>
+            
+                            <div class="field-holder required imerominiaLiksis">
+                                <input type="text" id="date" value="" name="date" maxlength="5" pattern="\d{2}/\d{2}" onchange="this.setAttribute('value', this.value);" required oninvalid="setCustomValidity('Παρακαλώ συμπληρώστε την ημερομηνία λήξης που αναγράφεται στην κάρτα.')"
+                                oninput="this.setCustomValidity('')">
+                                <label for="date">Ημερομηνία Λήξης</label>
+                            </div>
+            
+                            <div class="field-holder required">
+                                <input type="password" id="cvv" value="" name="cvv" pattern="\d{3}" maxlength="3" minlength="3" onchange="this.setAttribute('value', this.value);" required oninvalid="setCustomValidity('Παρακαλώ συμπληρώστε τον κωδικό της κάρτας σας.')"
+                                oninput="this.setCustomValidity('')">
+                                <label for="cvv">cvv</label>
+                            </div>
+                        </div>
+
+                        
+            
+                        <label class="title title2 title4 politikiKratiseon xoris"> Πολιτική κρατήσεων</label>
+            
+                        <div class="field-holder terms">
+                            <div>
+                                <p >Ώρα άφιξης: Μετά της 13:00</p>
+                                <p >Ώρα αναχώρησης: Πριν της 12:00</p>
+                                <p >Υπάρχει δυνατότητα ακύρωσης μέχρι 10 ημέρες πριν την άφιξη με πλήρη επιστροφή χρημάτων</p>
+                            
+                            </div>
+            
+                        </div>
+            
+                        <div>
+                            <hr id="hr1">
+                        </div>
+            
+                        <div class="field-holder down">
+                            <span class="left sinolo">Σύνολο</span>
+                            <span class="right" >1000€</span>
+                        </div>
+            
+                        <div class="field-holder down">
+                            <span class="left sinolo">Χρωστούμενο ποσό</span>
+                            <span class="right " >1000€</span>
+                        </div>
+
+                        <div class="posoPliromis">
+                            <label for="poso" id="posoPliromis">Ποσό πληρωμής σε €</label>
+                            <input type="text" id="poso" value="" name="poso" required >
+                        </div>
+   
+
+
+            
+            
+                        <div class="field-holder down" id="checkout">
+                            <input type="submit" class="button" value="Πληρωμή">
+            
+            
+                        </div>
+            
+            
+                    </fieldset>
+                        
+                    </form>
+            
+               </section>
+    
+
+
+        </div>
+        
+  
+    </main>
+    
+    <footer>
+        <div class="outer">
+          <div class="flex">
+            <div class="icon">
+              <img src="../resources/sofa_large.png">
+            </div>
+    
+            <div class="info">
+              <span>Bay Hotel</span>
+              <span> Bay Hotel, Βυζαντίου 54, Αλόννησος,  Ελλάδα</span>
+              <span>+3069999999999</span>
+              <span>BayHotel@outlook.com.gr</span>
+    
+            </div>      
+          </div>
+    
+          <hr>
+    
+        </div>
+    
+    
+      </footer>
+        
+
+</body>
+</html>

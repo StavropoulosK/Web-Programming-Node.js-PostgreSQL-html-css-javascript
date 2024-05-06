@@ -17,11 +17,19 @@ body {
     background: white;
     font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
     padding:0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+
   }
 
 .offset{
   padding-top:9em;
   margin:0 auto
+}
+
+.pageWrapper{
+  flex:1
 }
 
 main{
@@ -31,9 +39,9 @@ main{
   border: 3px solid  rgb(51, 119, 32);
   padding:1em;
 
-  
-
 }
+
+
 
 .room{
   display:flex;
@@ -73,7 +81,7 @@ main{
   padding: 5px;
 }
 
-.info{
+.room .info{
   flex:2;
 
   color:black;
@@ -146,9 +154,12 @@ main{
 
   }
 
+  
+
   .info{
     border-right:none;
     border-bottom:3px solid black;
+    border-right:none !important;
 
   }
 
@@ -281,5 +292,6 @@ main{
 
 .book button:hover{
   background-color: rgb(98, 98, 28);
+  cursor: pointer;
 
 }

@@ -120,6 +120,10 @@ body {
 
 }
 
+.bed-choice select{
+	max-width:12em;
+}
+
 .bed-choice select {
 	width: 25em;
 	min-height: 2.5em;
@@ -129,7 +133,7 @@ body {
 	background-color: white;
 	outline: none;
 	padding: 0 0.5em;
-	margin-right:2em;
+	margin-right:1em;
 	cursor: pointer;
 }
 
@@ -141,6 +145,8 @@ body {
 	color: white;
 	background-color: rgb(98, 98, 28);
 	font-size: 1em;
+
+
 
 }
 
