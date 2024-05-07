@@ -3,6 +3,7 @@
 document.addEventListener('click', e => {
     const isDropdownButton = e.target.matches(".booking-button");
     const isInfoButton= e.target.matches("#pressed_image");
+    const isProfileButton= e.target.matches(".profile img");
 
 
     if ( isDropdownButton  || e.target.closest('#dropdown_book') == null ) {
@@ -34,6 +35,27 @@ document.addEventListener('click', e => {
         }
 
     }
+
+    // den iparxei se olous tous headers profile icon
+    if(document.getElementById("profile_container") !==null){
+
+        if( isProfileButton  || e.target.closest('.profile_info') == null){
+
+            const currentDropdown = document.getElementById("profile_container")
+            if(isProfileButton){
+                currentDropdown.classList.toggle('active');
+    
+            }
+            else{
+                currentDropdown.classList.remove('active');
+    
+            }
+    
+        }
+
+    }
+    
+
     
 
 
