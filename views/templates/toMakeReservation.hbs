@@ -1,0 +1,85 @@
+<div class="offset"></div>
+
+
+<div class="pageWrapper">
+
+    <main>
+    
+    
+    <div class="room {{room.className}}">
+        <div class="image">
+        <img src="{{room.img}}">
+        <span class="text_diathesima"> {{diathesima}} Διαθέσιμα</span>
+            
+        </div>
+
+        <div class="info">
+            <p>{{room.titlos}}</p>
+            {{#if reservation.theaStiThalasa}}
+            <p>Με θέα στη θάλασσα</p>
+            {{else}}
+            <p>&nbsp;</p>
+            {{/if}}
+            <ul class="list">
+                {{#each room.amenity}}
+                <li>{{this}}</li>
+                {{/each}}
+                
+            </ul>
+
+            <div class="atoma">
+                <span>{{room.tetragonika}} τ.μ. &nbsp;&nbsp;&nbsp; {{atoma}} Άτομα</span><br>
+
+                {{#each room.krebati}}
+
+
+                    <div class="atoma_bed">
+                    <span>{{this.onoma}}</span>
+                    <div class="image_container">
+                        <img src="{{this.ikonaSrc}}">
+                    </div>
+                    </div>
+
+                {{/each}}
+
+
+            </div>
+        </div>
+
+        <div class="times">
+
+            {{#each times}}
+
+                <div class="inner {{this.klasi}}">
+                    <p>{{this.imerominia}}</p>
+                    <p>{{this.timi}}€</p> 
+                </div>
+
+            {{/each}}
+
+            <div class="empty de">
+                
+            </div>
+
+            
+            <button onclick="shiftRight(event)" class="btnLeft">&lt;</button>
+            <button onclick="shiftLeft(event)" class="btnRight">&gt;</button>
+        </div>
+
+
+
+        <div class="book">
+            <p class="imer">Ημερομηνίες</p>
+            <p> {{checkIn}} - {{checkOut}}</p>
+            <p class="kostos"> Kόστος: {{kostos}}€</p>
+            {{#with reservation}}
+            <a href="/makeFirstBookPayment/{{roomName}}/{{amea}}/{{atoma}}/{{diamorfosi}}/{{checkInDate}}/{{checkInMonth}}/{{checkInYear}}/{{checkOutDate}}/{{checkOutMonth}}/{{checkOutYear}} {{#if theaStiThalasa}}
+                /{{theaStiThalasa}} {{/if}}/{{kostos}}"> Κράτηση</a>
+            {{/with}}
+
+        </div>
+    </div>
+
+    </main>
+
+</div>

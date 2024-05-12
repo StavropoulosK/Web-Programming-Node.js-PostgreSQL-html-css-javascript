@@ -1,0 +1,68 @@
+  <section class="container">
+    <div class="spacer"></div>
+    <div class="slider-wrapper">
+      <div class="slider">
+        <img id="slide-1" src={{room.img.img1Url}} class="displayed" alt="Εικόνα 1" />
+        <img id="slide-2" src={{room.img.img2Url}} class="invisible" alt="Εικόνα 2" />
+        <img id="slide-3" src={{room.img.img3Url}} class="invisible" alt="Εικόνα 3" />
+
+        <button class="left-arrow arrow"> &lt; </button>
+        <button class="right-arrow arrow"> &gt; </button>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="room-title">
+    <h2>{{room.titlos}}</h2>
+    <p>{{room.perigrafi}}  </p>
+    <div class="bed-choice">
+      <select name="bed-type" id="bed-type">
+            {{#each room.option}}
+                <option value={{this.value}}>{{this.text}}</option>
+            {{/each}}
+
+      </select>
+      <button  class="booking-button body">Κράτηση</button>
+
+    </div>
+  </section>
+
+  <section class="room-info">
+    <h3>Στοιχεία</h3>
+    <p id="descr">{{room.stoixiaText}}</p>
+    <div class="benefits-box">
+      <div class="highlights">
+        <p class="header">Ανέσεις</p>
+        <ul>
+
+            {{#each room.anesi}}
+                <li>
+                    <span style="background-image: url({{this.backgroundImageUrl}})"></span>
+                    <p>{{this.text}}</p>
+                </li>
+            {{/each}}
+        </ul>
+      </div>
+
+      <div class="amenities">
+        <p class="header"> Συσκευές</p>
+
+        <ul>
+            {{#each room.siskeui}}
+                <li>
+                    <span style="background-image: url({{this.backgroundImageUrl}})"></span>
+                    <p>{{this.text}}</p>
+                </li>
+            {{/each}}
+        </ul>
+      </div>
+      <div class="accessibility">
+        <p class="header">Προσβασιμότητα</p>
+        
+            
+        <p>{{room.accessibilityText}}</p>
+         
+      </div>
+    </div>
+  </section>

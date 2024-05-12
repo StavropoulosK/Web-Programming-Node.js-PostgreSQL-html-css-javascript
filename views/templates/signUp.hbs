@@ -1,0 +1,125 @@
+    <main>
+        <div class="picture_container">
+            <img src="/resources/start-page-gallery/swimming-pool2.jpg">
+            <p>Bay Hotel</p>
+        </div>
+
+        <div class="wrapper">
+
+            <p id="welcome">Γίνετε Μέλος</p>
+
+            <div class="form_container">
+
+                <!-- blepe https://developer.mozilla.org/en-US/docs/Learn/Forms/Form_validation -->
+                <form class="login" action="/signUp" method="post" novalidate>
+                      
+                    <div class="field">
+                        <label for="onoma">
+                          <span >Όνομα:</span>
+                          <div class="inputContainer">
+                            <input type="text" id="onoma" name="onoma" onblur="checkField('onoma')" required/>
+                            <p class="error" aria-live="polite"></p>
+                          </div>
+
+                        </label>
+                    </div>
+
+
+                                            
+                    <div class="field">
+                        <label for="eponimo">
+                          <span >Επώνυμο:</span>
+                          <div class="inputContainer">
+                            <input type="text" id="eponimo" name="eponimo" onblur="checkField('eponimo')" required />
+                            <p class="error" aria-live="polite"></p>
+                          </div>
+
+                        </label>
+                    </div>
+
+
+                    <div class="field">
+                        <label for="username">
+                          <span >Username:</span>
+                          <div class="inputContainer">
+                            <input type="text" id="username" name="username" onblur="checkField('username')" required/>
+                            <p class="error" aria-live="polite"></p>
+                          </div>
+
+                        </label>
+                    </div>
+                      
+                    <div class="field">
+                        <label for="kodikos">
+                            <span >Κωδικός:</span>
+                            <div class="inputContainer">
+                                <input type="password" id="kodikos" name="kodikos" onblur="checkField('kodikos')" required minlength="8" />
+                                <p class="error " aria-live="polite"></p>
+                            </div>
+
+                        </label>
+                    </div>
+
+                    <div class="field">
+                        <label for="kodikosCheck">
+                          <span>Έλεγχος Κωδικού:</span>
+                          <div class="inputContainer">
+                                <input type="password" id="kodikosCheck" name="kodikosCheck" required onblur="checkField('kodikosCheck')" minlength="8" />
+                                <p class="error" aria-live="polite"></p>
+                          </div>
+
+                        </label>
+                    </div>
+  
+
+                    <div class="field">
+                        <label for="email">
+                            <span >Email:</span>
+                            <div class="inputContainer">
+                                <input type="email" id="email" name="email" onblur="checkField('email')" required/>
+                                <p class="error" aria-live="polite"></p>
+                            </div>
+
+                        </label>
+                    </div>
+
+
+                    <div class="field">
+                        <label for="tilefono">
+                            <span >Τηλέφωνο:</span>
+                            <div class="inputContainer">
+                                {{!-- Orisame to maxlength 14 giati o xristis mporei na theli na bali white space --}}
+                                <input type="tel" id="tilefono" maxlength="14" minlength="10" name="tilefono" onblur="checkField('tilefono')" required/>
+                                <p class="error" aria-live="polite"></p>
+                            </div>
+
+                        </label>
+                    </div>
+
+                    
+
+                        
+                    <p>
+                        <span class="emptyHolder"></span>
+                        <input type="submit" class="button" value="Εγγραφή">
+
+                    </p>
+
+                                            
+                    <p id="response">
+                      <span class="emptyHolder"></span>
+                      <span>{{message}}</span>
+                    </p>
+
+                        
+                        
+                    </form>
+
+            </div>
+                
+
+
+        </div>
+        
+  
+    </main>

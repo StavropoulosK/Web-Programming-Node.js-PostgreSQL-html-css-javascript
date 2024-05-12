@@ -1,0 +1,106 @@
+    <main>
+        <div class="picture_container">
+            <img src="/resources/start-page-gallery/swimming-pool2.jpg">
+            <p>Bay Hotel</p>
+        </div>
+
+        <div class="wrapper">
+
+            <section class="paymentForm">  
+                <!-- Ftiaxtike stin arxi tou eksaminou opote i css  den exei grafti me ton kalitero tropo. -->
+            
+                    <form action="/displayNextBookPayment" method="post">
+                        
+                        <fieldset style="border-width: 2px;">
+                            <legend >Στοιχεία Πληρωμής</legend>
+                        <label class="title title2">  Στοιχεία Κάρτας</label>
+            
+                        <div class="container">
+                        
+                            <div class="field-holder required onomaKatoxou">
+                                <input type="text" id="cardHolderName" value=""  name="cardHolderName" required oninvalid="setCustomValidity('Παρακαλώ συμπληρώστε το όνομα κατόχου της κάρτας.')"
+                                oninput="this.setCustomValidity('')">
+                                <label for="cardHolderName">  Όνομα Κατόχου</label>
+                            </div>
+            
+                            <div class="field-holder required">
+                                <input type="text" id="cardNumber" value="" name="creditCard" pattern="[0-9]{16}" maxlength="16" minlength="16" onchange="this.setAttribute('value', this.value);" required oninvalid="setCustomValidity('Παρακαλώ συμπληρώστε τον αριθμό της κάρτα σας (16 ψηφία).')"
+                                oninput="this.setCustomValidity('')">
+                                <label for="cardNumber">  Νούμερο κάρτας</label>
+                            </div>
+            
+                            <div class="field-holder required imerominiaLiksis">
+                                <input type="text" id="date" value="" name="date" maxlength="5" pattern="\d{2}/\d{2}" onchange="this.setAttribute('value', this.value);" required oninvalid="setCustomValidity('Παρακαλώ συμπληρώστε την ημερομηνία λήξης που αναγράφεται στην κάρτα.')"
+                                oninput="this.setCustomValidity('')">
+                                <label for="date">Ημερομηνία Λήξης</label>
+                            </div>
+            
+                            <div class="field-holder required">
+                                <input type="password" id="cvv" value="" name="cvv" pattern="\d{3}" maxlength="3" minlength="3" onchange="this.setAttribute('value', this.value);" required oninvalid="setCustomValidity('Παρακαλώ συμπληρώστε τον κωδικό της κάρτας σας.')"
+                                oninput="this.setCustomValidity('')">
+                                <label for="cvv">cvv</label>
+                            </div>
+                        </div>
+
+                        
+            
+                        <label class="title title2 title4 politikiKratiseon xoris"> Πολιτική κρατήσεων</label>
+            
+                        <div class="field-holder terms">
+                            <div>
+                                <p >Ώρα άφιξης: Μετά της 13:00</p>
+                                <p >Ώρα αναχώρησης: Πριν της 12:00</p>
+                                <p >Υπάρχει δυνατότητα ακύρωσης μέχρι 10 ημέρες πριν την άφιξη με πλήρη επιστροφή χρημάτων</p>
+                            
+                            </div>
+            
+                        </div>
+            
+                        <div>
+                            <hr id="hr1">
+                        </div>
+            
+                        <div class="field-holder down">
+                            <span class="left sinolo">Σύνολο</span>
+                            <span class="right" >{{sinolo}}€</span>
+                        </div>
+            
+                        <div class="field-holder down">
+                            <span class="left sinolo">Χρωστούμενο ποσό</span>
+                            <span class="right" id="xrostoumenoPoso" >{{xrostoumeno}}€</span>
+                        </div>
+
+                        <div class="posoPliromis">
+                            <label for="poso" class="posaMeDosis" id="posoPliromis">Ποσό πληρωμής σε €</label>
+                            <input type="text" id="poso" value="" name="poso" pattern="\d+(\.\d)?" required oninvalid="setCustomValidity('Παρακαλώ συμπληρώστε το ποσό πληρωμής.')"
+                            oninput="this.setCustomValidity('')">
+                        </div>
+   
+
+
+            
+            
+                        <div class="field-holder down" id="checkout">
+                            <input type="submit" class="button" value="Πληρωμή">
+            
+            
+                        </div>
+                        
+                        <p class="response">{{response}}</p>
+            
+                    </fieldset>
+
+                    <input type="text" id="kratisiId"  value="{{kratisiId}}"  name="kratisiId" class="invisible">
+                    <input type="text" id=""  value="{{sinolo}}"  name="sinolo" class="invisible">
+                    <input type="text" id=""  value="{{xrostoumeno}}"  name="xrostoumeno" class="invisible">
+
+                    </form>
+            
+               </section>
+    
+
+
+        </div>
+        
+  
+    </main>

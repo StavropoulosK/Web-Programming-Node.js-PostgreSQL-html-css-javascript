@@ -1,0 +1,39 @@
+    <main>
+        <div class="picture_container">
+            <img src="/resources/start-page-gallery/swimming-pool2.jpg">
+            <p>Bay Hotel</p>
+        </div>
+
+        <div class="wrapper">
+
+            <p id="welcome">Καλώς ήρθατε</p>
+
+            <div class="form_container">
+
+                <form class="login" action="/login" method="post">
+                    
+                        <input type="text" name="username" placeholder="Όνομα Χρήστη" required
+                        oninvalid="setCustomValidity('Παρακαλώ συμπληρώστε το όνομα χρήστη.')"
+                        oninput="this.setCustomValidity('')">
+
+                        <input type="password" name="password" placeholder="Κωδικός Πρόσβασης" required
+                        oninvalid="setCustomValidity('Παρακαλώ συμπληρώστε το κωδικό σας.')"
+                        oninput="this.setCustomValidity('')">
+                        
+
+                        <input type="submit" class="button" value="Είσοδος">
+                        
+                        
+                    </form>
+                <div class="container">
+
+                    <p class="{{#if failed}}active {{/if}} wrong_cred">Παρακαλώ ελέγξτε τα στοιχεία εισόδου και προσπαθήστε ξανά.</p>
+                    <div class="eggrafitext"> Μπορείτε να κάνετε <a href="/signup">εγγραφή</a> για να αποκτήσετε λογαριασμό.  </div>
+                </div>
+            </div>
+                
+        </div>
+        
+  
+    </main>
+    

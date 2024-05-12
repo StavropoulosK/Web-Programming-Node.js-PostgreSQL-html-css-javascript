@@ -1,0 +1,162 @@
+  <header class="top" id="header">
+
+    <nav>
+      <ul>
+        <li>
+          <button id="info_button"><img src="/resources/icons/choice.png" id="pressed_image"> </button>
+          <div class="display_info" id="info_container">
+            <ul>
+              <li><a href="/"> <img src="/resources/sofa.png"></a></li>
+              <li><a href="/Aksiotheata">Αξιοθέατα </a></li>
+            </ul>
+          </div>
+        </li>
+        <li class="outer"><a href="/"> <img src="/resources/sofa.png"></a></li>
+        <li class="outer"><a href="/Aksiotheata">Αξιοθέατα </a></li>
+      </ul>
+    </nav>
+
+    <div class="buttons">
+
+        {{#unless roomPage}}
+            <div class="dropdowList">
+              <button class="dropbtn">Δωμάτια</button>
+              <div class="dropdown-content">
+                <a href="/room/yperpoliteli">Υπερπολυτελή Σουίτα</a>
+                <a href="/room/deluxe2">Deluxe Σουίτα δύο Υπνοδωμάτια</a>
+                <a href="/room/deluxe1">Deluxe Σουίτα ένα Υπνοδωμάτιο</a>
+                <a href="/room/simple2">Διαμέρισμα δύο υπνοδωματίων</a>
+                <a href="/room/simple1">Διαμέρισμα ενός υπνοδωμάτιου</a>
+
+              </div>
+            </div> 
+      
+        {{/unless}}
+
+        {{#if roomPage}}
+            <button  class="booking-button header" id="book_button">Κράτηση</button>
+        {{/if}}
+
+        {{#unless loginned}}
+            <a href="/login" class="eggrafi">Εγγραφή / Σύνδεση </a>
+
+        {{/unless}}
+
+  {{#if roomPage}}
+
+    <div class="dropdown header" id="dropdown_book">
+
+      {{!-- //Aposteloume custom forma pou kataskeuazetai sto arxio header_calendar.js --}}
+      <form class="bookForm" action="" method="post">
+      
+      <div class="booking-wrapper">
+        <div class="main-booking-info">
+          
+
+          <div class="check-in-date">
+            <p>Ημερ. Άφιξης</p> 
+            <span class="check-inDate">-</span>           
+          </div>
+
+          <div class="check-out-date">
+            <p>Ημερ. Αναχώρησης</p>
+            <span class="check-outDate">-</span>            
+          </div>
+
+          {{#unless notAmeaAvailable}}
+
+
+          <div class="Amea">
+            <label for="amea" id="ameaLabel">ΑμεΑ</label>
+            <input type="checkbox" name="checkbox" id="amea" class="checkbox-field">
+            <label for="amea" class="checkbox-label"></label>
+          </div>
+
+          {{/unless}}
+
+
+          <div class="adult-count">
+            <p>Άτομα</p> 
+            <div class="numRow">
+              <button type="button" class="countButton less">&#8722;</button>
+              <button type="button" class="countButton more">&#43;</button> 
+              <span class="numAdults" >2</span>
+            </div>  
+          </div>
+
+          <div class="continue-button">
+            <button>Συνέχεια</button>
+          </div>
+          
+      
+        </div>
+
+        <div class="calendar">
+          <div class="calendar-wrapper">
+            <button id="prevBtn" type="button">
+                <span class=""> &lt; </span>
+            </button>
+            <div class="monthYear" id="monthYear"></div>
+            <button id="nextBtn" type="button">
+              <span class=""> &gt; </span> 
+            </button>
+          </div>
+          <div class="days">
+            <div class="day">Δευτ</div>
+            <div class="day">Τρ</div>
+            <div class="day">Τετ</div>
+            <div class="day">Πέμ</div>
+            <div class="day">Παρ</div>
+            <div class="day">Σάβ</div>
+            <div class="day">Κυρ</div>
+          </div>
+          <div class="dates" id="dates">
+          </div>
+
+
+
+
+        </div> 
+               
+      </div>
+      </form>
+
+    </div>
+
+
+  {{/if}}
+
+  {{#if loginned}}
+      <button class="eggrafi profile">
+
+        {{#if profileImg}}
+          <img src={{profileImg}} alt="Your Image">
+
+        {{else}}
+          <img src="/resources/icons/profile-picture-icon.png" alt="Your Image">
+
+        {{/if}}
+      </button>
+
+
+      <div class="profile_info" id="profile_container">
+        <div class="circle">
+          {{#if profileImg}}
+            <img src={{profileImg}} alt="Your Image">
+
+          {{else}}
+            <img src="/resources/icons/profile-picture-icon.png" alt="Your Image">
+
+          {{/if}}
+        </div>
+        <hr>
+        <a href="/kratisis">Κρατήσεις</a>
+        <a href="/aposindesi">Aποσύνδεση</a>
+        
+      </div>
+
+
+    {{/if}}
+  </div>
+
+</header>

@@ -1,0 +1,280 @@
+
+
+
+body {
+	margin: 0;
+	background-color: rgb(243, 243, 243);
+	font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+}
+
+
+
+
+.spacer{
+	height:2em;
+}
+.slider {
+	position: relative;
+	height: 38em;
+	margin:6em auto;
+	margin-bottom:2em;
+	margin-right:10vw;
+	margin-left:10vw;
+	overflow:hidden;
+	width:75%;
+
+	box-shadow: 0 1.5rem 3rem -0.75rem hsla(0, 0%, 0%, 0.25);
+	border-radius: 0.5rem;
+
+}
+
+.container img{
+	position:absolute;
+
+	object-fit: cover;
+	width:100%;
+	height:100%;
+
+}
+
+.container .invisible{
+	display:none;
+}
+
+.container .arrow{
+	position: absolute;
+	display:flex;
+	align-items: center;
+	top: 50%;
+	font-size:50px;
+	width: 50px;
+	height: 50px;
+	border:none;
+	color: white;
+	background-color: transparent;
+  }
+  
+  .container .arrow:hover{
+	color:white;
+	  background-color: rgba(0, 0, 0, 0.1);
+  }
+  
+  
+.container .left-arrow{
+	left: 0;
+  }
+  
+.container .right-arrow{
+	right: 0;
+  }
+  
+
+
+
+
+
+@media (min-width: 400px) and (max-width:1600px) {
+	.slider.slider {
+		height: 28em;
+	}
+}
+
+
+
+@media (max-width:400px) and (min-width:250px) {
+	.slider.slider {
+		height: 15em;
+	}
+}
+
+@media (max-width:250px) {
+	.slider.slider {
+		height: 10em;
+	}
+}
+
+
+
+
+
+.room-title {
+	background-color: rgb(245, 245, 245);
+	margin: 0;
+	text-align: left;
+	padding: 2vh 10vw 3vh 10vw;
+}
+
+.room-title>h2 {
+	font-size: 2.4em;
+}
+
+.room-title>p {
+	font-size: 1.5em;
+}
+
+.bed-choice {
+	position: relative;
+	display: flex;
+	margin-top: 1em;
+	
+
+}
+
+.bed-choice select{
+	max-width:18em;
+}
+
+.bed-choice select {
+	width: 25em;
+	min-height: 2.5em;
+	font-size: 1.2em;
+	border-radius: 0.75em;
+	border: 0.1em solid rgb(160, 160, 160);
+	background-color: white;
+	outline: none;
+	padding: 0 0.5em;
+	margin-right:1em;
+	cursor: pointer;
+}
+
+.bed-choice .booking-button.body {
+	width: 7.5em;
+	height: 3.0rem;
+	border-radius: 1.5em;
+	border: 0.05em solid rgb(160, 160, 160);
+	color: white;
+	background-color: rgb(98, 98, 28);
+	font-size: 1em;
+
+
+
+}
+
+.bed-choice .booking-button.body:hover {
+	background-color: rgb(131, 131, 31);
+}
+
+.benefits-box {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	flex-wrap: wrap;
+}
+
+.room-info {
+	margin: 0;
+	padding:0;
+	text-align: left;
+	padding: 1vh 10vw;
+}
+
+#descr{
+	font-size: 1.5rem;;
+}
+
+.room-info h3 {
+	font-size: 1.75em;
+}
+.room-info span{
+	display:inline-block;
+}
+.room-info .highlights p,.room-info .amenities p {
+	display:inline ;
+	font-size: 1.4em;
+}
+.benefits-box{
+	margin-top:2em;
+}
+
+.benefits-box .header.header {
+	font-size: 1.7em ;
+	font-style: italic;
+	margin-bottom: 0.25em;
+	color: rgb(98, 98, 28);
+}
+
+.amenities,
+.accessibility {
+	margin-top: 1.5em;
+}
+
+.benefits-box ul {
+list-style-type: none
+}
+
+.accessibility p:last-child{
+	font-size: 1.4em;
+	margin-left:1.8em;
+}
+
+@media  (max-width: 600px) {
+  
+	:root{
+	  font-size: 0.8rem;
+	}
+}  
+
+
+@media  (max-width: 500px) {
+  
+	.bed-choice {
+		flex-direction: column;
+	}
+
+	#bed-type{
+		margin-bottom:1em;
+	}
+
+	.bed-choice select{
+		max-width:16em;
+	}
+}  
+
+
+@media only screen and (min-width: 1280px) {
+	.benefits-box ul {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+	}
+
+	.benefits-box ul li {
+		width: 50%;
+	}
+}
+
+@media only screen and (min-width: 860px) {
+
+	.benefits-box {
+		flex-direction: row;
+	}
+
+	.benefits-box div:first-child {
+		border-right: 1px solid rgb(98, 98, 28);
+		padding-right: 1em;
+	}
+
+	.amenities {
+		margin-top: 0;
+	}
+
+	.highlights,
+	.amenities
+	 {
+		width: 47.5%;
+	}
+
+}
+
+
+.benefits-box span {
+	width: 1em;
+	height: 1em;
+	background-repeat: no-repeat;
+	background-size: contain;
+	min-width: 20px;
+	margin-right: 0.35em;
+	margin-top: 0.35em;
+}
+
+

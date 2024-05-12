@@ -1,0 +1,153 @@
+    <main>
+        <div class="picture_container">
+            <img src="/resources/start-page-gallery/swimming-pool2.jpg">
+            <p>Bay Hotel</p>
+        </div>
+
+        <div class="wrapper">
+
+            <section class="paymentForm">  
+                <!-- Ftiaxtike stin arxi tou eksaminou opote i css  den exei grafti me ton kalitero tropo. -->
+            
+                    <form action='/finaliseReservation' method="post">
+                        
+                        <fieldset style="border-width: 2px;">
+                            <legend >Στοιχεία Πληρωμής</legend>
+                        <label class="title title2">  Στοιχεία Κάρτας</label>
+            
+                        <div class="container">
+                        
+                            <div class="field-holder required onomaKatoxou">
+                                <input type="text" id="cardHolderName" value=""  name="cardHolderName" required oninvalid="setCustomValidity('Παρακαλώ συμπληρώστε το όνομα κατόχου της κάρτας.')"
+                                oninput="this.setCustomValidity('')">
+                                <label for="cardHolderName">  Όνομα Κατόχου</label>
+                            </div>
+            
+                            <div class="field-holder required">
+                                <input type="text" id="cardNumber" value="" name="creditCard" pattern="[0-9]{16}" maxlength="16" minlength="16" onchange="this.setAttribute('value', this.value);" required oninvalid="setCustomValidity('Παρακαλώ συμπληρώστε τον αριθμό της κάρτα σας (16 ψηφία).')"
+                                oninput="this.setCustomValidity('')">
+                                <label for="cardNumber">  Νούμερο κάρτας</label>
+                            </div>
+            
+                            <div class="field-holder required imerominiaLiksis">
+                                <input type="text" id="date" value="" name="date" maxlength="5" pattern="\d{2}/\d{2}" onchange="this.setAttribute('value', this.value);" required oninvalid="setCustomValidity('Παρακαλώ συμπληρώστε την ημερομηνία λήξης που αναγράφεται στην κάρτα.')"
+                                oninput="this.setCustomValidity('')">
+                                <label for="date">Ημερομηνία Λήξης</label>
+                            </div>
+            
+                            <div class="field-holder required">
+                                <input type="password" id="cvv" value="" name="cvv" pattern="\d{3}" maxlength="3" minlength="3" onchange="this.setAttribute('value', this.value);" required oninvalid="setCustomValidity('Παρακαλώ συμπληρώστε τον κωδικό της κάρτας σας.')"
+                                oninput="this.setCustomValidity('')">
+                                <label for="cvv">cvv</label>
+                            </div>
+                        </div>
+            
+                        <label class="title title2 title3">  Πρωινό</label>
+            
+                        <div class="field-holder" >
+                            <label  for="checkbox1" class="elem">Κόστος πρωινού ανά ενήλικα: 5€</label>
+                            <input type="checkbox" id="checkbox1" name="checkbox1">
+                        </div>
+
+                        {{#if eksoflisiMisouPosou}}
+
+                            <label class="title title2 title3 eksoflisi"> Εξόφληση</label>
+
+                            <div class="field-holder" >
+                                <label  for="checkbox2" class="elem elem2">Επιθυμώ να πληρώσω τώρα το 50% του ποσού και να εξοφλήσω το υπόλοιπο μέχρι 10 ημέρες πριν την κράτηση</label>
+                                <input type="checkbox" id="checkbox2" name="checkbox2">
+                            </div>
+                        {{/if}}
+                                        
+            
+                        <label class="title title2 title4 politikiKratiseon {{#if eksoflisiMisouPosou}} included    {{/if}}"> Πολιτική κρατήσεων</label>
+            
+                        <div class="field-holder terms">
+                            <div>
+                                <p >Ώρα άφιξης: Μετά της 13:00</p>
+                                <p >Ώρα αναχώρησης: Πριν της 12:00</p>
+                                <p >Υπάρχει δυνατότητα ακύρωσης μέχρι 10 ημέρες πριν την άφιξη με πλήρη επιστροφή χρημάτων</p>
+                            
+                            </div>
+            
+                        </div>
+            
+                        <div>
+                            <hr id="hr1">
+                        </div>
+            
+                        <div class="field-holder down">
+                            <span class="left">Ξενοδοχείο</span>
+                            <span class="right" id="kostosKsenodoxiou">{{kostosKsenodoxiou}}</span>
+                        </div>
+            
+                        <div class="field-holder down">
+                            <span class="left smaller">Πρωινό</span>
+                            <span class="right smaller" id="proinoTimi">-</span>
+                        </div>
+            
+                        <div id="d1">
+                            <hr id="hr2">
+                         </div>
+                         <br>
+                         <div class="field-holder down">
+                            <span class="left sinolo">Σύνολο</span>
+                            <span class="right" id="sinolikoPoso"></span>
+                        </div>
+            
+            
+                        <div id="d2">
+                            <hr id="hr3">
+                         </div>
+                         <br>
+                         <div class="field-holder down pliromi">
+                            <span class="left sinolo">Πληρωμή</span>
+                            <span class="right" id="posoPliromis"></span>
+                        </div>
+            
+                        <div class="field-holder down" id="checkout">
+                            <input type="submit" class="button {{#if response}} notClickable {{/if}}" value="Κράτηση">
+            
+            
+                        </div>
+
+                        <p class="response">
+                            {{#if response}}
+                                {{response}}
+                            {{else}}
+                                &nbsp;
+                            {{/if}}
+                            
+                        </p>
+
+                        <!-- hidden fields -->
+                        {{#with reservation}}
+
+                            
+                            <input type="text" id="atoma"  value="{{atoma}}"  name="atoma" class="invisible">
+                            <input type="text" id="roomNumber"  value="{{room}}"  name="roomNumber" class="invisible">
+                            <input type="text" id="checkInDate"  value="{{checkInDate}}"  name="checkInDate" class="invisible">
+                            <input type="text" id="checkInMonth"  value="{{checkInMonth}}"  name="checkInMonth" class="invisible">
+                            <input type="text" id="checkInYear"  value="{{checkInYear}}"  name="checkInYear" class="invisible">
+                            <input type="text" id="checkOutDate"  value="{{checkOutDate}}"  name="checkOutDate" class="invisible">
+                            <input type="text" id="checkOutMonth"  value="{{checkOutMonth}}"  name="checkOutMonth" class="invisible">
+                            <input type="text" id="checkOutYear"  value="{{checkOutYear}}"  name="checkOutYear" class="invisible">
+                            <input type="text" id="kostos"  value="{{kostos}}"  name="kostos" class="invisible">
+
+                        {{/with}}
+
+            
+            
+                    </fieldset>
+                        
+                    </form>
+            
+               </section>
+    
+
+
+        </div>
+        
+  
+    </main>
+    

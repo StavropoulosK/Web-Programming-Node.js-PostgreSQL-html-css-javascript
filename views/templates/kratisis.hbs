@@ -1,0 +1,136 @@
+    
+    
+    <main>
+        
+
+        {{>userNav}}
+        
+        <div class="kratisisContainer">
+            
+            <p id="myBooks"> Οι κρατήσεις μου</p>
+
+            {{#each kratisis}}
+
+                <div class="kratisis">
+                    <div class="room {{this.room.className}}">
+                        <div class="image">
+                        <img src="{{this.room.img}}">
+                            
+                        </div>
+            
+                        <div class="info">
+                                <p>{{this.room.titlos}}</p>
+                                {{#if this.theaStiThalasa}}
+                                <p>Με θέα στη θάλασσα</p>
+                                {{else}}
+                                <p>&nbsp;</p>
+                                {{/if}}
+                                <ul class="list">
+                                    {{#each this.room.amenity}}
+                                    <li>{{this}}</li>
+                                    {{/each}}
+                                    
+                                </ul>
+
+
+                            <div class="atoma">
+                                <span>{{this.room.tetragonika}} τ.μ.</span><br>
+                    
+                                {{#each this.room.krebati}}
+
+
+                                    <div class="atoma_bed">
+                                    <span>{{this.onoma}}</span>
+                                    <div class="image_container">
+                                        <img src="{{this.ikonaSrc}}">
+                                    </div>
+                                    </div>
+
+                                {{/each}}
+
+            
+            
+                            </div>
+                        </div>
+            
+                        <div class="reservationInfo">
+                            <h3>Στοιχεία Κράτησης</h3>
+                            <div class="infoContainer">
+        
+                                <p class="imer">Ημερομηνίες:</p>
+                                <p> {{this.checkIn}} - {{this.checkOut}}</p>
+                                <p >Άτομα: {{this.atoma}}</p>
+                                {{#if this.proino}}
+                                <p >Mε πρωινό</p>
+                                {{/if}}
+                                <p > Kόστος: {{this.kostos}}€</p>
+                                <p >Έχουν πληρωθεί: {{this.pliromena}}€</p>
+                                <p>Απομένουν να πληρωθούν: {{this.apomenoun}}€</p>
+                                <p>Κατάσταση: {{this.katastasi}}</p>
+
+        
+                            </div>
+        
+        
+                        </div>
+        
+                        <div class="kritiki">
+                            <h3>Κριτική</h3>
+                            <div class="kritikiContainer">
+        
+                                <form action="/Kritiki" method="post">
+                                    
+                                    <textarea id="kritiki" {{#if this.oxiKritiki}}class="disabled"{{/if}} name="kritiki" rows="4" cols="50" required oninvalid="setCustomValidity('Παρακαλούμε  συμπληρώστε την κριτική σας.')"
+                                    oninput="this.setCustomValidity('')" title="Παρακαλούμε  συμπληρώστε την κριτική σας."></textarea><br>
+                                    <input type="submit" {{#if this.oxiKritiki}}class="disabled"{{/if}} value="Υποβολή">
+                                    <input type="text"  value="{{this.id}}"  name="kratisiId" class="invisible">
+
+                                </form>
+        
+                            </div>
+        
+        
+                        </div>
+            
+            
+            
+            
+                        <div class="book">
+                            <p class="desc">Υπάρχει δυνατότητα δωρεάν ακύρωσης με πλήρη επιστροφή χρημάτων έως 10 ημέρες πριν την άφιξη. Αν όλο το ποσό δεν έχει εξοφληθεί μέχρι τότε η κράτηση ακυρώνεται.</p>
+                            <div class="buttonContainer">
+                                <form action="/akirosi" method="post">
+
+                                    <button class="akirosi {{#if this.notAkirosimo}} disabled {{/if}}"> Ακύρωση</button>
+                                    <input type="text"  value="{{this.id}}"  name="kratisiId" class="invisible">
+                                </form>
+
+                                    
+                                <form action="/makeNextBookPayment" method="post">
+                                    <button class="pliromi {{#if this.oxipliromi}} disabled {{/if}}" onclick="window.location.href = '../paymentForm/nextPayments.html'"> Πληρωμή</button>
+                                    <input type="text"  value="{{this.id}}"  name="kratisiId" class="invisible">
+                                    <input type="text"  value="{{this.kostos}}"  name="sinolo" class="invisible">
+                                    <input type="text"  value="{{this.apomenoun}}"  name="xrostoumeno" class="invisible">
+
+                                </form>
+            
+                            </div>
+                        </div>
+                    </div>
+            
+        
+        
+                </div>
+
+            {{/each}}
+
+
+
+
+        </div>
+
+
+        
+        
+        
+
+      </main>

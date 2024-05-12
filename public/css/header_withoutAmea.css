@@ -1,0 +1,724 @@
+header.top {
+    background-color: black;
+    padding: 0.6em 3em; 
+    width: 100%;
+    position: fixed;
+    z-index: 20;
+    display: flex;
+    align-items: center; 
+    white-space: nowrap; 
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+  }
+  
+  
+  
+  header.top nav{
+    margin: 0;
+    padding: 0;
+  }
+  
+  header.top nav ul {
+    
+    list-style-type: none;
+    display: flex; 
+    align-items: center; 
+    margin: 0; 
+    padding: 1em; 
+  }
+  
+  header.top nav li{
+    margin-right: 1.5em;
+  }
+  
+  header.top a{
+    color: white;
+    text-decoration: none;
+  }
+  header ul button{
+    padding:0;
+    margin:0;
+    height: 2.6em;
+    min-width:3em;
+    border:none;
+  }
+  
+  
+  
+  
+  header ul button img{
+    object-fit: cover;
+    padding:0px;
+    margin:0px;
+    height:100%;
+    width:100%;
+  }
+  
+  button.eggrafi, a.eggrafi{
+    
+      display:flex;
+      flex-direction: column;
+      background-color: transparent;
+      justify-content: center;
+      border:none;
+      color:white;
+      margin-right:1em;
+      font-size:1em;
+      
+      
+  
+  
+  }
+  
+  .buttons{
+    margin-left:auto;
+    margin-right:4em;
+    display:flex;
+  }
+  
+  .booking-button.header {
+    box-sizing: content-box;
+      border: none;
+    margin-right: 2em; /* Adjust margin as needed */
+    padding: 0.6em 1em; /* Adjust padding as needed */
+    width: 100px;
+      border-radius: 2em;
+      background-color: rgb(98, 98, 28);
+    color: white;
+      font-size: 1em;
+  }
+  
+  .booking-button:hover {
+      background-color: rgb(131, 131, 31);
+  }
+  
+  a.eggrafi:hover{
+    color:rgb(189, 178, 53);
+  }
+  
+  .dropdown.header{
+    position: relative;
+    align-content: center;
+  }
+  
+  .booking-wrapper{
+    position: fixed;
+    max-width: 60rem;
+    width: 100%;
+    top: 5.9em;
+    right: 0;
+    z-index: 6;
+    background-color: white;
+    border-radius: .25rem;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    border-bottom-left-radius: 10px;
+  
+  }
+  
+  @media  (max-width: 600px) {
+     header.top .outer a{
+      display:none;
+    }
+  
+  
+    .buttons{
+      flex-direction:column-reverse;
+      margin-right:2em;
+    }
+  
+    button.eggrafi, a.eggrafi{
+      margin:0;
+      margin-bottom:0.3em;
+      position: relative;
+      margin:0 auto;
+      margin-bottom:0.5em;
+    }
+  
+    .booking-button.header {
+      margin:0;
+    }
+  
+    header.top {
+      padding: 0.6em 1em; 
+    }
+  
+  }
+  
+  @media (min-width:600px){
+    #info_button{
+      display:none; 
+    }
+  
+    .profile_info{
+      top:4.9em !important;
+    }
+
+    .dropdown-content {
+      min-width: 180px;
+    }
+  }
+  
+  
+  
+  .dropdown.active .booking-wrapper{
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+  
+  
+  
+  
+  .main-booking-info{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items:center;
+    background-color: rgb(15,15,15);
+    color: white;
+  }
+  
+  .check-in-date,
+  .check-out-date,
+  .adult-count,
+  .continue-button button,
+  .Amea
+  {
+    margin: 0em;
+    text-align: center;
+    font-size: 1.3rem;
+    margin-bottom:1em;
+  
+  }
+  
+  
+  
+  .adult-count p{
+    position: relative;
+    right:10px; 
+    top:0.08em;
+  }
+  
+  
+  
+  
+  /* blepe https://codepen.io/AllThingsSmitty/pen/WjZVjo */
+  
+  
+  .Amea{
+    position: relative;
+  }
+  
+  #ameaLabel{
+    display: block;
+  
+    /* na mi ginetai highlight */
+    -webkit-touch-callout: none; /* iOS Safari */
+      -webkit-user-select: none; /* Safari */
+        -khtml-user-select: none; /* Konqueror HTML */
+          -moz-user-select: none; /* Old versions of Firefox */
+          -ms-user-select: none; /* Internet Explorer/Edge */
+              user-select: none; /* Non-prefixed version, currently
+                                    supported by Chrome, Edge, Opera and Firefox */
+      margin-bottom:2em;
+      position: relative;
+      top:1.05em;
+  }
+  
+  
+  .checkbox-field{
+    opacity:1;
+    appearance: none;;
+  }
+  
+  header button,header a{
+    cursor:pointer;
+  }
+  
+  .checkbox-label{
+    position: relative;
+    cursor:pointer;
+    padding-left:1.5em;
+    color:white;
+  }
+  
+  .checkbox-label::before{
+    content:'';
+    position:absolute;
+    left:0;
+    width:1em;
+    height:1em;
+    border-radius: 100%;
+    background: rgb(131, 131, 31);
+  }
+  
+  .checkbox-label::after{
+    content:'';
+    position:absolute;
+    left:8px;
+    top:4px;
+    width:5px;
+    height:12px;
+    border:solid rgb(45, 51, 40);
+    border-width:0 4px 4px 0;
+    transition: 0.2 ease;
+  
+  }
+  
+  @media (max-width:600px){
+    .checkbox-label::after{
+      left:4px;
+      top:0px;
+    }
+  
+    
+  .calendar-wrapper{
+  
+    padding-top:0.4em  !important;
+    padding-bottom:0 !important;
+  
+    }
+    .calendar {
+      max-height:550px !important;
+      margin-right:0.2em !important; 
+  
+    } 
+  
+    .date{
+      padding-left:0em !important;
+      padding-right:0em !important;
+      width:2.4em !important;
+      height:1.2em !important;
+      padding-top:0.5em !important;
+  
+    }
+  
+    .days{
+      margin:0 !important;
+    }
+  
+    .main-booking-info{
+        display:grid !important;
+        grid-template-areas:
+        "middle_left middle_right"
+        "bottom_left  bottom_right";
+  
+        grid-template-rows:0.5fr 1fr  !important ;
+        grid-template-columns: 1fr 1fr  !important;
+  
+    }
+  
+    .check-in-date{
+      grid-area:bottom_left ;
+      margin-bottom:0.5em !important;
+  
+      
+    }
+  
+    .check-out-date{
+      grid-area:bottom_right ;
+      margin-bottom:0.5em !important;
+    }
+  
+  
+    .adult-count{
+      grid-area:middle_left;
+  
+    }
+  
+    
+    .main-booking-info  div{
+      margin:0;
+      padding:0;
+      font-size: 1.2em !important;
+    }
+  
+    
+    .continue-button{
+      grid-area: middle_right;
+      margin-bottom:0 !important;
+      grid-column: 2/3;
+     
+      margin:0 auto !important;
+      position: relative;
+      top:1.5em;
+      
+    }
+  
+    .continue-button button{
+      font-size: 1em ;
+  
+    }
+  
+    .adult-count p{
+      position: relative;
+      right:10px; 
+      top:0em;
+    }
+  
+  }
+  
+  
+  .checkbox-field:not(:checked) + .checkbox-label::after{
+    opacity:0;
+  }
+  
+  
+  .checkbox-field:checked + .checkbox-label::after{
+    transform: rotate(35deg) scale(1);
+    opacity:1;
+  }
+  
+  span.numAdults{
+    margin-left:0.5em;
+    font-size:1.5rem;
+  }
+  
+  
+  
+  
+  
+  
+  
+  .calendar {
+  
+    display:flex;
+    flex-direction: column;
+    padding:10px;
+    background-color: rgb(255, 255, 255);;
+    justify-content: center;
+    border-bottom-left-radius: 10px;
+    box-shadow: 0 0 10px -1em rgba(0, 0, 0, 0.3);
+    height:auto;
+    width:auto;
+    margin: 0 auto; 
+    margin-right:1em ;
+    
+  
+  
+  }
+  
+  .calendar-wrapper{
+    width:20em;
+    margin:0 auto;
+    padding:1em;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+  
+  
+  }
+  
+  .calendar-wrapper button{
+      display:flex;
+      align-items: center;
+      justify-content: center;
+      border:none;
+      border-radius: 50%;
+      cursor:pointer;
+      
+      width:1.8em;
+      height:1.8em;
+      box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+  }
+  
+  .days{
+    display:grid;
+    grid-template-columns: repeat(7,1fr);
+  }
+  
+  .day{
+    text-align:center;
+    padding:5px;
+    color: #999fa6
+  }
+  
+  .dates{
+    display: grid;
+    grid-template-columns: repeat(7,1fr);
+    gap:0.5em;
+  
+  }
+  
+  .date{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding:1em;
+    margin:auto;
+    border-radius: 50%;
+    width:0.9em;
+    height:0.9em;
+    transition: 0.2s;
+  
+  }
+  
+  .date:not(.inactive):hover, .date.active{
+    background: rgb(131, 131, 31);
+  ;
+    color:#fff;
+  }
+  
+  .date{
+    display:flex;
+    flex-direction: column;
+  }
+  .date span:first-child{
+    font-size: 1.2em;;
+    margin-top:0.4em;
+   
+  }
+  .date span:last-child{
+    font-size:0.8em;
+  }
+  
+  .date.inactive{
+    font-weight: thin;
+    opacity:0.4;
+    pointer-events: none
+  
+  }
+  
+  .date.full{
+    pointer-events: none;
+  }
+  
+  .date:not(.inactive):not(.full){
+    cursor: pointer;
+  }
+  
+  .date.full{
+    background-color: rgb(243, 112, 112);
+  }
+
+
+  
+  
+  
+  .monthYear{
+    text-align: center;
+    font-weight: bold;
+  }
+  
+  
+  
+  .continue-button button{
+    padding: 10px 20px;
+    background-color: rgb(98, 98, 28);
+    color: white;
+    border: none;
+    border-radius: 1.5em;
+    cursor: pointer;
+    
+  }
+  
+  .continue-button button:hover,
+  .countButton:hover {
+    background-color: rgb(131, 131, 31);
+  }
+  
+  .countButton{
+    border: none;
+    background-color: rgb(98, 98, 28);
+    color: white;
+    border-radius: 0.5rem;
+    margin-left:0.07em;
+    font-size: 1.5rem;
+    width: 1.5rem;
+    position: relative;
+    bottom:0.05em;
+  }
+  
+  
+  button.eggrafi img:hover{
+    cursor: pointer;
+  }
+  
+  #info_button img:hover{
+    cursor:pointer
+  }
+  
+  
+  .display_info, .profile_info{
+      position: fixed;
+      background-color: rgb(7, 5, 5);
+      top:6em;
+      height: 24em;
+      width: 15em;
+      pointer-events:none;
+      opacity: 0;
+      transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+  
+  .display_info{
+    left:0em;
+  }
+  
+  .profile_info{
+    right:0em;
+  }
+  
+  .display_info.active{
+    opacity: 0.8;
+    pointer-events: auto;
+  }
+  
+  .profile_info.active{
+  
+    opacity:0.95;
+    pointer-events: auto;
+  }
+  
+  
+  
+  .display_info ul{
+    
+    height:100%;
+    display:flex;
+    flex-direction: column;
+    list-style-type: none;
+  }
+  
+  
+  
+  .display_info ul li{
+    
+    width:100%;
+    margin-bottom:2em;
+    padding-left:3em;
+    
+  }
+  
+  
+  .eggrafi img{
+  
+    width:1.6em;
+    height:1.5em;
+    border: 2px solid #000; /* Set the border properties */
+    border-radius: 50%; /* Create a circle by setting border-radius to 50% */
+    overflow: hidden; /* Clip the image to the circle shape */
+  
+  }
+  
+  
+  .profile_info{
+    display:flex;
+    flex-direction: column;
+  }
+  
+  .profile_info a:first-of-type{
+    margin-top:1em;
+  }
+  
+  .profile_info a{
+    margin-left:1.2em;
+    margin-bottom:0.7em;
+    font-size: 1.3em;
+    cursor:pointer;
+  
+  }
+  
+  .profile_info a:last-of-type{
+    position: absolute;
+    bottom:0;
+    margin-bottom:1em;
+  }
+  
+  div.circle {
+    width: 7em; /* Set the width of the circle */
+    height: 7em; /* Set the height of the circle */
+    border: 2px solid #000; /* Set the border properties */
+    border-radius: 50%; /* Create a circle by setting border-radius to 50% */
+    overflow: hidden; /* Clip the image to the circle shape */
+    margin:0 auto;
+    margin-top:1em;
+  }
+  
+  div.circle img {
+    width: 100%; /* Make the image fill the circle container */
+    height: 100%; /* Make the image fill the circle container */
+    object-fit: cover; /* Ensure the image covers the entire area */
+    display: block; /* Remove any extra spacing */
+  }
+  
+  .profile_info hr{
+    width:80%;
+    margin:0 auto;
+    background-color:rgb(158, 148, 148);
+    height:2px;
+    border:none;
+    margin-top:0.4em;
+  
+  }
+  
+  
+  
+  
+  
+  .dropbtn {
+    box-sizing: content-box;
+  
+    background-color:black;
+    color: white;
+    font-size: 1em;
+    border: none;
+    padding: 0.6em 1em; /* Adjust padding as needed */
+    border-radius: 2em;
+    background-color: rgb(98, 98, 28);
+    margin-right:2em;
+  }
+  
+  
+  
+  /* The container <div> - needed to position the dropdown content */
+  .dropdowList {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .dropbtn:hover{
+    background-color: rgb(131, 131, 31);
+  
+  }
+  
+  /* Dropdown Content (Hidden by Default) */
+  .dropdown-content {
+    position: absolute;
+    background-color: black;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  }
+  
+  
+  /* Links inside the dropdown */
+  .dropdown-content a {
+    padding: 12px 16px;
+    text-decoration: none;
+    display: none;
+    white-space: normal; /* Allow text to wrap */
+  
+  }
+  
+  
+  /* Change color of dropdown links on hover */
+  .dropdown-content a:hover {
+    color:rgb(189, 178, 53);
+    }
+  
+  .dropbtn:hover{
+    display:block;
+  }
+  
+  /* Show the dropdown menu on hover */
+  .dropdowList:hover .dropdown-content a {
+    display: block;
+  }
+  
+
+  .invisibleForm{
+    display: none;
+  }
+  
