@@ -19,13 +19,18 @@ body {
     padding:0;
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
+    min-height: 130vh;
 
   }
 
 .offset{
   padding-top:9em;
   margin:0 auto
+}
+#titlosHeader{
+  margin-top:1em;
+  margin-bottom:2em;
+  font-size:2.2em;
 }
 
 .pageWrapper{

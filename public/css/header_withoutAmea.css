@@ -491,7 +491,7 @@ header.top {
     cursor: pointer;
   }
   
-  .date.full{
+  .date.full:not(.inactive){
     background-color: rgb(243, 112, 112);
   }
 
@@ -540,6 +540,15 @@ header.top {
   
   #info_button img:hover{
     cursor:pointer
+  }
+
+  #info_button{
+    max-width: fit-content;
+    background-color: black;
+  }
+  
+  #info_button img{
+    object-fit: contain;
   }
   
   
@@ -678,6 +687,7 @@ header.top {
   .dropdowList {
     position: relative;
     display: inline-block;
+    z-index:40;
   }
   
   .dropbtn:hover{

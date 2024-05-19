@@ -3,7 +3,8 @@
 document.addEventListener('click', e => {
     const isDropdownButton = e.target.matches(".booking-button");
     const isInfoButton= e.target.matches("#pressed_image");
-    const isProfileButton= e.target.matches(".profile img");
+    const isProfileButton= e.target.matches(".profile") || e.target.matches(".profile img");
+
 
 
     if ( isDropdownButton  || e.target.closest('#dropdown_book') == null ) {

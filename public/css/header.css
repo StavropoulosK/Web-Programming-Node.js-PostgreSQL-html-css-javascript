@@ -63,10 +63,11 @@ button.eggrafi, a.eggrafi{
     color:white;
     margin-right:1em;
     font-size:1em;
-    
-    
 
+}
 
+button{
+  outline: none !important;
 }
 
 .buttons{
@@ -210,7 +211,9 @@ a.eggrafi:hover{
 
 
 /* blepe https://codepen.io/AllThingsSmitty/pen/WjZVjo */
-
+#amea{
+  visibility: hidden;
+}
 
 .Amea{
   position: relative;
@@ -275,7 +278,7 @@ header button,header a{
 @media (max-width:600px){
   .checkbox-label::after{
     left:4px;
-    top:0px;
+    top:-5px;
   }
 
   
@@ -504,7 +507,7 @@ span.numAdults{
   cursor: pointer;
 }
 
-.date.full{
+.date.full:not(.inactive){
   background-color: rgb(243, 112, 112);
 }
 
@@ -551,9 +554,20 @@ button.eggrafi img:hover{
   cursor: pointer;
 }
 
+#info_button{
+  max-width: fit-content;
+  background-color: black;
+}
+
+#info_button img{
+  object-fit: contain;
+}
+
 #info_button img:hover{
   cursor:pointer
 }
+
+
 
 
 .display_info, .profile_info{
@@ -691,6 +705,7 @@ div.circle img {
 .dropdowList {
   position: relative;
   display: inline-block;
+  z-index:40;
 }
 
 .dropbtn:hover{

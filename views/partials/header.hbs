@@ -130,7 +130,7 @@
       <button class="eggrafi profile">
 
         {{#if profileImg}}
-          <img src={{profileImg}} alt="Your Image">
+          <img src="data:image/jpeg;base64,{{profileImg}}" alt="Your Image">
 
         {{else}}
           <img src="/resources/icons/profile-picture-icon.png" alt="Your Image">
@@ -142,7 +142,7 @@
       <div class="profile_info" id="profile_container">
         <div class="circle">
           {{#if profileImg}}
-            <img src={{profileImg}} alt="Your Image">
+            <img src="data:image/jpeg;base64,{{profileImg}}" alt="Your Image">
 
           {{else}}
             <img src="/resources/icons/profile-picture-icon.png" alt="Your Image">
@@ -151,6 +151,7 @@
         </div>
         <hr>
         <a href="/kratisis">Κρατήσεις</a>
+        <a href="/profile">Προφίλ</a>
         <a href="/aposindesi">Aποσύνδεση</a>
         
       </div>

@@ -185,10 +185,8 @@ async function showWidgetError(){
 
       else if (widget===tilefono) {
 
-          // Afairesi ton [+- ]
-
-
-          const tilefonoString = widget.value.replace(/[+\- ]/g, '');
+        // Afairesi ton [+- ]
+        const tilefonoString = widget.value.replace(/[+\- ]/g, '')
         if( ! /^\d{10}$/.test(tilefonoString)){
             
             widgetError.textContent = "Παρακαλώ εισάγετε ένα  τηλέφωνο(10 αριθμούς).";
@@ -209,6 +207,11 @@ async function showWidgetError(){
 form.addEventListener("submit", async (event) => {
     event.preventDefault()
     let res=true
+    const tilefonoField=document.getElementById('tilefono')
+    
+    // Afairesi ton [+- ]
+    tilefonoField.value = tilefonoField.value.replace(/[+\- ]/g, '');
+
     for(let i=0;i<widgetContainer.length;i++){
         widget=widgetContainer[i]
         widgetError= widgetErrorContainer[i]

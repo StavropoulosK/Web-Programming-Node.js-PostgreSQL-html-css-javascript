@@ -1,0 +1,48 @@
+    
+    
+    <main>
+        
+
+        {{>userNav}}
+        
+
+        <form action="/uploadProfile" method="post" id="profilePictureForm" enctype="multipart/form-data"> 
+          <div class="profile">
+            <div class="profileField">
+                <p class="label">Όνομα:</p>
+                <p>{{name}}</p>
+
+            </div>
+
+            <div class="profileField">
+              <p class="label">Επώνυμο:</p>
+              <p>{{surname}}</p>
+
+            </div>
+
+            <div class="profileField">
+              <p class="label">Email:</p>
+              <p>{{email}}</p>
+
+            </div>
+
+            <div class="profileField" id="secLast">
+              <p class="label">Τηλέφωνο:</p>
+              <p>{{phone}}</p>
+
+            </div>
+
+            <div class="profileField">
+              <label for="profileImage" class="custom-file-upload label" id="custom-text">
+                Επιλογή Εικόνας Προφίλ
+              </label>
+              <input type="file" name="profileImage" id="profileImage" accept=" image/jpeg, image/png" />
+            </div>
+
+          </div>
+        </form>
+        
+        
+        
+
+      </main>

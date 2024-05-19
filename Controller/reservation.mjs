@@ -1,20 +1,40 @@
-const datesNotAvailable=async (req,res)=>{
+import * as reservationModel from '../model/reservation.mjs';
+
+async function datesNotAvailable(req,res){
     const year=req.params.year
     const month=req.params.month
     const diamorfosi=req.params.diamorfosi
     const amea=req.params.amea
     const roomType=req.params.roomName
 
+    const map={
+        '4_imidipla':[0 ,4],
+        '1_diplo_2_mona':[2 ,1],
+        '4_mona':[4,0],
+        '1_diplo':[0,1],
+        '2_mona':[2,0]
+    }
+    const firstDateOfMonth=year+'-'+month+'-'+'01'
+    const lastDateOfMonth=getLastDate(year,month)
+    
+    const singleBeds=map[diamorfosi][0]
+    const doubleBeds=map[diamorfosi][1]
+
+    const klismenes= await reservationModel.datesNotAvailable(firstDateOfMonth,lastDateOfMonth,singleBeds,doubleBeds,roomType,amea)
+
+    let result=[]
+    for(let t=0;t<klismenes.length;t++){
+        const imer=Number(klismenes[t].i.split('-')[2])
+        result.push(imer)
+    }
 
     // Epestrepse tis imerominies pou gia to sigkekrimeno tipo domatiou gia ton sigkekrimeno mina einai ola piasmena
 
-    // console.log(year,month,diamorfosi,amea,roomType)
-    
-    res.json({ klismenes: [4,12,13,14] });
+    res.json({ klismenes: result });
 
 }
 
-const checkIfRoomTypeIsAvailable= async (req,res)=>{
+async function checkIfRoomTypeIsAvailable(req,res){
     const roomType=req.params.roomName
     const amea=req.params.amea
     const diamorfosi=req.params.diamorfosi
@@ -25,25 +45,318 @@ const checkIfRoomTypeIsAvailable= async (req,res)=>{
     const checkOutMonth=req.params.checkOutMonth
     const checkOutYear=req.params.checkOutYear
 
+    const map={
+        '4_imidipla':[0 ,4],
+        '1_diplo_2_mona':[2 ,1],
+        '4_mona':[4,0],
+        '1_diplo':[0,1],
+        '2_mona':[2,0]
+    }
+
+    const firstDate=checkInYear+'-'+checkInMonth+'-'+checkInDate
+    const lastDate=checkOutYear+'-'+checkOutMonth+'-'+checkOutDate
+    
+    const singleBeds=map[diamorfosi][0]
+    const doubleBeds=map[diamorfosi][1]
+    
+    const klismenes= await reservationModel.datesNotAvailable(firstDate,lastDate,singleBeds,doubleBeds,roomType,amea)
+
+    const result=klismenes.length==0
+
     // Epestrepse true i false gia to an to domatio einai diathesimo 
 
-    res.json({result:true})
+    res.json({result:result})
 }
 
-const returnTimesDomatiou=async (req,res) =>{
+function getLastDate(year, month) {
+    // maios = minas 5, year =2024
+    // epistrefei  2024-05-31
+
+    const lastDate = new Date(year, month , 1);
+
+    // Format the dates in yyyy-mm-dd format
+    const lastDateFormatted = lastDate.toISOString().split('T')[0];
+
+    return lastDateFormatted.toString()
+}
+
+export function getTimes(times,firstDate,lastDate){
+    //times einai to apotelesma tis klisis reservationModel.getTimesDomatiou
+    let result=[]
+    if(times[0].length!==0){
+        let startDate=firstDate
+        let endDate
+
+        if(times[0][0].enddate<lastDate){
+            endDate=times[0][0].enddate
+        }
+        else{
+            endDate=lastDate
+        }
+    
+        let price=times[0][0].price
+
+        if (price % 1 === 0) {
+            // If it's an integer, convert to integer
+            price= parseInt(price);
+        }
+        let Difference_In_Days = ( (new Date(endDate)).setHours(0,0,0,0) - (new Date(startDate)).setHours(0,0,0,0) ) / (1000*60*60*24) + 1
+        for(let i=0;i<Difference_In_Days;i++){
+            result.push(price)
+        }
+
+
+    }
+    if(times[1].length!==0){
+        for(let i=0;i<times[1].length;i++){
+            const obj=times[1][i]
+            let price=obj.price
+            let startDate=obj.startdate
+            let endDate=obj.enddate
+
+            if (price % 1 === 0) {
+                // If it's an integer, convert to integer
+                price= parseInt(price);
+            }
+
+            let Difference_In_Days = ( (new Date(endDate)).setHours(0,0,0,0) - (new Date(startDate)).setHours(0,0,0,0) ) / (1000*60*60*24) + 1
+            for(let i=0;i<Difference_In_Days;i++){
+                result.push(price)
+            }
+
+        }
+
+
+    }
+
+    if(times[2].length!==0){
+        let startDate
+
+        startDate=times[2][0].startdate
+        
+
+        // if(times[2][0].enddate)
+        let price=times[2][0].price
+        let enddate=lastDate
+
+        if (price % 1 === 0) {
+            // If it's an integer, convert to integer
+            price= parseInt(price);
+        }
+
+
+        let Difference_In_Days = ( (new Date(enddate)).setHours(0,0,0,0) - (new Date(startDate)).setHours(0,0,0,0) ) / (1000*60*60*24) + 1
+        for(let i=0;i<Difference_In_Days;i++){
+            result.push(price)
+        }
+
+
+    }
+
+    return result;
+
+}
+
+async function returnTimesDomatiou(req,res){
     const roomType=req.params.roomName
     const year=req.params.currentCalendarYear
     const month=req.params.currentCalendarMonth
+    
+    const firstDate=year+'-'+month+'-'+'01'
+    const lastDate=getLastDate(year,month)
 
-    let randomNumbers = [];
+    
+    
+    const times=await reservationModel.getTimesDomatiou(roomType,firstDate,lastDate)
+    
+    let result=getTimes(times,firstDate,lastDate)
 
-    for (let i = 0; i < 31; i++) {
-        randomNumbers.push(Math.floor(Math.random() * 100)); // Generate random numbers between 0 and 99
-    }
-    res.json({times:randomNumbers})
+    res.json({times:result})
 }
 
-const confirmReservation= async(req,res)=>{
+function getTotalCost(arr){
+    let res=0
+    for(let i=0;i<arr.length;i++){
+        res += arr[i]
+    }
+    return res
+}
+
+function generateDates(startDate, endDate) {
+    // Convert input strings to Date objects
+    let start = new Date(startDate);
+    let end = new Date(endDate);
+    
+    // Array to hold all the dates
+    let dates = [];
+
+    // Iterate from start date to end date
+    while (start <= end) {
+        // Push the current date to the array (formatted as 'YYYY-MM-DD')
+        let dateTemp=new Date(start).toISOString().split('T')[0]
+
+        const year=(dateTemp.split('-')[0]).substring(2)
+        const month=dateTemp.split('-')[1]
+        const date=dateTemp.split('-')[2]
+
+        dateTemp= date+'/'+month+'/'+year
+
+        dates.push( dateTemp );
+        // Increment the date by 1 day
+        start.setDate(start.getDate() + 1);
+    }
+    
+    return dates;
+}
+
+function getImerominiesTimes(imerominies,times){
+    let result=[]
+    for(let i=0;i<imerominies.length;i++){
+        const klasi=`d${i+1}`
+        result.push({imerominia:imerominies[i], timi:times[i], klasi:klasi})
+    }
+    return result
+
+}
+
+function formatDates(reservedDates){
+    let res=[]
+    let previous=-1
+    for(let i=0;i<reservedDates.length;i++){
+        const obj=reservedDates[i]
+        if(previous!=obj.number){
+            let kat={number:obj.number,sea_view:obj.sea_view,kratisis:[{ start: obj.check_in, end: obj.check_out }]}
+            res.push(kat)
+            previous=obj.number
+        }
+        else{
+            let current_obj=res[res.length-1]
+            current_obj.kratisis.push({ start: obj.check_in, end: obj.check_out })
+        }
+        
+    }
+    return res
+}
+
+
+function filterReservedDates(check_in, check_out, reservedPeriods) {
+    let result = [];
+    
+    // Parse the input dates
+    let checkInDate = new Date(check_in);
+    let checkOutDate = new Date(check_out);
+    
+    // Sort the reserved periods by start date
+    reservedPeriods.sort((a, b) => new Date(a.start) - new Date(b.start));
+    
+    let currentStart = checkInDate;
+    
+    for (let period of reservedPeriods) {
+        let reservedStart = new Date(period.start);
+        let reservedEnd = new Date(period.end);
+
+        if (currentStart <= reservedStart) {
+            result.push({
+                start: currentStart.toISOString().split('T')[0].toString(),
+                end: reservedStart.toISOString().split('T')[0].toString()
+            });
+        }
+        
+        currentStart = reservedEnd;
+    }
+    
+    // Add the last free period from the end of the last reserved period to check_out
+    if (currentStart <= checkOutDate) {
+        result.push({
+            start: currentStart.toISOString().split('T')[0],
+            end: checkOutDate.toISOString().split('T')[0]
+        });
+    }
+
+    return result;
+}
+
+
+function getFreeDates(reservedDates,check_in,check_out){
+    let res=[]
+
+    for(let i=0;i<reservedDates.length;i++){
+        const number=reservedDates[i].number
+        const sea_view=reservedDates[i].sea_view
+        let reservedPeriods=reservedDates[i].kratisis
+  
+        let availableDates=filterReservedDates(check_in, check_out,reservedPeriods);
+        availableDates= removeSameDate(availableDates)
+        const obj={number:number,sea_view:sea_view,freeDates:availableDates}
+        res.push(obj)
+    }
+
+    return res
+
+}
+
+function removeSameDate(availableDates){
+    let res=[]
+    for(let i=0;i<availableDates.length;i++){
+        const obj=availableDates[i]
+        if(obj.start!=obj.end){
+            res.push(obj)
+        }
+    }
+
+    return res
+}
+
+function getTotalDates(Dates){
+    let allDates=[]
+    for(let i=0;i<Dates.length;i++){
+        let temp=Dates[i].freeDates
+        for(let j=0;j<temp.length;j++){
+            allDates.push(temp[j])
+        }
+    }
+    return allDates
+}
+
+function removeOverlappingElements(array) {
+    // Iterate through each element
+    let res=[]
+    for (let i = 0; i < array.length; i++) {
+        let toInsert=true
+        let currentElem = array[i]
+        const currentStart=new Date(currentElem.start).toISOString().split('T')[0]
+        const currentEnd=new Date(currentElem.end).toISOString().split('T')[0]
+        for(let j=0;j<array.length;j++){
+            let otherElem = array[j]
+            if(otherElem!==currentElem){
+                const otherStart=new Date(otherElem.start).toISOString().split('T')[0]
+                const otherEnd=new Date(otherElem.end).toISOString().split('T')[0]
+                if(otherStart<=currentStart && otherEnd>=currentEnd && (otherStart!=currentStart || otherEnd!=currentEnd) ){
+                
+                    toInsert=false
+                    break;
+                    
+                }
+            }
+        }
+        if(toInsert===true){
+
+            res.push(currentElem)
+        }
+    }
+    // afairesi diplotipon
+
+    let result=res.filter((element, index, self) => 
+            index === self.findIndex(e => 
+            e.start === element.start && e.end === element.end
+        )
+    );
+    return  result
+}
+
+
+
+async function confirmReservation(req,res){
     const roomType=req.body.roomName
     const amea=req.body.amea
     const atoma=req.body.atoma
@@ -54,29 +367,12 @@ const confirmReservation= async(req,res)=>{
     const checkOutDate=req.body.checkOutDate
     const checkOutMonth=req.body.checkOutMonth
     const checkOutYear=req.body.checkOutYear
+    
+    const checkIn= checkInYear+'-'+checkInMonth+'-'+checkInDate
+    const checkOut= checkOutYear+'-'+checkOutMonth+'-'+checkOutDate
 
-    const checkIn= checkInDate+'/'+checkInMonth+'/'+checkInYear
-    const checkOut= checkOutDate+'/'+checkOutMonth+'/'+checkOutYear
-
-
-    let theaStiThalasa=''
-
-    if(roomType=='Διαμέρισμα 2 Υπνοδωματίων' || roomType=='Διαμέρισμα 1 Υπνοδωματίου'){
-        // Elegxos an iparxi domatio me thea stin thalasa apo tis katigories pou den exoun default thea stin thalasa
-        if(amea=='true'){
-            theaStiThalasa='true'
-        }
-        else{
-            // oxi false
-            theaStiThalasa=''
-        }
-
-    }
-    let diathesima=4
-
-    let imerominiesTimes=[{imerominia:'21/04/23',timi:20,klasi:"d1"},{imerominia:'21/04/23',timi:30,klasi:"d2"},{imerominia:'21/04/23',timi:40,klasi:"d3"},{imerominia:'21/04/23',timi:50,klasi:"d4"},{imerominia:'21/04/23',timi:26,klasi:"d5"}]
-    let kostos=200
     let tipos=roomType
+
     if(amea=='true'){
         tipos+=' ΑΜΕΑ'
     }
@@ -204,31 +500,199 @@ const confirmReservation= async(req,res)=>{
         }
     }
 
-
     const room=rooms[mapper[tipos]]
 
-    // Antikathisotume to _ me 9 gia na mpori na xrisimopoiithi sto url
+    
 
-    const reservation={
-        roomName:roomType,
-        amea:amea,
-        atoma:atoma,
-        diamorfosi:diamorfosi,
-        checkInDate:checkInDate,
-        checkInMonth:checkInMonth,
-        checkInYear:checkInYear,
-        checkOutDate:checkOutDate,
-        checkOutMonth:checkOutMonth,
-        checkOutYear:checkOutYear,
-        kostos:kostos,
-        theaStiThalasa:theaStiThalasa
+    const bedroomMap={
+        '4_imidipla':[0 ,4],
+        '1_diplo_2_mona':[2 ,1],
+        '4_mona':[4,0],
+        '1_diplo':[0,1],
+        '2_mona':[2,0]
+    }
+
+    const singleBeds=bedroomMap[diamorfosi][0]
+    const doubleBeds=bedroomMap[diamorfosi][1]
+
+    const availableRooms= await reservationModel.getRoomsThatAreAvailableForAllDates(roomType,amea,singleBeds,doubleBeds,checkIn,checkOut)
+
+    
+    // const reservation={
+    //     roomName:roomType,
+    //     amea:amea,
+    //     atoma:atoma,
+    //     diamorfosi:diamorfosi,
+    //     checkInDate:checkInDate,
+    //     checkInMonth:checkInMonth,
+    //     checkInYear:checkInYear,
+    //     checkOutDate:checkOutDate,
+    //     checkOutMonth:checkOutMonth,
+    //     checkOutYear:checkOutYear,
+    //     kostos:kostos,
+    //     theaStiThalasa:theaStiThalasa
+    // }
+
+    
+
+
+    let kratisis=[]
+    let sinafis=''
+
+
+
+
+    if(availableRooms.length!=0){
+        
+
+        let theaStiThalasa=''
+
+        if(roomType=='Διαμέρισμα 2 Υπνοδωματίων' || roomType=='Διαμέρισμα 1 Υπνοδωματίου'){
+            // Elegxos an iparxi domatio me thea stin thalasa apo tis katigories pou den exoun default thea stin thalasa
+            if(amea=='true'){
+                theaStiThalasa='true'
+            }
+            else{
+                for(let i=0;i<availableRooms.length;i++){
+                    if(availableRooms[i].sea_view==true){
+                        theaStiThalasa='true'
+                        break;
+
+                    }
+                }
+            }
+
+        }
+
+        // console.log(availableRooms)
+
+        const diathesima=availableRooms.length
+
+        const timesTemp=await reservationModel.getTimesDomatiou(roomType,checkIn,checkOut)
+        const times= getTimes(timesTemp,checkIn,checkOut,timesTemp)
+
+
+        // o pelatis den plironi gia tin imerominia pou kani check_out
+        times[times.length-1]=0
+        
+
+        let dates = generateDates(checkIn, checkOut);
+
+        // let imerominiesTimes=[{imerominia:'21/04/23',timi:20,klasi:"d1"},{imerominia:'21/04/23',timi:30,klasi:"d2"},{imerominia:'21/04/23',timi:40,klasi:"d3"},{imerominia:'21/04/23',timi:50,klasi:"d4"},{imerominia:'21/04/23',timi:26,klasi:"d5"}]
+        let imerominiesTimes=getImerominiesTimes(dates,times)
+        const kostos=getTotalCost(times)
+
+        let reservation={
+            roomName:roomType,
+            amea:amea,
+            atoma:atoma,
+            diamorfosi:diamorfosi,
+        }
+
+        reservation.checkInDate=checkInDate
+        reservation.checkInMonth=checkInMonth
+        reservation.checkInYear=checkInYear
+        reservation.checkOutDate=checkOutDate
+        reservation.checkOutMonth=checkOutMonth
+        reservation.checkOutYear=checkOutYear
+        reservation.kostos=kostos
+        reservation.theaStiThalasa=theaStiThalasa
+
+        kratisis=[{room:room,reservation:reservation,diathesima:diathesima,times:imerominiesTimes,checkIn:checkIn,checkOut:checkOut,kostos:kostos}]
+
+    }
+
+    else{
+        // Den iparxi kanena domatio diathesimo sinexomena apo checkIn mexri checkOut.
+
+        sinafis='1'
+ 
+        const reservedDatesTemp=await reservationModel.getReservedDates(roomType,amea,singleBeds,doubleBeds,checkIn,checkOut)
+        const reservedDates=formatDates(reservedDatesTemp)
+        const freeDates=getFreeDates(reservedDates,checkIn,checkOut)
+        const totalDates=getTotalDates(freeDates)
+        const freeDatesNoOverlap=removeOverlappingElements(totalDates)
+        for(let i=0;i<freeDatesNoOverlap.length;i++){
+
+            let reservation={
+                roomName:roomType,
+                amea:amea,
+                atoma:atoma,
+                diamorfosi:diamorfosi,
+            }
+
+
+            const check_in=freeDatesNoOverlap[i].start
+            const checkOut=freeDatesNoOverlap[i].end
+            let theaStiThalasa=''
+
+            if(roomType=='Διαμέρισμα 2 Υπνοδωματίων' || roomType=='Διαμέρισμα 1 Υπνοδωματίου'){
+                // Elegxos an iparxi domatio me thea stin thalasa apo tis katigories pou den exoun default thea stin thalasa
+                if(amea=='true'){
+                    theaStiThalasa='true'
+                }
+                else{
+                    
+                    for(let i=0;i<freeDates.length  && theaStiThalasa=='';i++){
+                        if(freeDates[i].sea_view==true){
+                            let dates= freeDates[i].freeDates
+                            for(let j=0;j<dates.length && theaStiThalasa=='';j++){
+                                let dayStart=dates[j].start
+                                let dayEnd=dates[j].end
+                                if(dayStart==check_in  && dayEnd==checkOut){
+                                    theaStiThalasa='true'
+                                }
+                            }
+                        }
+                    }
+                }
+    
+            }
+
+            reservation.checkInDate=check_in.split('-')[2]
+            reservation.checkInMonth=check_in.split('-')[1]
+            reservation.checkInYear=check_in.split('-')[0]
+            reservation.checkOutDate=checkOut.split('-')[2]
+            reservation.checkOutMonth=checkOut.split('-')[1]
+            reservation.checkOutYear=checkOut.split('-')[0]
+
+            // reservation.kostos=kostos
+            reservation.theaStiThalasa=theaStiThalasa
+
+            const diathesima=''
+
+            const timesTemp=await reservationModel.getTimesDomatiou(roomType,check_in,checkOut)
+            const times= getTimes(timesTemp,check_in,checkOut)
+            // o pelatis den plironi gia tin imerominia pou kani check_out
+            times[times.length-1]=0
+
+
+
+
+            // console.log(times,check_in,checkOut)
+            let dates = generateDates(check_in, checkOut);
+    
+            let imerominiesTimes=getImerominiesTimes(dates,times)
+            const kostos=getTotalCost(times)
+
+            // console.log(kostos,imerominiesTimes)
+            reservation.kostos=kostos
+
+    
+
+        // let imerominiesTimes=[{imerominia:'21/04/23',timi:20,klasi:"d1"},{imerominia:'21/04/23',timi:30,klasi:"d2"},{imerominia:'21/04/23',timi:40,klasi:"d3"},{imerominia:'21/04/23',timi:50,klasi:"d4"},{imerominia:'21/04/23',timi:26,klasi:"d5"}]
+
+            kratisis.push({room:room,reservation:reservation,diathesima:diathesima,times:imerominiesTimes,checkIn:check_in,checkOut:checkOut,kostos:kostos})
+
+
+        }
+
     }
 
 
     try{
 
-        res.render('templates/toMakeReservation', {css: [ '/availableRooms.css'], js:['/availableRooms.js'],  room:room,reservation:reservation,
-                diathesima:diathesima,atoma:atoma,times:imerominiesTimes,checkIn:checkIn,checkOut:checkOut,kostos:kostos,loginned:'1',profileImg:''});
+        res.render('templates/toMakeReservation', {css: [ '/availableRooms.css'], js:['/availableRooms.js'],sinafis:sinafis,  kratisis:kratisis});
 
     }
     catch(error){

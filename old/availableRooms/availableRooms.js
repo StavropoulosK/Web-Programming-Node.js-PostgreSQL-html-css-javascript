@@ -4,8 +4,10 @@ const min_width_of_imer=90
 
 function shiftLeft(ev) {
 
-    const room_class=ev.target.parentElement.parentElement.classList[1]
-    const room=document.getElementsByClassName(room_class)[0]
+    // const room_class=ev.target.parentElement.parentElement.classList[1]
+    // const room=document.getElementsByClassName(room_class)[0]
+    const room=ev.target.parentElement.parentElement
+    console.log(ev.target.parentElement.parentElement==room)
     const container = room.getElementsByClassName('times')[0];
     
     const firstInner = container.firstElementChild;
@@ -27,8 +29,10 @@ function shiftLeft(ev) {
   }
 
 function shiftRight(ev) {
-    const room_class=ev.target.parentElement.parentElement.classList[1]
-    const room=document.getElementsByClassName(room_class)[0]
+    // const room_class=ev.target.parentElement.parentElement.classList[1]
+    // const room=document.getElementsByClassName(room_class)[0]
+    const room=ev.target.parentElement.parentElement
+
     const container = room.getElementsByClassName('times')[0];
 
     const lastInner = container.querySelector('div:last-of-type');

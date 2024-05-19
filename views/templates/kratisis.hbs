@@ -6,10 +6,10 @@
         {{>userNav}}
         
         <div class="kratisisContainer">
-            
-            <p id="myBooks"> Οι κρατήσεις μου</p>
 
+            <p id="myBooks"> Οι κρατήσεις μου</p>
             {{#each kratisis}}
+
 
                 <div class="kratisis">
                     <div class="room {{this.room.className}}">
@@ -19,6 +19,7 @@
                         </div>
             
                         <div class="info">
+
                                 <p>{{this.room.titlos}}</p>
                                 {{#if this.theaStiThalasa}}
                                 <p>Με θέα στη θάλασσα</p>
@@ -83,7 +84,9 @@
                                     <textarea id="kritiki" {{#if this.oxiKritiki}}class="disabled"{{/if}} name="kritiki" rows="4" cols="50" required oninvalid="setCustomValidity('Παρακαλούμε  συμπληρώστε την κριτική σας.')"
                                     oninput="this.setCustomValidity('')" title="Παρακαλούμε  συμπληρώστε την κριτική σας."></textarea><br>
                                     <input type="submit" {{#if this.oxiKritiki}}class="disabled"{{/if}} value="Υποβολή">
-                                    <input type="text"  value="{{this.id}}"  name="kratisiId" class="invisible">
+                                    <input type="text"  value="{{this.roomNumber}}"  name="roomNumber" class="invisible">
+                                    <input type="text"  value="{{this.checkIn}}"  name="checkIn" class="invisible">
+                                    <input type="text"  value="{{this.checkOut}}"  name="checkOut" class="invisible">
 
                                 </form>
         
@@ -101,15 +104,18 @@
                                 <form action="/akirosi" method="post">
 
                                     <button class="akirosi {{#if this.notAkirosimo}} disabled {{/if}}"> Ακύρωση</button>
-                                    <input type="text"  value="{{this.id}}"  name="kratisiId" class="invisible">
+                                    <input type="text"  value="{{this.roomNumber}}"  name="roomNumber" class="invisible">
+                                    <input type="text"  value="{{this.checkIn}}"  name="checkIn" class="invisible">
+                                    <input type="text"  value="{{this.checkOut}}"  name="checkOut" class="invisible">
+
                                 </form>
 
                                     
                                 <form action="/makeNextBookPayment" method="post">
                                     <button class="pliromi {{#if this.oxipliromi}} disabled {{/if}}" onclick="window.location.href = '../paymentForm/nextPayments.html'"> Πληρωμή</button>
-                                    <input type="text"  value="{{this.id}}"  name="kratisiId" class="invisible">
-                                    <input type="text"  value="{{this.kostos}}"  name="sinolo" class="invisible">
-                                    <input type="text"  value="{{this.apomenoun}}"  name="xrostoumeno" class="invisible">
+                                    <input type="text"  value="{{this.roomNumber}}"  name="roomNumber" class="invisible">
+                                    <input type="text"  value="{{this.checkIn}}"  name="checkIn" class="invisible">
+                                    <input type="text"  value="{{this.checkOut}}"  name="checkOut" class="invisible">
 
                                 </form>
             

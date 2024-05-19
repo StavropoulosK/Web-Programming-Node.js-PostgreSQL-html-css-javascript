@@ -1,19 +1,15 @@
-const showFirstPage= (req,res) =>{
-    // const profileImg='resources/face.jpg'
-    const profileImg=''
-    res.render('templates/index', { css: [ 'start_page.css'], js:['index.js'], loginned:'1',profileImg:profileImg });
 
+
+function showFirstPage(req,res,next){
+    res.render('templates/index', { css: [ 'start_page.css'], js:['index.js'] });
 }
 
-const showAksiotheata= (req,res) =>{
+function showAksiotheata(req,res){
 
-    const profileImg=''
-
-    // const profileImg='resources/face.jpg'
-    res.render('templates/aksiotheata', { css: ['aksiotheata.css'], loginned:'',profileImg:profileImg  });
+    res.render('templates/aksiotheata', { css: ['aksiotheata.css']  });
 }
 
-const displayRoom=function(req,res){
+function displayRoom(req,res){
     const profileImg=''
     const room=req.params.room
     const rooms={
@@ -122,11 +118,11 @@ const displayRoom=function(req,res){
 
     if(room==='yperpoliteli' || room==='deluxe1' || room==='simple1'){
         // Kanei override to css tou header gia na to diksi xoris Amea epilogi
-        res.render('templates/domatio', { css: [ '/room.css','/header_withoutAmea.css'], js:['/roomPage.js','/header_calendar.js'],  room: rooms[room], loginned:'1',profileImg:profileImg, notAmeaAvailable:'1', roomPage:'1'});
+        res.render('templates/domatio', { css: [ '/room.css','/header_withoutAmea.css'], js:['/roomPage.js','/header_calendar.js'],  room: rooms[room], notAmeaAvailable:'1', roomPage:'1'});
 
     }
     else{
-        res.render('templates/domatio', { css: [ '/room.css'], js:['/roomPage.js','/header_calendar.js'],  room: rooms[room], loginned:'1',profileImg:profileImg, roomPage:'1'});
+        res.render('templates/domatio', { css: [ '/room.css'], js:['/roomPage.js','/header_calendar.js'],  room: rooms[room], roomPage:'1'});
 
     }
 

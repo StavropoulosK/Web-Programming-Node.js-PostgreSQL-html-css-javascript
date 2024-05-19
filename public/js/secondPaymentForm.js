@@ -5,6 +5,11 @@ const inputField = document.getElementById("date");
 const form=document.querySelector('.paymentForm form')
 const poso=document.getElementById('poso')
 
+document.addEventListener('DOMContentLoaded',(ev)=>{
+    alert('The whole website was created for a learning project and nothing is real, the hotel doesnt exist and the reservations are imaginery.Όλη η ιστοσελίδα δημιουργήθηκε στα πλαίσια ενός project, όλα είναι φανταστικά, το ξενοδοχείο δεν υπάρχει και ούτε γίνονται πραγματικά κρατήσεις.')
+})
+
+
 inputField.addEventListener("input", function(event) {
     let inputValue = inputField.value;
     let firstString
@@ -51,8 +56,8 @@ poso.addEventListener("keyup",function(event){
     poso.value=poso.value.replaceAll(',','.')
     const dekadiko=poso.value.split(".")[1]
     const akeraio=poso.value.split(".")[0]
-    if(dekadiko!=null && dekadiko.length>1){
-        poso.value=akeraio+'.'+dekadiko[0]
+    if(dekadiko!=null && dekadiko.length>2){
+        poso.value=akeraio+'.'+dekadiko[0]+dekadiko[1]
     }
 })
 
@@ -61,7 +66,6 @@ poso.addEventListener("keyup",function(event){
 form.addEventListener("submit", (event) => {
     const posoPliromis=Number(poso.value)
     const xrostoumenoPoso=Number( (document.getElementById('xrostoumenoPoso').textContent).split('€')[0])
-    console.log(posoPliromis,xrostoumenoPoso)
     if(posoPliromis>xrostoumenoPoso){
         event.preventDefault()
         document.querySelector('.response').textContent='Το ποσό πληρωμής υπερβαίνει το οφειλόμενο ποσό'

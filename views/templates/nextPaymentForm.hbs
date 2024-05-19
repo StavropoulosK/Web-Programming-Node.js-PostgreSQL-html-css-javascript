@@ -72,7 +72,7 @@
 
                         <div class="posoPliromis">
                             <label for="poso" class="posaMeDosis" id="posoPliromis">Ποσό πληρωμής σε €</label>
-                            <input type="text" id="poso" value="" name="poso" pattern="\d+(\.\d)?" required oninvalid="setCustomValidity('Παρακαλώ συμπληρώστε το ποσό πληρωμής.')"
+                            <input type="text" id="poso" value="" name="poso" pattern="\d+(\.\d{1,2})?" required oninvalid="setCustomValidity('Παρακαλώ συμπληρώστε το ποσό πληρωμής.')"
                             oninput="this.setCustomValidity('')">
                         </div>
    
@@ -89,10 +89,6 @@
                         <p class="response">{{response}}</p>
             
                     </fieldset>
-
-                    <input type="text" id="kratisiId"  value="{{kratisiId}}"  name="kratisiId" class="invisible">
-                    <input type="text" id=""  value="{{sinolo}}"  name="sinolo" class="invisible">
-                    <input type="text" id=""  value="{{xrostoumeno}}"  name="xrostoumeno" class="invisible">
 
                     </form>
             

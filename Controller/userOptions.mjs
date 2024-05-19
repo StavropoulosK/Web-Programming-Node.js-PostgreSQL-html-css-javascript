@@ -1,11 +1,54 @@
 import {checkIfTenDays}  from './finaliseReservation.mjs';
+import * as userOptionsModel from '../model/userOptions.mjs';
+import {insertPayment} from '../model/finaliseReservation.mjs'
+import multer from 'multer'
+import path from 'path'
 
-const aposindesi=(req,res)=>{
-    console.log('aposindesi')
-    res.redirect('/')
+const storage = multer.memoryStorage();
+
+const upload = multer({
+     storage: storage ,
+     fileFilter: function (req, file, handler) {
+        const ext = path.extname(file.originalname);
+        if(ext !== '.png' && ext !== '.jpg' && ext !== '.jpeg') {
+            req.failureImg='1' 
+
+            handler(true,null)
+        }
+        handler(null, true)
+    },
+    limits:{
+        fileSize: 1921 * 1281
+    }}).single('profileImage');
+
+function readImage(req,res,next){
+    upload(req,res,function(err){
+        next()
+    })
 }
 
-const showKratisis=(req,res)=>{
+function aposindesi(req,res){
+    req.session.destroy()
+    res.redirect('/')
+}
+async function makePaymentToBank(cardHolderName,creditCard,date,cvv,poso){
+    //edo ginetai diasindesi me to dbms tis trapezas kai epalitheontai ta stoixeia tis kartas tou xristi kai pragmatopoiteitai i pliromi.
+    return true
+}
+
+function kritikiTime(check_In){
+    //o pelatis mporei na grapsi kritiki mia mera meta to checkIn
+
+    const checkIn= new Date(check_In).setHours(0,0,0,0)
+    const today= new Date().setHours(0,0,0,0);
+    const timeDifference = today - checkIn
+    const daysDifference = (timeDifference / (1000 * 60 * 60 * 24));
+    return daysDifference>=1
+        
+    
+}
+
+async function showKratisis(req,res){
     
     const rooms={
 
@@ -111,119 +154,290 @@ const showKratisis=(req,res)=>{
         }
     }
 
+    //class singleBeds_doubleBeds
+    let mapper={
+        'Υπερπολυτελή Σουίτα 0_4':'yperpoliteli',
+        'Deluxe Σουίτα 2 Υπνοδωματίων 2_1':'deluxe2_a',       
+        'Deluxe Σουίτα 2 Υπνοδωματίων 4_0':'deluxe2_b',       
+        'Deluxe Σουίτα 2 Υπνοδωματίων ΑΜΕΑ 2_1':'deluxe2_Amea_1',
+        'Deluxe Σουίτα 2 Υπνοδωματίων ΑΜΕΑ 4_0':'deluxe2_Amea_2',
+        'Deluxe Σουίτα 1 Υπνοδωματίου 2_0':'deluxe1_1',
+        'Deluxe Σουίτα 1 Υπνοδωματίου 0_1':'deluxe1_2',
 
-
-    const room=rooms.deluxe2_a
-
-    const theaStiThalasa=''
-    const checkIn='03/05/2024'
-    const checkOut='04/05/2024'
-    const proino='1'
-    const kostos=200.5
-    const pliromena=99
-    const apomenoun=kostos-pliromena
-    const katastasi='Προς εξόφληση'
-    const atoma=3
-    const id=12012
-
-    // console.log(checkIfTenDays('03','07','2024'))
-
-    const kratisi1={
-        room:room,
-        theaStiThalasa:theaStiThalasa,
-        checkIn:checkIn,
-        checkOut:checkOut,
-        proino:proino,
-        kostos:kostos,
-        pliromena:pliromena,
-        apomenoun:apomenoun,
-        katastasi:katastasi,
-        atoma:atoma,
-        oxiKritiki:'1',
-        notAkirosimo:"",
-        oxipliromi:'',
-        id:id
+        'Διαμέρισμα 2 Υπνοδωματίων 2_1':'simple2_1',       
+        'Διαμέρισμα 2 Υπνοδωματίων 4_0':'simple2_3',       
+        'Διαμέρισμα 2 Υπνοδωματίων ΑΜΕΑ 2_1':'simple2_Amea1',
+        'Διαμέρισμα 2 Υπνοδωματίων ΑΜΕΑ 4_0':'simple2_Amea2',
+        'Διαμέρισμα 1 Υπνοδωματίου 2_0':'simple1_1',
     }
 
-    const kratisi2={
-        room:room,
-        theaStiThalasa:theaStiThalasa,
-        checkIn:checkIn,
-        checkOut:checkOut,
-        proino:proino,
-        kostos:kostos,
-        pliromena:pliromena,
-        apomenoun:apomenoun,
-        katastasi:katastasi,
-        atoma:atoma,
-        notAkirosimo:"1",
-        oxipliromi:'1',
-        oxiKritiki:'',
-        id:id
+    const userID=req.session.userID
+    const kratisisAll= await userOptionsModel.getKratisis(userID)
 
+    const result=[]
+
+    console.log(kratisisAll)
+
+    for(let i=0;i<kratisisAll.length;i++){
+        const kratisi=kratisisAll[i]
+        const roomName=kratisi.class
+        const num_single_beds=kratisi.num_single_beds
+        const num_double_beds=kratisi.num_double_beds
+        let theaStiThalasa=kratisi.sea_view
+        const amea=kratisi.accessibility_for_disabled
+        const checkIn=kratisi.check_in
+        const checkOut=kratisi.check_out
+        const atoma=kratisi.num_people
+        const kostos=Number(kratisi.total_cost)
+        let proino=kratisi.breakfast
+        const cancelled=kratisi.cancelled
+        const roomNumber=kratisi.roomnumber
+        const pliromena=Number(kratisi.sumpaymentamount)
+
+
+        //https://stackoverflow.com/questions/11832914/how-to-round-to-at-most-2-decimal-places-if-necessary
+        let apomenoun=(kostos-pliromena)
+        apomenoun= +apomenoun.toFixed(2)
+
+        if(proino==false){
+            proino=''
+        }
+
+        let tipos=roomName
+
+        if(amea==true){
+            tipos= tipos+' ΑΜΕΑ'
+        }
+
+        tipos=tipos+` ${num_single_beds}_${num_double_beds}`
+        const room=rooms[mapper[tipos]]
+
+        let katastasi=''
+        if(cancelled==true){
+            katastasi='Ακυρωμένη'
+        }
+        else{
+            if(apomenoun==0){
+                katastasi='Εξοφλημένη'
+            }
+            else{
+                katastasi='Προς εξόφληση'
+            }
+        }
+
+        // ta ala domatia exoun default thea sti thalasa
+        if(roomName=='Διαμέρισμα 2 Υπνοδωματίων' || roomName=='Διαμέρισμα 1 Υπνοδωματίου'){
+
+            if(amea==true){
+                theaStiThalasa='1'
+            }
+            else{
+                if(theaStiThalasa==true){
+                    theaStiThalasa='1'
+                }
+                else{
+                    theaStiThalasa=''
+                }
+            }
+        }
+        else{
+            theaStiThalasa=''
+        }
+
+
+
+        let oxiKritiki
+        let oxipliromi
+        let notAkirosimo
+
+        if(apomenoun==0 ||cancelled==true){
+            oxipliromi='1'
+        }
+        else{
+            oxipliromi=''
+        }
+
+        let checkInDate=checkIn.split('-')[2]
+        let checkInMonth=checkIn.split('-')[1]
+        let checkInYear=checkIn.split('-')[0]
+
+        if(checkIfTenDays(checkInDate,checkInMonth,checkInYear) && cancelled!=true){
+            notAkirosimo=''
+        }
+        else{
+            notAkirosimo='1'
+        }
+
+        if(katastasi=='Εξοφλημένη' && kritikiTime(checkIn)){
+            oxiKritiki=''
+        }
+        else{
+            oxiKritiki='1'
+        }
+
+        const kratisiToDisplay={
+            room:room,
+            theaStiThalasa:theaStiThalasa,
+            checkIn:checkIn,
+            checkOut:checkOut,
+            proino:proino,
+            kostos:kostos,
+            pliromena:pliromena,
+            apomenoun:apomenoun,
+            katastasi:katastasi,
+            atoma:atoma,
+            oxiKritiki:oxiKritiki,
+            notAkirosimo:notAkirosimo,
+            oxipliromi:oxipliromi,
+            roomNumber:roomNumber
+        }
+
+        result.push(kratisiToDisplay)
+       
     }
 
-    const kratisis=[kratisi1,kratisi2]
-
-    // const a=[{a:[{a1:1,a2:2},{a1:3,a2:4}]},{a:[{a1:5,a2:6}]}]
-    // const b={a:[{a1:1,a2:2},{a1:3,a2:4}]}
-
-    // res.render('templates/kratisis', {css: [ '/kratisis.css'],  room:room,theaStiThalasa:theaStiThalasa,checkIn:checkIn,checkOut:checkOut,proino:proino,kostos:kostos,pliromena:pliromena,apomenoun:apomenoun,katastasi:katastasi,atoma:atoma})
-    res.render('templates/kratisis', {css: [ 'kratisis.css'], kratisis:kratisis})
-    // res.render('templates/t', {css: [ '/kratisis.css'], a:b,layout:false})
+    res.render('templates/kratisis', {css: [ 'kratisis.css'], kratisis:result})
 
 
 }
 
-const writeKritiki=(req,res)=>{
+async function writeKritiki(req,res){
     const kritiki=req.body.kritiki
-    const id=req.body.kratisiId
-    console.log(kritiki,id)
+    const checkIn=req.body.checkIn
+    const checkOut=req.body.checkOut
+    const roomNumber=Number(req.body.roomNumber)
+
+    const kratisiId= await userOptionsModel.getKratisiId(roomNumber,checkIn,checkOut)
+
+    // An den iparxi kritiki grapse tin. An iparxei idi antikatestise tin palia me tin nea kritiki
+
+    const existingReviewId= await userOptionsModel.findReview(kratisiId)
+
+    if(existingReviewId!=-1){
+        await userOptionsModel.updateKritiki(kritiki,existingReviewId)
+
+    }
+    else{
+        await userOptionsModel.insertKritiki(kritiki,kratisiId)
+
+    }
+
     res.redirect('/kratisis')
 }
 
-const akirosiKratisis=(req,res)=>{
-    const kratisi=req.body.kratisiId
-    console.log(kratisi)
+async function akirosiKratisis(req,res){
 
-    // ean mpori na akirothi akirose tin
+    const checkIn=req.body.checkIn
+    const checkOut=req.body.checkOut
+    const roomNumber=Number(req.body.roomNumber)
+    const kratisiId= await userOptionsModel.getKratisiId(roomNumber,checkIn,checkOut)
+
+    
+    let checkInDate=checkIn.split('-')[2]
+    let checkInMonth=checkIn.split('-')[1]
+    let checkInYear=checkIn.split('-')[0]
+
+    if(checkIfTenDays(checkInDate,checkInMonth,checkInYear)){
+        await userOptionsModel.akirosiKratisis(kratisiId)
+    }
 
     res.redirect('/kratisis')
 }
 
-const makeNextBookPayment=(req,res)=>{
-    const kratisiId=req.body.kratisiId
-    const sinolo=req.body.sinolo
-    const xrostoumeno=req.body.xrostoumeno
+async function makeNextBookPayment(req,res){
 
-    res.render('templates/nextPaymentForm', {css: [ 'paymentFormStyle.css'],js:['secondPaymentForm.js'], kratisiId:kratisiId,sinolo:sinolo,xrostoumeno:xrostoumeno})
+    const checkIn=req.body.checkIn
+    const checkOut=req.body.checkOut
+    const roomNumber=Number(req.body.roomNumber)
+
+    const kratisiId= await userOptionsModel.getKratisiId(roomNumber,checkIn,checkOut)
+
+    const result= await userOptionsModel.getPosaPliromis(kratisiId)
+
+    let sinolo=Number(result.total_cost)
+    sinolo= +sinolo.toFixed(2) 
+
+    const pliromena=Number(result.sumpaymentamount)
+
+    let xrostoumeno=(sinolo-pliromena)
+    xrostoumeno= +xrostoumeno.toFixed(2) 
+
+    req.session.sinolo=sinolo
+    req.session.pliromena=pliromena
+    req.session.kratisiId=kratisiId
+
+    res.render('templates/nextPaymentForm', {css: [ 'paymentFormStyle.css'],js:['secondPaymentForm.js'],sinolo:sinolo,xrostoumeno:xrostoumeno})
 
 }
 
-const displayNextBookPayment=(req,res)=>{
+async function displayNextBookPayment(req,res){
 
+    
     const cardHolderName=req.body.cardHolderName
     const creditCard=req.body.creditCard
     const date=req.body.date
-    const cvv=req.body.cvv
-    const kratisiId=req.body.kratisiId
-    const poso=req.body.poso
+    const cvv=Number(req.body.cvv)
+    const poso=Number(req.body.poso)
 
-    const sinolo=req.body.sinolo
-    const xrostoumeno=req.body.xrostoumeno-poso
+    const sinolo=req.session.sinolo
+    const pliromena=req.session.pliromena
+    const kratisiId=req.session.kratisiId
+    let xrostoumeno=sinolo-pliromena
+
+    const toMakeNextPayment=req.session.toMakeNextPayment
 
     let response=''
+
+
+    if(poso>xrostoumeno){
+        response='Το ποσό που πληρώνεται υπερβαίνει το χρωστούμενο'
+    }
     
     // aitima stin trapeza gia epibebaiosi tis sinalagis
-    if(true){
+    else if(await makePaymentToBank(cardHolderName,creditCard,cvv,poso)){
+        await insertPayment(kratisiId,poso)
         response='Η πληρωμή πραγματοποιήθηκε'
+        xrostoumeno=xrostoumeno-poso
+        req.session.pliromena= pliromena+poso
+
     }
     else{
-        response='Η πληρωμή απέτυχε'
+        response='Τα στοιχεία της τράπεζας είναι λανθασμένα'
     }
-    console.log(kratisiId,sinolo,xrostoumeno)
-    res.render('templates/nextPaymentForm', {css: [ 'paymentFormStyle.css'],js:['secondPaymentForm.js'], kratisiId:kratisiId,sinolo:sinolo,xrostoumeno:xrostoumeno,response:response})
+    
+    
+
+    res.render('templates/nextPaymentForm', {css: [ 'paymentFormStyle.css'],js:['secondPaymentForm.js'],sinolo:sinolo,xrostoumeno:xrostoumeno,response:response})
 
 }
 
-export {aposindesi, showKratisis,writeKritiki,akirosiKratisis,makeNextBookPayment,displayNextBookPayment}
+async function showProfile(req,res){
+    const userID=req.session.userID
+    let result= await userOptionsModel.getUserProfile(userID)
+    const first_name=result.first_name
+    const last_name=result.last_name
+    const email=result.email
+    const phonenumber=result.phonenumber
+
+    res.render('templates/profile', {css: [ 'profile.css'],js:['profile.js'], name:first_name, surname:last_name, email:email, phone:phonenumber})
+
+}
+
+async function uploadProfileImage(req,res){
+
+    const userID=req.session.userID
+    if(!req.failureImg){
+        try{
+            const imageBuffer = req.file.buffer;
+            await userOptionsModel.insertPhoto(imageBuffer,userID)
+
+        }
+        catch(err){
+            //o xristis isigage poli megalo arxio
+        }
+    }
+
+    res.redirect('/profile')
+}
+
+export {aposindesi, showKratisis,writeKritiki,akirosiKratisis,makeNextBookPayment,displayNextBookPayment,showProfile,uploadProfileImage,readImage}

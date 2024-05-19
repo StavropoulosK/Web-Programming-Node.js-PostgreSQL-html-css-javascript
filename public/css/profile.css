@@ -1,0 +1,116 @@
+
+@media  (max-width: 1100px) {
+
+    nav.flex-container{
+        display: none;
+    }
+}
+
+@media  (max-width: 600px) {
+
+    :root{
+      font-size: 0.8rem;
+    }
+
+    div.profileField{
+        flex-direction: column;
+    }
+
+    .profile *{
+        margin-top:0;
+    }
+
+    #profileImage{
+        margin-top:2em;
+        margin-left:1.4em;
+    }
+
+  }
+
+
+body {
+
+    margin:0;
+    padding: 0;
+    
+}
+
+
+main{
+    display: flex;
+    flex: row;
+    min-height: 110vh;
+}
+
+
+.flex-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    border-right: 1px solid #cccccc; /* Adjust border styling */
+    margin-right:2em;
+
+  }
+
+  
+.sticky-container {
+    position: sticky;
+    top: 8em; /* Adjust the distance from the top as needed */
+    padding: 10px;
+    width:6em;
+}
+
+.sticky-container a {
+    display: block; /* Make the link fill the container */
+    text-decoration: none; /* Remove default link underline */
+    color: #333333; /* Adjust link color */
+}
+
+.sticky-container a {
+    margin-bottom:2em;
+    }
+
+
+
+div.profile{
+    position: relative;
+    top:6.8rem;
+    font-size:1.3em;
+}
+
+
+div.profileField{
+    display:flex;
+}
+
+div.profileField *{
+    margin-left:1em;
+}
+
+.profile *.label{
+    min-width: 6em;
+}
+
+#secLast{
+    margin-bottom:1em;;
+}
+
+#profileImage{
+display:none;
+}
+
+.custom-file-upload {
+    width:10.2em;
+    display: inline-block;
+    padding: 10px 20px;
+    cursor: pointer;
+	background-color: rgb(98, 98, 28);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    border-radius: 3%;;
+    margin-left:1.5em !important;
+}
+

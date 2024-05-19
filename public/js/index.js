@@ -52,6 +52,9 @@ function changeImage(event){
 
 }
 
+document.addEventListener('DOMContentLoaded',(ev)=>{
+    alert('The whole website was created for a learning project and nothing is real, the hotel doesnt exist and the reservations are imaginery.Όλη η ιστοσελίδα δημιουργήθηκε στα πλαίσια ενός project, όλα είναι φανταστικά, το ξενοδοχείο δεν υπάρχει και ούτε γίνονται πραγματικά κρατήσεις.')
+})
 
 document.querySelectorAll("#enlarged-image-container .arrow").forEach(el => el.addEventListener("click", changeImage));
 

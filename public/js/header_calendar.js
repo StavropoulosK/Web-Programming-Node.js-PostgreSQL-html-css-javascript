@@ -230,6 +230,10 @@ async function selectDates(ev){
     
             const firstDateSpan=firstDateElem.querySelector('span')
             let firstDate=Number(firstDateSpan.textContent)
+
+           if(firstDate==secondDate){
+                return
+           }
     
             if(firstDate>secondDate){
                 // swap
