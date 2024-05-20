@@ -10,7 +10,7 @@ async function getProfileImage(userId){
         return result.rows[0].encode
     }
     catch (err) {
-        console.error(err)
+        throw err
     }
 }
 
@@ -28,7 +28,7 @@ async function cancelDueReservations(dayOrio){
         await client.release()
     }
     catch (err) {
-        console.error(err)
+        throw err
     }
 }
 

@@ -16,7 +16,7 @@ async function getKratisis(userId){
         return res.rows
     }
     catch (err) {
-        console.error(err)
+        throw err
     }
 }
 
@@ -31,7 +31,7 @@ async function getKratisiId(roomNumber,checkIn,checkOut){
         return res.rows[0].reservation_id
     }
     catch (err) {
-        console.error(err)
+        throw err
     }
 }
 
@@ -44,7 +44,7 @@ async function insertKritiki(kritiki,kratisiId){
         await client.release()
     }
     catch (err) {
-        console.error(err)
+        throw err
     }
 }
 
@@ -63,7 +63,7 @@ async function findReview(kratisiId){
         }
     }
     catch (err) {
-        console.error(err)
+        throw err
     }
 }
 
@@ -76,7 +76,7 @@ async function updateKritiki(kritiki,existingReviewId){
         await client.release()
     }
     catch (err) {
-        console.error(err)
+        throw err
     }
 }
 
@@ -89,7 +89,7 @@ async function akirosiKratisis(kratisiId){
         await client.release()
     }
     catch (err) {
-        console.error(err)
+        throw err
     }
 }
 
@@ -106,7 +106,7 @@ async function getPosaPliromis(kratisiId){
         return res.rows[0]
     }
     catch (err) {
-        console.error(err)
+        throw err
     }
 }
 
@@ -120,7 +120,7 @@ async function getUserProfile(userID){
         return res.rows[0]
     }
     catch (err) {
-        console.error(err)
+        throw err
     }
 }
 
@@ -133,7 +133,7 @@ async function insertPhoto(imageBuffer,userId){
         await client.release();
     }
     catch (err) {
-        console.error(err)
+        throw err
     }
 }
 

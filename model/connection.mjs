@@ -5,18 +5,18 @@ dotenv.config();
 
 const pool = new pg.Pool({
     // flyio
-    user: 'postgres', ///username,x
-    host: 'hoteldb.flycast',
-    database: 'hoteldb',
-    password: process.env.password, /// password,
-    port: 5432
+    // user: 'postgres', ///username,x
+    // host: 'hoteldb.flycast',
+    // database: 'hoteldb',
+    // password: process.env.password, /// password,
+    // port: 5432
 
     // local
-    // host:process.env.host,
-    // user:process.env.user,
-    // password:process.env.password,
-    // port:process.env.port,
-    // database:process.env.database
+    host:process.env.host,
+    user:process.env.user,
+    password:process.env.password,
+    port:process.env.port,
+    database:process.env.database
 })
 
 async function connect() {
@@ -24,8 +24,10 @@ async function connect() {
         const client = await pool.connect();
         return client
     }
-    catch (e) {
-        console.error(`Failed to connect ${e}`)
+    catch (err) {
+        
+        console.error(`Failed to connect ${err}`)
+        throw err
     }
 
 }

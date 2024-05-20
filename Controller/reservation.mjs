@@ -1,71 +1,82 @@
 import * as reservationModel from '../model/reservation.mjs';
 
-async function datesNotAvailable(req,res){
-    const year=req.params.year
-    const month=req.params.month
-    const diamorfosi=req.params.diamorfosi
-    const amea=req.params.amea
-    const roomType=req.params.roomName
+async function datesNotAvailable(req,res,next){
 
-    const map={
-        '4_imidipla':[0 ,4],
-        '1_diplo_2_mona':[2 ,1],
-        '4_mona':[4,0],
-        '1_diplo':[0,1],
-        '2_mona':[2,0]
-    }
-    const firstDateOfMonth=year+'-'+month+'-'+'01'
-    const lastDateOfMonth=getLastDate(year,month)
-    
-    const singleBeds=map[diamorfosi][0]
-    const doubleBeds=map[diamorfosi][1]
+    try{
+        const year=req.params.year
+        const month=req.params.month
+        const diamorfosi=req.params.diamorfosi
+        const amea=req.params.amea
+        const roomType=req.params.roomName
 
-    const klismenes= await reservationModel.datesNotAvailable(firstDateOfMonth,lastDateOfMonth,singleBeds,doubleBeds,roomType,amea)
+        const map={
+            '4_imidipla':[0 ,4],
+            '1_diplo_2_mona':[2 ,1],
+            '4_mona':[4,0],
+            '1_diplo':[0,1],
+            '2_mona':[2,0]
+        }
+        const firstDateOfMonth=year+'-'+month+'-'+'01'
+        const lastDateOfMonth=getLastDate(year,month)
+        
+        const singleBeds=map[diamorfosi][0]
+        const doubleBeds=map[diamorfosi][1]
 
-    let result=[]
-    for(let t=0;t<klismenes.length;t++){
-        const imer=Number(klismenes[t].i.split('-')[2])
-        result.push(imer)
-    }
+        const klismenes= await reservationModel.datesNotAvailable(firstDateOfMonth,lastDateOfMonth,singleBeds,doubleBeds,roomType,amea)
 
-    // Epestrepse tis imerominies pou gia to sigkekrimeno tipo domatiou gia ton sigkekrimeno mina einai ola piasmena
+        let result=[]
+        for(let t=0;t<klismenes.length;t++){
+            const imer=Number(klismenes[t].i.split('-')[2])
+            result.push(imer)
+        }
 
-    res.json({ klismenes: result });
+        // Epestrepse tis imerominies pou gia to sigkekrimeno tipo domatiou gia ton sigkekrimeno mina einai ola piasmena
+
+        res.json({ klismenes: result });
+    }catch(error){
+        next(error)
+    }    
 
 }
 
-async function checkIfRoomTypeIsAvailable(req,res){
-    const roomType=req.params.roomName
-    const amea=req.params.amea
-    const diamorfosi=req.params.diamorfosi
-    const checkInDate=req.params.checkInDate
-    const checkInMonth=req.params.checkInMonth
-    const checkInYear=req.params.checkInYear
-    const checkOutDate=req.params.checkOutDate
-    const checkOutMonth=req.params.checkOutMonth
-    const checkOutYear=req.params.checkOutYear
+async function checkIfRoomTypeIsAvailable(req,res,next){
+    try{
+        const roomType=req.params.roomName
+        const amea=req.params.amea
+        const diamorfosi=req.params.diamorfosi
+        const checkInDate=req.params.checkInDate
+        const checkInMonth=req.params.checkInMonth
+        const checkInYear=req.params.checkInYear
+        const checkOutDate=req.params.checkOutDate
+        const checkOutMonth=req.params.checkOutMonth
+        const checkOutYear=req.params.checkOutYear
 
-    const map={
-        '4_imidipla':[0 ,4],
-        '1_diplo_2_mona':[2 ,1],
-        '4_mona':[4,0],
-        '1_diplo':[0,1],
-        '2_mona':[2,0]
+        const map={
+            '4_imidipla':[0 ,4],
+            '1_diplo_2_mona':[2 ,1],
+            '4_mona':[4,0],
+            '1_diplo':[0,1],
+            '2_mona':[2,0]
+        }
+
+        const firstDate=checkInYear+'-'+checkInMonth+'-'+checkInDate
+        const lastDate=checkOutYear+'-'+checkOutMonth+'-'+checkOutDate
+        
+        const singleBeds=map[diamorfosi][0]
+        const doubleBeds=map[diamorfosi][1]
+        
+        const klismenes= await reservationModel.datesNotAvailable(firstDate,lastDate,singleBeds,doubleBeds,roomType,amea)
+
+        const result=klismenes.length==0
+
+        // Epestrepse true i false gia to an to domatio einai diathesimo 
+
+        res.json({result:result})
+
+    }catch(error){
+        next(error)
     }
-
-    const firstDate=checkInYear+'-'+checkInMonth+'-'+checkInDate
-    const lastDate=checkOutYear+'-'+checkOutMonth+'-'+checkOutDate
     
-    const singleBeds=map[diamorfosi][0]
-    const doubleBeds=map[diamorfosi][1]
-    
-    const klismenes= await reservationModel.datesNotAvailable(firstDate,lastDate,singleBeds,doubleBeds,roomType,amea)
-
-    const result=klismenes.length==0
-
-    // Epestrepse true i false gia to an to domatio einai diathesimo 
-
-    res.json({result:result})
 }
 
 function getLastDate(year, month) {
@@ -157,21 +168,25 @@ export function getTimes(times,firstDate,lastDate){
 
 }
 
-async function returnTimesDomatiou(req,res){
-    const roomType=req.params.roomName
-    const year=req.params.currentCalendarYear
-    const month=req.params.currentCalendarMonth
-    
-    const firstDate=year+'-'+month+'-'+'01'
-    const lastDate=getLastDate(year,month)
+async function returnTimesDomatiou(req,res,next){
+    try{
+        const roomType=req.params.roomName
+        const year=req.params.currentCalendarYear
+        const month=req.params.currentCalendarMonth
+        
+        const firstDate=year+'-'+month+'-'+'01'
+        const lastDate=getLastDate(year,month)
 
-    
-    
-    const times=await reservationModel.getTimesDomatiou(roomType,firstDate,lastDate)
-    
-    let result=getTimes(times,firstDate,lastDate)
+        
+        
+        const times=await reservationModel.getTimesDomatiou(roomType,firstDate,lastDate)
+        
+        let result=getTimes(times,firstDate,lastDate)
 
-    res.json({times:result})
+        res.json({times:result})
+    }catch(error){
+        next(error)
+    }
 }
 
 function getTotalCost(arr){
@@ -356,274 +371,196 @@ function removeOverlappingElements(array) {
 
 
 
-async function confirmReservation(req,res){
-    const roomType=req.body.roomName
-    const amea=req.body.amea
-    const atoma=req.body.atoma
-    const diamorfosi=req.body.diamorfosi
-    const checkInDate=req.body.checkInDate
-    const checkInMonth=req.body.checkInMonth
-    const checkInYear=req.body.checkInYear
-    const checkOutDate=req.body.checkOutDate
-    const checkOutMonth=req.body.checkOutMonth
-    const checkOutYear=req.body.checkOutYear
-    
-    const checkIn= checkInYear+'-'+checkInMonth+'-'+checkInDate
-    const checkOut= checkOutYear+'-'+checkOutMonth+'-'+checkOutDate
+async function confirmReservation(req,res,next){
+    try{
+        const roomType=req.body.roomName
+        const amea=req.body.amea
+        const atoma=req.body.atoma
+        const diamorfosi=req.body.diamorfosi
+        const checkInDate=req.body.checkInDate
+        const checkInMonth=req.body.checkInMonth
+        const checkInYear=req.body.checkInYear
+        const checkOutDate=req.body.checkOutDate
+        const checkOutMonth=req.body.checkOutMonth
+        const checkOutYear=req.body.checkOutYear
+        
+        const checkIn= checkInYear+'-'+checkInMonth+'-'+checkInDate
+        const checkOut= checkOutYear+'-'+checkOutMonth+'-'+checkOutDate
 
-    let tipos=roomType
+        let tipos=roomType
 
-    if(amea=='true'){
-        tipos+=' ΑΜΕΑ'
-    }
-    tipos +=' '+ diamorfosi
-
-    // Kathe domatio kathorizetai apo ton tipo tou, tin diamorfosi ton krebation, kai an einai gia AmeA
-
-    let mapper={
-        'Υπερπολυτελή Σουίτα 4_imidipla':'yperpoliteli',
-        'Deluxe Σουίτα 2 Υπνοδωματίων 1_diplo_2_mona':'deluxe2_a',       
-        'Deluxe Σουίτα 2 Υπνοδωματίων 4_mona':'deluxe2_b',       
-        'Deluxe Σουίτα 2 Υπνοδωματίων ΑΜΕΑ 1_diplo_2_mona':'deluxe2_Amea_1',
-        'Deluxe Σουίτα 2 Υπνοδωματίων ΑΜΕΑ 4_mona':'deluxe2_Amea_2',
-        'Deluxe Σουίτα 1 Υπνοδωματίου 2_mona':'deluxe1_1',
-        'Deluxe Σουίτα 1 Υπνοδωματίου 1_diplo':'deluxe1_2',
-
-        'Διαμέρισμα 2 Υπνοδωματίων 1_diplo_2_mona':'simple2_1',       
-        'Διαμέρισμα 2 Υπνοδωματίων 4_mona':'simple2_3',       
-        'Διαμέρισμα 2 Υπνοδωματίων ΑΜΕΑ 1_diplo_2_mona':'simple2_Amea1',
-        'Διαμέρισμα 2 Υπνοδωματίων ΑΜΕΑ 4_mona':'simple2_Amea2',
-        'Διαμέρισμα 1 Υπνοδωματίου 2_mona':'simple1_1',
-    }
-
-    const rooms={
-
-        yperpoliteli:{
-            className:"yperpoliteli",
-            img:'/resources/room_photos/yperpoliteli/dex_b.jpg',
-            titlos:'Υπερπολυτελή Σουίτα',
-            amenity:['Ζακούζι','Ιαπωνικές Τουαλέτες','Θέα στη Θάλασσα'],
-            tetragonika:150,
-            krebati:[{onoma:'4 Ημίδιπλα Κρεβάτια',ikonaSrc:'/resources/icons/double_bed.png'}],
-        },
-        deluxe2_a:{
-            className:"deluxe2_a",
-            img:'/resources/room_photos/deluxe_2_room/break-649351_1280.jpg',
-            titlos:'Deluxe 2 Υπνοδωματια',
-            amenity:['Ιαπωνικές Τουαλέτες','Μοντέρνος σχεδιασμός','Θέα στη Θάλασσα'],
-            tetragonika:50,
-            krebati:[{onoma:'1 Διπλό Κρεβάτι',ikonaSrc:'/resources/icons/double_bed.png'},
-                     {onoma:'2 Μονά Κρεβάτια',ikonaSrc:'/resources/icons/single_bed.png'}]
-        },
-        deluxe2_b:{
-            className:"deluxe2_b",
-            img:'/resources/room_photos/deluxe_2_room/break-649351_1280.jpg',
-            titlos:'Deluxe 2 Υπνοδωματια',
-            amenity:['Ιαπωνικές Τουαλέτες','Μοντέρνος σχεδιασμός','Θέα στη Θάλασσα'],
-            tetragonika:50,
-            krebati:[{onoma:' 4 Μονά Κρεβάτια',ikonaSrc:'/resources/icons/single_bed.png'}]
-        },
-        deluxe2_Amea_1:{
-            className:"deluxe2_Amea_1",
-            img:'/resources/room_photos/deluxe_2_room/break-649351_1280.jpg',
-            titlos:'Deluxe 2 Υπνοδωματια ΑΜΕΑ',
-            amenity:['Ιαπωνικές Τουαλέτες','Μοντέρνος σχεδιασμός','Θέα στη Θάλασσα'],
-            tetragonika:50,
-            krebati:[{onoma:'1 Διπλό Κρεβάτι',ikonaSrc:'/resources/icons/double_bed.png'},
-                     {onoma:'2 Μονά Κρεβάτια',ikonaSrc:'/resources/icons/single_bed.png'}]
-        },
-        deluxe2_Amea_2:{
-            className:"deluxe2_Amea_2",
-            img:'/resources/room_photos/deluxe_2_room/break-649351_1280.jpg',
-            titlos:'Deluxe 2 Υπνοδωματια ΑΜΕΑ',
-            amenity:['Ιαπωνικές Τουαλέτες','Μοντέρνος σχεδιασμός','Θέα στη Θάλασσα'],
-            tetragonika:50,
-            krebati:[{onoma:'4 Μονά Κρεβάτια',ikonaSrc:'/resources/icons/single_bed.png'}]
-        },
-        deluxe1_1:{
-            className:"deluxe1_1",
-            img:'/resources/room_photos/deluxe_1_room/del1_2.jpg',
-            titlos:'Deluxe 1 Υπνοδωματιο',
-            amenity:['Ιαπωνικές Τουαλέτες','Μοντέρνος σχεδιασμός','Θέα στη Θάλασσα'],
-            tetragonika:40,
-            krebati:[{onoma:'2 Μονά Κρεβάτια',ikonaSrc:'/resources/icons/single_bed.png'}]
-        },
-        deluxe1_2:{
-            className:"deluxe1_1",
-            img:'/resources/room_photos/deluxe_1_room/del1_2.jpg',
-            titlos:'Deluxe 1 Υπνοδωματιο',
-            amenity:['Ιαπωνικές Τουαλέτες','Μοντέρνος σχεδιασμός','Θέα στη Θάλασσα'],
-            tetragonika:40,
-            krebati:[{onoma:'1 Διπλό Κρεβάτι',ikonaSrc:'/resources/icons/double_bed.png'}]
-        },
-        simple2_1:{
-            className:"simple2_1",
-            img:'/resources/room_photos/simple_2_room/apartment_2_room.jpg',
-            titlos:'Διαμέρισμα 2 Υπνοδωματίων',
-            amenity:['Νησιώτικη αρχιτεκτονική','Κλιματιστικό'],
-            tetragonika:35,
-            krebati:[{onoma:'1 Διπλό Κρεβάτι',ikonaSrc:'/resources/icons/double_bed.png'},
-                     {onoma:'2 Μονά Κρεβάτια',ikonaSrc:'/resources/icons/single_bed.png'}]
-        },
-        simple2_3:{
-            className:"simple2_3",
-            img:'/resources/room_photos/simple_2_room/balcony.jpg',
-            titlos:'Διαμέρισμα 2 Υπνοδωματίων',
-            amenity:['Νησιώτικη αρχιτεκτονική','Κλιματιστικό'],
-            tetragonika:35,
-            krebati:[{onoma:' 4 Μονά Κρεβάτια',ikonaSrc:'/resources/icons/single_bed.png'}]
-        },
-        simple2_Amea1:{
-            className:"simple2_Amea1",
-            img:'/resources/room_photos/simple_2_room/balcony.jpg',
-            titlos:'Διαμέρισμα 2 Υπνοδωματίων ΑΜΕΑ',
-            amenity:['Νησιώτικη αρχιτεκτονική','Κλιματιστικό'],
-            tetragonika:35,
-            krebati:[{onoma:'1 Διπλό Κρεβάτι',ikonaSrc:'/resources/icons/double_bed.png'},
-                     {onoma:'2 Μονά Κρεβάτια',ikonaSrc:'/resources/icons/single_bed.png'}]
-        },
-        simple2_Amea2:{
-            className:"simple2_Amea2",
-            img:'/resources/room_photos/simple_2_room/balcony.jpg',
-            titlos:'Διαμέρισμα 2 Υπνοδωματίων ΑΜΕΑ',
-            amenity:['Νησιώτικη αρχιτεκτονική','Κλιματιστικό'],
-            tetragonika:35,
-            krebati:[{onoma:'4 Μονά Κρεβάτια',ikonaSrc:'/resources/icons/single_bed.png'}]
-        },
-        simple1_1:{
-            className:"simple1_1",
-            img:'/resources/room_photos/simple_1_room/living-room-8539168_1280.jpg',
-            titlos:'Διαμέρισμα 1 Υπνοδωματίου',
-            amenity:['Νησιώτικη αρχιτεκτονική','Κλιματιστικό'],
-            tetragonika:30,
-            krebati:[{onoma:'2 Μονά Κρεβάτια',ikonaSrc:'/resources/icons/single_bed.png'}]
+        if(amea=='true'){
+            tipos+=' ΑΜΕΑ'
         }
-    }
+        tipos +=' '+ diamorfosi
 
-    const room=rooms[mapper[tipos]]
+        // Kathe domatio kathorizetai apo ton tipo tou, tin diamorfosi ton krebation, kai an einai gia AmeA
 
-    
+        let mapper={
+            'Υπερπολυτελή Σουίτα 4_imidipla':'yperpoliteli',
+            'Deluxe Σουίτα 2 Υπνοδωματίων 1_diplo_2_mona':'deluxe2_a',       
+            'Deluxe Σουίτα 2 Υπνοδωματίων 4_mona':'deluxe2_b',       
+            'Deluxe Σουίτα 2 Υπνοδωματίων ΑΜΕΑ 1_diplo_2_mona':'deluxe2_Amea_1',
+            'Deluxe Σουίτα 2 Υπνοδωματίων ΑΜΕΑ 4_mona':'deluxe2_Amea_2',
+            'Deluxe Σουίτα 1 Υπνοδωματίου 2_mona':'deluxe1_1',
+            'Deluxe Σουίτα 1 Υπνοδωματίου 1_diplo':'deluxe1_2',
 
-    const bedroomMap={
-        '4_imidipla':[0 ,4],
-        '1_diplo_2_mona':[2 ,1],
-        '4_mona':[4,0],
-        '1_diplo':[0,1],
-        '2_mona':[2,0]
-    }
+            'Διαμέρισμα 2 Υπνοδωματίων 1_diplo_2_mona':'simple2_1',       
+            'Διαμέρισμα 2 Υπνοδωματίων 4_mona':'simple2_3',       
+            'Διαμέρισμα 2 Υπνοδωματίων ΑΜΕΑ 1_diplo_2_mona':'simple2_Amea1',
+            'Διαμέρισμα 2 Υπνοδωματίων ΑΜΕΑ 4_mona':'simple2_Amea2',
+            'Διαμέρισμα 1 Υπνοδωματίου 2_mona':'simple1_1',
+        }
 
-    const singleBeds=bedroomMap[diamorfosi][0]
-    const doubleBeds=bedroomMap[diamorfosi][1]
+        const rooms={
 
-    const availableRooms= await reservationModel.getRoomsThatAreAvailableForAllDates(roomType,amea,singleBeds,doubleBeds,checkIn,checkOut)
+            yperpoliteli:{
+                className:"yperpoliteli",
+                img:'/resources/room_photos/yperpoliteli/dex_b.jpg',
+                titlos:'Υπερπολυτελή Σουίτα',
+                amenity:['Ζακούζι','Ιαπωνικές Τουαλέτες','Θέα στη Θάλασσα'],
+                tetragonika:150,
+                krebati:[{onoma:'4 Ημίδιπλα Κρεβάτια',ikonaSrc:'/resources/icons/double_bed.png'}],
+            },
+            deluxe2_a:{
+                className:"deluxe2_a",
+                img:'/resources/room_photos/deluxe_2_room/break-649351_1280.jpg',
+                titlos:'Deluxe 2 Υπνοδωματια',
+                amenity:['Ιαπωνικές Τουαλέτες','Μοντέρνος σχεδιασμός','Θέα στη Θάλασσα'],
+                tetragonika:50,
+                krebati:[{onoma:'1 Διπλό Κρεβάτι',ikonaSrc:'/resources/icons/double_bed.png'},
+                        {onoma:'2 Μονά Κρεβάτια',ikonaSrc:'/resources/icons/single_bed.png'}]
+            },
+            deluxe2_b:{
+                className:"deluxe2_b",
+                img:'/resources/room_photos/deluxe_2_room/break-649351_1280.jpg',
+                titlos:'Deluxe 2 Υπνοδωματια',
+                amenity:['Ιαπωνικές Τουαλέτες','Μοντέρνος σχεδιασμός','Θέα στη Θάλασσα'],
+                tetragonika:50,
+                krebati:[{onoma:' 4 Μονά Κρεβάτια',ikonaSrc:'/resources/icons/single_bed.png'}]
+            },
+            deluxe2_Amea_1:{
+                className:"deluxe2_Amea_1",
+                img:'/resources/room_photos/deluxe_2_room/break-649351_1280.jpg',
+                titlos:'Deluxe 2 Υπνοδωματια ΑΜΕΑ',
+                amenity:['Ιαπωνικές Τουαλέτες','Μοντέρνος σχεδιασμός','Θέα στη Θάλασσα'],
+                tetragonika:50,
+                krebati:[{onoma:'1 Διπλό Κρεβάτι',ikonaSrc:'/resources/icons/double_bed.png'},
+                        {onoma:'2 Μονά Κρεβάτια',ikonaSrc:'/resources/icons/single_bed.png'}]
+            },
+            deluxe2_Amea_2:{
+                className:"deluxe2_Amea_2",
+                img:'/resources/room_photos/deluxe_2_room/break-649351_1280.jpg',
+                titlos:'Deluxe 2 Υπνοδωματια ΑΜΕΑ',
+                amenity:['Ιαπωνικές Τουαλέτες','Μοντέρνος σχεδιασμός','Θέα στη Θάλασσα'],
+                tetragonika:50,
+                krebati:[{onoma:'4 Μονά Κρεβάτια',ikonaSrc:'/resources/icons/single_bed.png'}]
+            },
+            deluxe1_1:{
+                className:"deluxe1_1",
+                img:'/resources/room_photos/deluxe_1_room/del1_2.jpg',
+                titlos:'Deluxe 1 Υπνοδωματιο',
+                amenity:['Ιαπωνικές Τουαλέτες','Μοντέρνος σχεδιασμός','Θέα στη Θάλασσα'],
+                tetragonika:40,
+                krebati:[{onoma:'2 Μονά Κρεβάτια',ikonaSrc:'/resources/icons/single_bed.png'}]
+            },
+            deluxe1_2:{
+                className:"deluxe1_1",
+                img:'/resources/room_photos/deluxe_1_room/del1_2.jpg',
+                titlos:'Deluxe 1 Υπνοδωματιο',
+                amenity:['Ιαπωνικές Τουαλέτες','Μοντέρνος σχεδιασμός','Θέα στη Θάλασσα'],
+                tetragonika:40,
+                krebati:[{onoma:'1 Διπλό Κρεβάτι',ikonaSrc:'/resources/icons/double_bed.png'}]
+            },
+            simple2_1:{
+                className:"simple2_1",
+                img:'/resources/room_photos/simple_2_room/apartment_2_room.jpg',
+                titlos:'Διαμέρισμα 2 Υπνοδωματίων',
+                amenity:['Νησιώτικη αρχιτεκτονική','Κλιματιστικό'],
+                tetragonika:35,
+                krebati:[{onoma:'1 Διπλό Κρεβάτι',ikonaSrc:'/resources/icons/double_bed.png'},
+                        {onoma:'2 Μονά Κρεβάτια',ikonaSrc:'/resources/icons/single_bed.png'}]
+            },
+            simple2_3:{
+                className:"simple2_3",
+                img:'/resources/room_photos/simple_2_room/balcony.jpg',
+                titlos:'Διαμέρισμα 2 Υπνοδωματίων',
+                amenity:['Νησιώτικη αρχιτεκτονική','Κλιματιστικό'],
+                tetragonika:35,
+                krebati:[{onoma:' 4 Μονά Κρεβάτια',ikonaSrc:'/resources/icons/single_bed.png'}]
+            },
+            simple2_Amea1:{
+                className:"simple2_Amea1",
+                img:'/resources/room_photos/simple_2_room/balcony.jpg',
+                titlos:'Διαμέρισμα 2 Υπνοδωματίων ΑΜΕΑ',
+                amenity:['Νησιώτικη αρχιτεκτονική','Κλιματιστικό'],
+                tetragonika:35,
+                krebati:[{onoma:'1 Διπλό Κρεβάτι',ikonaSrc:'/resources/icons/double_bed.png'},
+                        {onoma:'2 Μονά Κρεβάτια',ikonaSrc:'/resources/icons/single_bed.png'}]
+            },
+            simple2_Amea2:{
+                className:"simple2_Amea2",
+                img:'/resources/room_photos/simple_2_room/balcony.jpg',
+                titlos:'Διαμέρισμα 2 Υπνοδωματίων ΑΜΕΑ',
+                amenity:['Νησιώτικη αρχιτεκτονική','Κλιματιστικό'],
+                tetragonika:35,
+                krebati:[{onoma:'4 Μονά Κρεβάτια',ikonaSrc:'/resources/icons/single_bed.png'}]
+            },
+            simple1_1:{
+                className:"simple1_1",
+                img:'/resources/room_photos/simple_1_room/living-room-8539168_1280.jpg',
+                titlos:'Διαμέρισμα 1 Υπνοδωματίου',
+                amenity:['Νησιώτικη αρχιτεκτονική','Κλιματιστικό'],
+                tetragonika:30,
+                krebati:[{onoma:'2 Μονά Κρεβάτια',ikonaSrc:'/resources/icons/single_bed.png'}]
+            }
+        }
 
-    
-    // const reservation={
-    //     roomName:roomType,
-    //     amea:amea,
-    //     atoma:atoma,
-    //     diamorfosi:diamorfosi,
-    //     checkInDate:checkInDate,
-    //     checkInMonth:checkInMonth,
-    //     checkInYear:checkInYear,
-    //     checkOutDate:checkOutDate,
-    //     checkOutMonth:checkOutMonth,
-    //     checkOutYear:checkOutYear,
-    //     kostos:kostos,
-    //     theaStiThalasa:theaStiThalasa
-    // }
+        const room=rooms[mapper[tipos]]
 
-    
-
-
-    let kratisis=[]
-    let sinafis=''
-
-
-
-
-    if(availableRooms.length!=0){
         
 
-        let theaStiThalasa=''
-
-        if(roomType=='Διαμέρισμα 2 Υπνοδωματίων' || roomType=='Διαμέρισμα 1 Υπνοδωματίου'){
-            // Elegxos an iparxi domatio me thea stin thalasa apo tis katigories pou den exoun default thea stin thalasa
-            if(amea=='true'){
-                theaStiThalasa='true'
-            }
-            else{
-                for(let i=0;i<availableRooms.length;i++){
-                    if(availableRooms[i].sea_view==true){
-                        theaStiThalasa='true'
-                        break;
-
-                    }
-                }
-            }
-
+        const bedroomMap={
+            '4_imidipla':[0 ,4],
+            '1_diplo_2_mona':[2 ,1],
+            '4_mona':[4,0],
+            '1_diplo':[0,1],
+            '2_mona':[2,0]
         }
 
-        // console.log(availableRooms)
+        const singleBeds=bedroomMap[diamorfosi][0]
+        const doubleBeds=bedroomMap[diamorfosi][1]
 
-        const diathesima=availableRooms.length
+        const availableRooms= await reservationModel.getRoomsThatAreAvailableForAllDates(roomType,amea,singleBeds,doubleBeds,checkIn,checkOut)
 
-        const timesTemp=await reservationModel.getTimesDomatiou(roomType,checkIn,checkOut)
-        const times= getTimes(timesTemp,checkIn,checkOut,timesTemp)
+        
+        // const reservation={
+        //     roomName:roomType,
+        //     amea:amea,
+        //     atoma:atoma,
+        //     diamorfosi:diamorfosi,
+        //     checkInDate:checkInDate,
+        //     checkInMonth:checkInMonth,
+        //     checkInYear:checkInYear,
+        //     checkOutDate:checkOutDate,
+        //     checkOutMonth:checkOutMonth,
+        //     checkOutYear:checkOutYear,
+        //     kostos:kostos,
+        //     theaStiThalasa:theaStiThalasa
+        // }
 
-
-        // o pelatis den plironi gia tin imerominia pou kani check_out
-        times[times.length-1]=0
         
 
-        let dates = generateDates(checkIn, checkOut);
 
-        // let imerominiesTimes=[{imerominia:'21/04/23',timi:20,klasi:"d1"},{imerominia:'21/04/23',timi:30,klasi:"d2"},{imerominia:'21/04/23',timi:40,klasi:"d3"},{imerominia:'21/04/23',timi:50,klasi:"d4"},{imerominia:'21/04/23',timi:26,klasi:"d5"}]
-        let imerominiesTimes=getImerominiesTimes(dates,times)
-        const kostos=getTotalCost(times)
-
-        let reservation={
-            roomName:roomType,
-            amea:amea,
-            atoma:atoma,
-            diamorfosi:diamorfosi,
-        }
-
-        reservation.checkInDate=checkInDate
-        reservation.checkInMonth=checkInMonth
-        reservation.checkInYear=checkInYear
-        reservation.checkOutDate=checkOutDate
-        reservation.checkOutMonth=checkOutMonth
-        reservation.checkOutYear=checkOutYear
-        reservation.kostos=kostos
-        reservation.theaStiThalasa=theaStiThalasa
-
-        kratisis=[{room:room,reservation:reservation,diathesima:diathesima,times:imerominiesTimes,checkIn:checkIn,checkOut:checkOut,kostos:kostos}]
-
-    }
-
-    else{
-        // Den iparxi kanena domatio diathesimo sinexomena apo checkIn mexri checkOut.
-
-        sinafis='1'
- 
-        const reservedDatesTemp=await reservationModel.getReservedDates(roomType,amea,singleBeds,doubleBeds,checkIn,checkOut)
-        const reservedDates=formatDates(reservedDatesTemp)
-        const freeDates=getFreeDates(reservedDates,checkIn,checkOut)
-        const totalDates=getTotalDates(freeDates)
-        const freeDatesNoOverlap=removeOverlappingElements(totalDates)
-        for(let i=0;i<freeDatesNoOverlap.length;i++){
-
-            let reservation={
-                roomName:roomType,
-                amea:amea,
-                atoma:atoma,
-                diamorfosi:diamorfosi,
-            }
+        let kratisis=[]
+        let sinafis=''
 
 
-            const check_in=freeDatesNoOverlap[i].start
-            const checkOut=freeDatesNoOverlap[i].end
+
+
+        if(availableRooms.length!=0){
+            
+
             let theaStiThalasa=''
 
             if(roomType=='Διαμέρισμα 2 Υπνοδωματίων' || roomType=='Διαμέρισμα 1 Υπνοδωματίου'){
@@ -632,73 +569,149 @@ async function confirmReservation(req,res){
                     theaStiThalasa='true'
                 }
                 else{
-                    
-                    for(let i=0;i<freeDates.length  && theaStiThalasa=='';i++){
-                        if(freeDates[i].sea_view==true){
-                            let dates= freeDates[i].freeDates
-                            for(let j=0;j<dates.length && theaStiThalasa=='';j++){
-                                let dayStart=dates[j].start
-                                let dayEnd=dates[j].end
-                                if(dayStart==check_in  && dayEnd==checkOut){
-                                    theaStiThalasa='true'
+                    for(let i=0;i<availableRooms.length;i++){
+                        if(availableRooms[i].sea_view==true){
+                            theaStiThalasa='true'
+                            break;
+
+                        }
+                    }
+                }
+
+            }
+
+            // console.log(availableRooms)
+
+            const diathesima=availableRooms.length
+
+            const timesTemp=await reservationModel.getTimesDomatiou(roomType,checkIn,checkOut)
+            const times= getTimes(timesTemp,checkIn,checkOut,timesTemp)
+
+
+            // o pelatis den plironi gia tin imerominia pou kani check_out
+            times[times.length-1]=0
+            
+
+            let dates = generateDates(checkIn, checkOut);
+
+            // let imerominiesTimes=[{imerominia:'21/04/23',timi:20,klasi:"d1"},{imerominia:'21/04/23',timi:30,klasi:"d2"},{imerominia:'21/04/23',timi:40,klasi:"d3"},{imerominia:'21/04/23',timi:50,klasi:"d4"},{imerominia:'21/04/23',timi:26,klasi:"d5"}]
+            let imerominiesTimes=getImerominiesTimes(dates,times)
+            const kostos=getTotalCost(times)
+
+            let reservation={
+                roomName:roomType,
+                amea:amea,
+                atoma:atoma,
+                diamorfosi:diamorfosi,
+            }
+
+            reservation.checkInDate=checkInDate
+            reservation.checkInMonth=checkInMonth
+            reservation.checkInYear=checkInYear
+            reservation.checkOutDate=checkOutDate
+            reservation.checkOutMonth=checkOutMonth
+            reservation.checkOutYear=checkOutYear
+            reservation.kostos=kostos
+            reservation.theaStiThalasa=theaStiThalasa
+
+            kratisis=[{room:room,reservation:reservation,diathesima:diathesima,times:imerominiesTimes,checkIn:checkIn,checkOut:checkOut,kostos:kostos}]
+
+        }
+
+        else{
+            // Den iparxi kanena domatio diathesimo sinexomena apo checkIn mexri checkOut.
+
+            sinafis='1'
+    
+            const reservedDatesTemp=await reservationModel.getReservedDates(roomType,amea,singleBeds,doubleBeds,checkIn,checkOut)
+            const reservedDates=formatDates(reservedDatesTemp)
+            const freeDates=getFreeDates(reservedDates,checkIn,checkOut)
+            const totalDates=getTotalDates(freeDates)
+            const freeDatesNoOverlap=removeOverlappingElements(totalDates)
+            for(let i=0;i<freeDatesNoOverlap.length;i++){
+
+                let reservation={
+                    roomName:roomType,
+                    amea:amea,
+                    atoma:atoma,
+                    diamorfosi:diamorfosi,
+                }
+
+
+                const check_in=freeDatesNoOverlap[i].start
+                const checkOut=freeDatesNoOverlap[i].end
+                let theaStiThalasa=''
+
+                if(roomType=='Διαμέρισμα 2 Υπνοδωματίων' || roomType=='Διαμέρισμα 1 Υπνοδωματίου'){
+                    // Elegxos an iparxi domatio me thea stin thalasa apo tis katigories pou den exoun default thea stin thalasa
+                    if(amea=='true'){
+                        theaStiThalasa='true'
+                    }
+                    else{
+                        
+                        for(let i=0;i<freeDates.length  && theaStiThalasa=='';i++){
+                            if(freeDates[i].sea_view==true){
+                                let dates= freeDates[i].freeDates
+                                for(let j=0;j<dates.length && theaStiThalasa=='';j++){
+                                    let dayStart=dates[j].start
+                                    let dayEnd=dates[j].end
+                                    if(dayStart==check_in  && dayEnd==checkOut){
+                                        theaStiThalasa='true'
+                                    }
                                 }
                             }
                         }
                     }
+        
                 }
-    
+
+                reservation.checkInDate=check_in.split('-')[2]
+                reservation.checkInMonth=check_in.split('-')[1]
+                reservation.checkInYear=check_in.split('-')[0]
+                reservation.checkOutDate=checkOut.split('-')[2]
+                reservation.checkOutMonth=checkOut.split('-')[1]
+                reservation.checkOutYear=checkOut.split('-')[0]
+
+                // reservation.kostos=kostos
+                reservation.theaStiThalasa=theaStiThalasa
+
+                const diathesima=''
+
+                const timesTemp=await reservationModel.getTimesDomatiou(roomType,check_in,checkOut)
+                const times= getTimes(timesTemp,check_in,checkOut)
+                // o pelatis den plironi gia tin imerominia pou kani check_out
+                times[times.length-1]=0
+
+
+
+
+                // console.log(times,check_in,checkOut)
+                let dates = generateDates(check_in, checkOut);
+        
+                let imerominiesTimes=getImerominiesTimes(dates,times)
+                const kostos=getTotalCost(times)
+
+                // console.log(kostos,imerominiesTimes)
+                reservation.kostos=kostos
+
+        
+
+            // let imerominiesTimes=[{imerominia:'21/04/23',timi:20,klasi:"d1"},{imerominia:'21/04/23',timi:30,klasi:"d2"},{imerominia:'21/04/23',timi:40,klasi:"d3"},{imerominia:'21/04/23',timi:50,klasi:"d4"},{imerominia:'21/04/23',timi:26,klasi:"d5"}]
+
+                kratisis.push({room:room,reservation:reservation,diathesima:diathesima,times:imerominiesTimes,checkIn:check_in,checkOut:checkOut,kostos:kostos})
+
+
             }
-
-            reservation.checkInDate=check_in.split('-')[2]
-            reservation.checkInMonth=check_in.split('-')[1]
-            reservation.checkInYear=check_in.split('-')[0]
-            reservation.checkOutDate=checkOut.split('-')[2]
-            reservation.checkOutMonth=checkOut.split('-')[1]
-            reservation.checkOutYear=checkOut.split('-')[0]
-
-            // reservation.kostos=kostos
-            reservation.theaStiThalasa=theaStiThalasa
-
-            const diathesima=''
-
-            const timesTemp=await reservationModel.getTimesDomatiou(roomType,check_in,checkOut)
-            const times= getTimes(timesTemp,check_in,checkOut)
-            // o pelatis den plironi gia tin imerominia pou kani check_out
-            times[times.length-1]=0
-
-
-
-
-            // console.log(times,check_in,checkOut)
-            let dates = generateDates(check_in, checkOut);
-    
-            let imerominiesTimes=getImerominiesTimes(dates,times)
-            const kostos=getTotalCost(times)
-
-            // console.log(kostos,imerominiesTimes)
-            reservation.kostos=kostos
-
-    
-
-        // let imerominiesTimes=[{imerominia:'21/04/23',timi:20,klasi:"d1"},{imerominia:'21/04/23',timi:30,klasi:"d2"},{imerominia:'21/04/23',timi:40,klasi:"d3"},{imerominia:'21/04/23',timi:50,klasi:"d4"},{imerominia:'21/04/23',timi:26,klasi:"d5"}]
-
-            kratisis.push({room:room,reservation:reservation,diathesima:diathesima,times:imerominiesTimes,checkIn:check_in,checkOut:checkOut,kostos:kostos})
-
 
         }
 
-    }
-
-
-    try{
-
         res.render('templates/toMakeReservation', {css: [ '/availableRooms.css'], js:['/availableRooms.js'],sinafis:sinafis,  kratisis:kratisis});
-
+        
+    }catch(error){
+        next(error)
     }
-    catch(error){
-        console.log(error)
-    }
 
+    
 
 
 }

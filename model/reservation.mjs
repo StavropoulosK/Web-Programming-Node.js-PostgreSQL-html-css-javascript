@@ -19,7 +19,7 @@ async function getTimesDomatiou(roomName,startDate,endDate){
        return [res1.rows,res2.rows,res3.rows]
     }
     catch (err) {
-        console.error(err)
+        throw err
     }
 }
 
@@ -55,7 +55,7 @@ async function datesNotAvailable(startDate,endDate,num_single_beds,num_double_be
         return res.rows
     }
     catch (err) {
-        console.error(err)
+        throw err
     }
 }
 
@@ -84,7 +84,7 @@ async function getRoomsThatAreAvailableForAllDates(roomType,amea,num_single_beds
             return res.rows
         }
             catch (err) {
-            console.error(err)
+                throw err
         }
 }
 
@@ -107,7 +107,7 @@ async function getReservedDates(roomType,amea,singleBeds,doubleBeds,checkIn,chec
         return res.rows
     }
     catch (err) {
-        console.error(err)
+        throw err
     }
 }
 

@@ -29,7 +29,7 @@ async function findRoom(checkIn,checkOut,roomName,singleBeds,doubleBeds,amea,the
         }
     }
     catch (err) {
-        console.error(err)
+        throw err
     }
 }
 
@@ -44,7 +44,7 @@ async function insertReservation(userId,checkIn,checkOut,roomNumber,proino,atoma
 
     }
     catch (err) {
-        console.error(err)
+        throw err
     }
 }
 
@@ -70,7 +70,7 @@ async function checkEpikalipsi(checkIn,checkOut,roomNumber,kratisiId){
 
     }
     catch (err) {
-        console.error(err)
+        throw err
     }
 }
 
@@ -83,7 +83,7 @@ async function removeReservation(kratisiId){
         await client.release()
     }
     catch (err) {
-        console.error(err)
+        throw err
     }
 }
 
@@ -96,7 +96,7 @@ async function insertPayment(kratisiId,paymentAmount){
         await client.release()
     }
     catch (err) {
-        console.error(err)
+        throw err
     }
 }
 

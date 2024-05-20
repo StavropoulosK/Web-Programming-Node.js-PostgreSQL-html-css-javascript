@@ -7,6 +7,8 @@ import 'dotenv/config'
 import path from "path";
 import { fileURLToPath } from 'url';
 
+import schedule from 'node-schedule'
+
 
 import initialPagesRouter from './routes/initialPages.mjs'
 import loginSignUpRouter from './routes/loginSignUp.mjs'
@@ -23,9 +25,8 @@ const app = express()
 const router = express.Router();
 
 const port = process.env.SERVERPORT || 8080
+
  
-
-
 app.engine('hbs', engine({ extname: ".hbs" }))
 app.set('view engine', 'hbs')
 app.use(express.static(path.join(__dirname, "public")));
@@ -74,14 +75,19 @@ process.on('SIGTERM', () => {
     });
  });
 
- process.on('uncaughtException', (err) => {
-   console.error('Uncaught Exception:', err);
- });
  
  // akironi tis kratisis pou exi liksi i prothesmia ta mesanixta
 
  generalMiddleware.resetAtMidnight()
 
+ schedule.scheduleJob('0 0 * * *',async () => { 
+      try {
+         console.log('NodeSchedule Cancel Due Dates')
+         await generalMiddleware.cancelDueDates()
+      } catch (error) {
+         console.error('Schedule Error')
+      }
+  }) // run everyday at midnight
 
 
 

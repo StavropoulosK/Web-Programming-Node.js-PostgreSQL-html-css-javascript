@@ -14,7 +14,7 @@ async function checkIfUserNameExists(userName){
         }
     }
     catch (err) {
-        console.error(err)
+        throw err
     }
 }
 
@@ -40,7 +40,6 @@ async function insertClient(onoma,eponimo,username,password,email,tilefono){
         return user_id
     }
     catch (err) {
-        console.error(err)
         throw err
     }
 }
@@ -54,7 +53,6 @@ async function getHashedPassword(username){
         return result
     }
     catch (err) {
-        console.error(err)
         throw err
     }
 }
