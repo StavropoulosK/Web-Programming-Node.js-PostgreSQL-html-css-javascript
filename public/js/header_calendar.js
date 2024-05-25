@@ -199,13 +199,14 @@ async function showDatesThatRoomsAreNotAvailable(){
         console.error()
     }
         
+    // To ftiaksame na leitourgei xoris ta kokina
 
     // To klismenes periexei tis imerominies opou kanena domatio den einai diathesimo
 
-    for(let i=0;i<klismenes.length;i++){
-    const date=document.getElementById(`date${klismenes[i]}`)
-    date.classList.add("full")
-    }
+    // for(let i=0;i<klismenes.length;i++){
+    // const date=document.getElementById(`date${klismenes[i]}`)
+    // date.classList.add("full")
+    // }
 
     
 }
@@ -296,7 +297,7 @@ async function selectDates(ev){
         const checkInMonth=Number(checkIn.textContent.split("/")[1])
         const checkInYear=Number(checkIn.textContent.split("/")[2])
         const firstDateBiggerThanSecond= checkInYear*400+checkInMonth*31+checkInDate > Number(checkOutYear)*400+Number(checkOutMonth)*31+Number(checkOutDate)
-        if(firstDateBiggerThanSecond || ! (await roomTypeAvailable() ) ){
+        if(firstDateBiggerThanSecond ){
             elem.classList.add("active")
             updateDatesHeader(0)
         }
