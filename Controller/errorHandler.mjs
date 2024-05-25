@@ -1,5 +1,6 @@
 function errorHandler(err, req, res, next) {
     console.log('error Handler')
+    console.error(err)
     if (res.headersSent) {
        // Αν έχει σταλεί απάντηση, τότε δεν μπορούμε να στείλουμε και άλλη οπότε παραπέμπουμε στον default error handler
        return next(err); // ο default error handler

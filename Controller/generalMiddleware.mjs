@@ -57,7 +57,8 @@ async function cancelDueDates() {
 
 // Oi kratisis poy den exoun plirothi kai menoun ligotero apo 10 meres akironontai. Kalite arxika apo to server kai meta epanalambanomena ta mesanixta.
 // blepe https://stackoverflow.com/questions/26306090/running-a-function-everyday-midnight
-//den einai middleware ala ti kali o server ta mesanixta
+//den einai middleware ala ti kali o server ta mesanixta. An o server einai se adrania apo to fly io ekeini tin ora profanos den litourgi(oute kai to paketo node-schedule
+//leitourgei an o server einai se adrania). Opote the eprepe o diaxiristis na kanei  etima request se  route pou na trexei tin cancelDueDates
 function resetAtMidnight() {
 
   const now = new Date();

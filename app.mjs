@@ -7,8 +7,6 @@ import 'dotenv/config'
 import path from "path";
 import { fileURLToPath } from 'url';
 
-import schedule from 'node-schedule'
-
 
 import initialPagesRouter from './routes/initialPages.mjs'
 import loginSignUpRouter from './routes/loginSignUp.mjs'
@@ -80,14 +78,7 @@ process.on('SIGTERM', () => {
 
  generalMiddleware.resetAtMidnight()
 
- schedule.scheduleJob('0 0 * * *',async () => { 
-      try {
-         console.log('NodeSchedule Cancel Due Dates')
-         await generalMiddleware.cancelDueDates()
-      } catch (error) {
-         console.error('Schedule Error')
-      }
-  }) // run everyday at midnight
+
 
 
 
