@@ -88,7 +88,7 @@ async function showWidgetError(){
     if (widget.validity.valueMissing) {
         // ονομα/επώνυμο και τα άλλα
  
-        widgetError.textContent = `Το πεδίο είναι υποχρεωτικό.`;
+        widgetError.textContent = `Field is required.`;
         widgetError.className = "error active";
         return false
       }
@@ -97,7 +97,7 @@ async function showWidgetError(){
 
         
         if(widget.value.length<8){
-            widgetError.textContent = "Το username πρέπει να είναι τουλάχιστον 8 χαρακτήρες";
+            widgetError.textContent = "Username must be at least 8 characters long";
             widgetError.className = "error active";
 
             return false
@@ -115,7 +115,7 @@ async function showWidgetError(){
             const result= (await response.json()).valid
 
             if(result==true){
-                widgetError.textContent = "Το username είναι πιασμένο. Παρακαλώ εισάγετε άλλο";
+                widgetError.textContent = "This username is taken. Please chose another";
                 widgetError.className = "error active";
                 return false
             }
@@ -132,7 +132,7 @@ async function showWidgetError(){
 
     else if(widget===kodikos){
             if(widget.value.length<8){
-                widgetError.textContent = "Ο κωδικός πρέπει να είναι τουλάχιστον 8 χαρακτήρες";
+                widgetError.textContent = "Password must be at least 8 characters long";
                 widgetError.className = "error active";
 
                 return false
@@ -140,7 +140,7 @@ async function showWidgetError(){
 
             }
             else if(! /\d/.test(widget.value)){
-                widgetError.textContent = "Ο κωδικός πρέπει να έχει ένα τουλάχιστον αριθμό";
+                widgetError.textContent = "Password must contain at least a number";
                 widgetError.className = "error active";
 
                 return false
@@ -153,7 +153,7 @@ async function showWidgetError(){
 
     else if(widget===kodikosCheck){
         if(widget.value!==kodikos.value){
-            widgetError.textContent = "Ο κωδικός δεν ταυτίζεται";
+            widgetError.textContent = "Passwords are not the same";
             widgetError.className = "error active";
 
             return false
@@ -170,7 +170,7 @@ async function showWidgetError(){
             
             // If the field doesn't contain an email address,
             // display the following error message.
-            widgetError.textContent = "Παρακαλώ εισάγετε μία έγκυρη διεύθυνση.";
+            widgetError.textContent = "Please fill in a valid email address.";
             widgetError.className = "error active";
 
             return false
@@ -189,7 +189,7 @@ async function showWidgetError(){
         const tilefonoString = widget.value.replace(/[+\- ]/g, '')
         if( ! /^\d{10}$/.test(tilefonoString)){
             
-            widgetError.textContent = "Παρακαλώ εισάγετε ένα  τηλέφωνο(10 αριθμούς).";
+            widgetError.textContent = "Please fill in a valid phone number(10 digits).";
             widgetError.className = "error active";
 
             return false

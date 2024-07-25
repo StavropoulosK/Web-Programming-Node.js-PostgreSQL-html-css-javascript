@@ -6,7 +6,6 @@ const propliromi=document.querySelector('#checkbox2')
 const proinoTimi=document.getElementById("proinoTimi")
 const kostosKsenodoxiou=document.getElementById('kostosKsenodoxiou')
 const atomaNumber=Number(document.getElementById('atoma').value)
-console.log(atomaNumber)
 const sinolikoPoso=document.getElementById('sinolikoPoso')
 const posoPliromis=document.getElementById('posoPliromis')
 
@@ -36,17 +35,16 @@ function calculateSinolikoPoso(event){
     const ksenodoxioKostos=Number(kostosKsenodoxiou.textContent.split('€')[0])
     sinolikoPoso.textContent=(proinoKostos+ksenodoxioKostos)+'€'
 
-    if(propliromi!==null){
-        showPosoPliromis()
+    showPosoPliromis()
 
-    }
+    
 
 }
 
 function showPosoPliromis(event){
     const sinolikoPosoNumber= Number(sinolikoPoso.textContent.split('€')[0])
 
-    if(propliromi.checked){
+    if(propliromi!==null && propliromi.checked){
         posoPliromis.textContent= (sinolikoPosoNumber/2)+'€'
     }
     else{
@@ -87,10 +85,9 @@ inputField.addEventListener("input", function(event) {
 window.addEventListener('load', setProigoumenoValue);
 window.addEventListener('load', calculateSinolikoPoso);
 
-if(propliromi!==null){
-    window.addEventListener('load', showPosoPliromis);
+window.addEventListener('load', showPosoPliromis);
 
-}
+
 
 
 

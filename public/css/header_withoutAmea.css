@@ -705,7 +705,7 @@ header.top {
   
   /* Links inside the dropdown */
   .dropdown-content a {
-    padding: 12px 16px;
+    padding: 12px 12px;
     text-decoration: none;
     display: none;
     white-space: normal; /* Allow text to wrap */

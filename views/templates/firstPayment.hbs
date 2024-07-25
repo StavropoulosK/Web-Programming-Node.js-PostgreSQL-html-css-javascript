@@ -12,61 +12,61 @@
                     <form action='/finaliseReservation' method="post">
                         
                         <fieldset style="border-width: 2px;">
-                            <legend >Στοιχεία Πληρωμής</legend>
-                        <label class="title title2">  Στοιχεία Κάρτας</label>
+                            <legend >Payment Information</legend>
+                        <label class="title title2">  Card Details</label>
             
                         <div class="container">
                         
                             <div class="field-holder required onomaKatoxou">
-                                <input type="text" id="cardHolderName" value=""  name="cardHolderName" required oninvalid="setCustomValidity('Παρακαλώ συμπληρώστε το όνομα κατόχου της κάρτας.')"
+                                <input type="text" id="cardHolderName" value=""  name="cardHolderName" required oninvalid="setCustomValidity('Please fill in cardholder name.')"
                                 oninput="this.setCustomValidity('')">
-                                <label for="cardHolderName">  Όνομα Κατόχου</label>
+                                <label for="cardHolderName">  Cardholder Name </label>
                             </div>
             
                             <div class="field-holder required">
-                                <input type="text" id="cardNumber" value="" name="creditCard" pattern="[0-9]{16}" maxlength="16" minlength="16" onchange="this.setAttribute('value', this.value);" required oninvalid="setCustomValidity('Παρακαλώ συμπληρώστε τον αριθμό της κάρτα σας (16 ψηφία).')"
+                                <input type="text" id="cardNumber" value="" name="creditCard" pattern="[0-9]{16}" maxlength="16" minlength="16" onchange="this.setAttribute('value', this.value);" required oninvalid="setCustomValidity('Please fill in card number (16 digits).')"
                                 oninput="this.setCustomValidity('')">
-                                <label for="cardNumber">  Νούμερο κάρτας</label>
+                                <label for="cardNumber">  Card number</label>
                             </div>
             
                             <div class="field-holder required imerominiaLiksis">
-                                <input type="text" id="date" value="" name="date" maxlength="5" pattern="\d{2}/\d{2}" onchange="this.setAttribute('value', this.value);" required oninvalid="setCustomValidity('Παρακαλώ συμπληρώστε την ημερομηνία λήξης που αναγράφεται στην κάρτα.')"
+                                <input type="text" id="date" value="" name="date" maxlength="5" pattern="\d{2}/\d{2}" onchange="this.setAttribute('value', this.value);" required oninvalid="setCustomValidity('Please fill in card expiration date.')"
                                 oninput="this.setCustomValidity('')">
-                                <label for="date">Ημερομηνία Λήξης</label>
+                                <label for="date">Expiration Date</label>
                             </div>
             
                             <div class="field-holder required">
-                                <input type="password" id="cvv" value="" name="cvv" pattern="\d{3}" maxlength="3" minlength="3" onchange="this.setAttribute('value', this.value);" required oninvalid="setCustomValidity('Παρακαλώ συμπληρώστε τον κωδικό της κάρτας σας.')"
+                                <input type="password" id="cvv" value="" name="cvv" pattern="\d{3}" maxlength="3" minlength="3" onchange="this.setAttribute('value', this.value);" required oninvalid="setCustomValidity('Please fill in cvv number of card.')"
                                 oninput="this.setCustomValidity('')">
-                                <label for="cvv">cvv</label>
+                                <label for="cvv">Cvv</label>
                             </div>
                         </div>
             
-                        <label class="title title2 title3">  Πρωινό</label>
+                        <label class="title title2 title3">  Breakfast</label>
             
                         <div class="field-holder" >
-                            <label  for="checkbox1" class="elem">Κόστος πρωινού ανά ενήλικα: 5€</label>
+                            <label  for="checkbox1" class="elem">Breakfast cost per person: 5€</label>
                             <input type="checkbox" id="checkbox1" name="checkbox1">
                         </div>
 
                         {{#if eksoflisiMisouPosou}}
 
-                            <label class="title title2 title3 eksoflisi"> Εξόφληση</label>
+                            <label class="title title2 title3 eksoflisi"> Payment</label>
 
                             <div class="field-holder" >
-                                <label  for="checkbox2" class="elem elem2">Επιθυμώ να πληρώσω τώρα το 50% του ποσού και να εξοφλήσω το υπόλοιπο μέχρι 10 ημέρες πριν την κράτηση</label>
+                                <label  for="checkbox2" class="elem elem2">I wish to pay 50% of the amount now and pay the balance up to 10 days before the reservation</label>
                                 <input type="checkbox" id="checkbox2" name="checkbox2">
                             </div>
                         {{/if}}
                                         
             
-                        <label class="title title2 title4 politikiKratiseon {{#if eksoflisiMisouPosou}} included    {{/if}}"> Πολιτική κρατήσεων</label>
+                        <label class="title title2 title4 politikiKratiseon {{#if eksoflisiMisouPosou}} included    {{/if}}"> Reservation Policy</label>
             
                         <div class="field-holder terms">
                             <div>
-                                <p >Ώρα άφιξης: Μετά της 13:00</p>
-                                <p >Ώρα αναχώρησης: Πριν της 12:00</p>
-                                <p >Υπάρχει δυνατότητα ακύρωσης μέχρι 10 ημέρες πριν την άφιξη με πλήρη επιστροφή χρημάτων</p>
+                                <p >Check-in: After 13:00</p>
+                                <p >Check-out: Before 12:00</p>
+                                <p >It is possible to cancel up to 10 days before arrival with a full refund</p>
                             
                             </div>
             
@@ -77,12 +77,12 @@
                         </div>
             
                         <div class="field-holder down">
-                            <span class="left">Ξενοδοχείο</span>
+                            <span class="left">Hotel</span>
                             <span class="right" id="kostosKsenodoxiou">{{kostosKsenodoxiou}}</span>
                         </div>
             
                         <div class="field-holder down">
-                            <span class="left smaller">Πρωινό</span>
+                            <span class="left smaller">Breakfast</span>
                             <span class="right smaller" id="proinoTimi">-</span>
                         </div>
             
@@ -91,7 +91,7 @@
                          </div>
                          <br>
                          <div class="field-holder down">
-                            <span class="left sinolo">Σύνολο</span>
+                            <span class="left sinolo">Total</span>
                             <span class="right" id="sinolikoPoso"></span>
                         </div>
             
@@ -101,12 +101,12 @@
                          </div>
                          <br>
                          <div class="field-holder down pliromi">
-                            <span class="left sinolo">Πληρωμή</span>
+                            <span class="left sinolo">Pay</span>
                             <span class="right" id="posoPliromis"></span>
                         </div>
             
                         <div class="field-holder down" id="checkout">
-                            <input type="submit" class="button {{#if response}} notClickable {{/if}}" value="Κράτηση">
+                            <input type="submit" class="button {{#if response}} notClickable {{/if}}" value="Book">
             
             
                         </div>

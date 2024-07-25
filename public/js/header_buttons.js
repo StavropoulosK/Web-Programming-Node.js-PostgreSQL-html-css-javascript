@@ -70,8 +70,18 @@ let roomOnoma
 
 let mexriDioAtoma=['Deluxe Σουίτα 1 Υπνοδωματίου','Διαμέρισμα 1 Υπνοδωματίου']
 
+const mapperRoom={'Presidential Suite':'Υπερπολυτελή Σουίτα',
+                'Deluxe 2 Bedroom Suite':'Deluxe Σουίτα 2 Υπνοδωματίων',
+                'Deluxe 1 Bedroom Suite':'Deluxe Σουίτα 1 Υπνοδωματίου',
+                '2 Bedroom Apartment':'Διαμέρισμα 2 Υπνοδωματίων',
+                '1 Bedroom Apartment':'Διαμέρισμα 1 Υπνοδωματίου'
+            }
+
+
+
 try{
-    roomOnoma=document.querySelector('.room-title h2').textContent
+    const roomNameEnglish=document.querySelector('.room-title h2').textContent
+    roomOnoma=mapperRoom[roomNameEnglish]
 }
 catch{
     roomOnoma='mainPage'

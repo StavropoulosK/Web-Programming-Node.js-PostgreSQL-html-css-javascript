@@ -197,7 +197,7 @@ async function finaliseReservation(req,res,next){
 
                 if(epikalipsi==true){
                     await finaliseReservationModel.removeReservation(kratisiId)
-                    response='Η κράτηση απέτυχε'
+                    response='Reservation failed'
                 }
                 else{
                         //kane tin pliromi. An apotixi bgale tin kratisi kai enimerose.
@@ -215,13 +215,13 @@ async function finaliseReservation(req,res,next){
 
                         if(pliromiDone==true){
                             await finaliseReservationModel.insertPayment(kratisiId,paymentAmount)
-                            response='Η κράτηση πραγματοποιήθηκε'
+                            response='Your reservation has been made.'
                         }
                         else{
 
                             await finaliseReservationModel.removeReservation(kratisiId)
 
-                            response='Η κράτηση απέτυχε'
+                            response='Reservation failed'
 
                         }
 
@@ -230,7 +230,7 @@ async function finaliseReservation(req,res,next){
             }
 
             else{
-                response='Η κράτηση απέτυχε'
+                response='Reservation failed'
             }
 
             

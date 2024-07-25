@@ -23,17 +23,17 @@
             {{/each}}
 
       </select>
-      <button  class="booking-button body">Κράτηση</button>
+      <button  class="booking-button body">Reservation</button>
 
     </div>
   </section>
 
   <section class="room-info">
-    <h3>Στοιχεία</h3>
+    <h3>Information</h3>
     <p id="descr">{{room.stoixiaText}}</p>
     <div class="benefits-box">
       <div class="highlights">
-        <p class="header">Ανέσεις</p>
+        <p class="header">Amenities</p>
         <ul>
 
             {{#each room.anesi}}
@@ -46,7 +46,7 @@
       </div>
 
       <div class="amenities">
-        <p class="header"> Συσκευές</p>
+        <p class="header"> Utilities</p>
 
         <ul>
             {{#each room.siskeui}}
@@ -58,7 +58,7 @@
         </ul>
       </div>
       <div class="accessibility">
-        <p class="header">Προσβασιμότητα</p>
+        <p class="header">Accessibility</p>
         
             
         <p>{{room.accessibilityText}}</p>

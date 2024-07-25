@@ -16,6 +16,10 @@ async function getTimesDomatiou(roomName,startDate,endDate){
         const res3 = await client.query(sql3,[endDate,roomName,startDate])
 
         await client.release()
+
+        const sql4= ` select distinct class from price_catalogue join room_type on room_type=room_type_id  `
+        const res4 = await client.query(sql4,[])
+
        return [res1.rows,res2.rows,res3.rows]
     }
     catch (err) {

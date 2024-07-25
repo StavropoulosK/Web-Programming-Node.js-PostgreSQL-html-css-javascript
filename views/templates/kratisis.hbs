@@ -7,7 +7,7 @@
         
         <div class="kratisisContainer">
 
-            <p id="myBooks"> Οι κρατήσεις μου</p>
+            <p id="myBooks"> My Reservations</p>
             {{#each kratisis}}
 
 
@@ -22,7 +22,7 @@
 
                                 <p>{{this.room.titlos}}</p>
                                 {{#if this.theaStiThalasa}}
-                                <p>Με θέα στη θάλασσα</p>
+                                <p>With sea view</p>
                                 {{else}}
                                 <p>&nbsp;</p>
                                 {{/if}}
@@ -35,7 +35,7 @@
 
 
                             <div class="atoma">
-                                <span>{{this.room.tetragonika}} τ.μ.</span><br>
+                                <span>{{this.room.tetragonika}} sq.m.</span><br>
                     
                                 {{#each this.room.krebati}}
 
@@ -55,19 +55,19 @@
                         </div>
             
                         <div class="reservationInfo">
-                            <h3>Στοιχεία Κράτησης</h3>
+                            <h3>Reservation info</h3>
                             <div class="infoContainer">
         
-                                <p class="imer">Ημερομηνίες:</p>
+                                <p class="imer">Reservation Dates:</p>
                                 <p> {{this.checkIn}} - {{this.checkOut}}</p>
-                                <p >Άτομα: {{this.atoma}}</p>
+                                <p >Persons: {{this.atoma}}</p>
                                 {{#if this.proino}}
-                                <p >Mε πρωινό</p>
+                                <p >With breakfast</p>
                                 {{/if}}
-                                <p > Kόστος: {{this.kostos}}€</p>
-                                <p >Έχουν πληρωθεί: {{this.pliromena}}€</p>
-                                <p>Απομένουν να πληρωθούν: {{this.apomenoun}}€</p>
-                                <p>Κατάσταση: {{this.katastasi}}</p>
+                                <p > Total: {{this.kostos}}€</p>
+                                <p >Paid amount: {{this.pliromena}}€</p>
+                                <p>Remaining: {{this.apomenoun}}€</p>
+                                <p>State: {{this.katastasi}}</p>
 
         
                             </div>
@@ -76,14 +76,14 @@
                         </div>
         
                         <div class="kritiki">
-                            <h3>Κριτική</h3>
+                            <h3>Review</h3>
                             <div class="kritikiContainer">
         
                                 <form action="/Kritiki" method="post">
                                     
-                                    <textarea id="kritiki" {{#if this.oxiKritiki}}class="disabled"{{/if}} name="kritiki" rows="4" cols="50" required oninvalid="setCustomValidity('Παρακαλούμε  συμπληρώστε την κριτική σας.')"
-                                    oninput="this.setCustomValidity('')" title="Παρακαλούμε  συμπληρώστε την κριτική σας."></textarea><br>
-                                    <input type="submit" {{#if this.oxiKritiki}}class="disabled"{{/if}} value="Υποβολή">
+                                    <textarea id="kritiki" {{#if this.oxiKritiki}}class="disabled"{{/if}} name="kritiki" rows="4" cols="50" required oninvalid="setCustomValidity('Please fill in your review.')"
+                                    oninput="this.setCustomValidity('')" title="Please fill in your review."></textarea><br>
+                                    <input type="submit" {{#if this.oxiKritiki}}class="disabled"{{/if}} value="Submit">
                                     <input type="text"  value="{{this.roomNumber}}"  name="roomNumber" class="invisible">
                                     <input type="text"  value="{{this.checkIn}}"  name="checkIn" class="invisible">
                                     <input type="text"  value="{{this.checkOut}}"  name="checkOut" class="invisible">
@@ -99,11 +99,11 @@
             
             
                         <div class="book">
-                            <p class="desc">Υπάρχει δυνατότητα δωρεάν ακύρωσης με πλήρη επιστροφή χρημάτων έως 10 ημέρες πριν την άφιξη. Αν όλο το ποσό δεν έχει εξοφληθεί μέχρι τότε η κράτηση ακυρώνεται.</p>
+                            <p class="desc">Free cancellation with full refund is possible up to 10 days before arrival. If the full amount has not been paid by then the reservation is cancelled.</p>
                             <div class="buttonContainer">
                                 <form action="/akirosi" method="post">
 
-                                    <button class="akirosi {{#if this.notAkirosimo}} disabled {{/if}}"> Ακύρωση</button>
+                                    <button class="akirosi {{#if this.notAkirosimo}} disabled {{/if}}"> Cancel</button>
                                     <input type="text"  value="{{this.roomNumber}}"  name="roomNumber" class="invisible">
                                     <input type="text"  value="{{this.checkIn}}"  name="checkIn" class="invisible">
                                     <input type="text"  value="{{this.checkOut}}"  name="checkOut" class="invisible">
@@ -112,7 +112,7 @@
 
                                     
                                 <form action="/makeNextBookPayment" method="post">
-                                    <button class="pliromi {{#if this.oxipliromi}} disabled {{/if}}" onclick="window.location.href = '../paymentForm/nextPayments.html'"> Πληρωμή</button>
+                                    <button class="pliromi {{#if this.oxipliromi}} disabled {{/if}}" onclick="window.location.href = '../paymentForm/nextPayments.html'"> Pay</button>
                                     <input type="text"  value="{{this.roomNumber}}"  name="roomNumber" class="invisible">
                                     <input type="text"  value="{{this.checkIn}}"  name="checkIn" class="invisible">
                                     <input type="text"  value="{{this.checkOut}}"  name="checkOut" class="invisible">

@@ -6,8 +6,8 @@
     <main>
     
     {{#if sinafis}}
-         <h2 class="titlosHeader">Οι συγκεκριμένες ημερομηνίες ήταν κατειλημμένες</h2>
-         <h2 class="titlosHeader num2">Προτεινόμενες Ημερομηνίες:</h2>
+         <h2 class="titlosHeader">Selected dates were not available</h2>
+         <h2 class="titlosHeader num2">Suggested Dates:</h2>
 
     {{/if}}
 
@@ -16,7 +16,7 @@
             <div class="image">
             <img src="{{this.room.img}}">
                 {{#if diathesima}}
-                <span class="text_diathesima"> {{this.diathesima}} Διαθέσιμα</span>
+                <span class="text_diathesima"> {{this.diathesima}} Available</span>
                 {{/if}}
                 
             </div>
@@ -24,7 +24,7 @@
             <div class="info">
                 <p>{{this.room.titlos}}</p>
                 {{#if this.reservation.theaStiThalasa}}
-                <p>Με θέα στη θάλασσα</p>
+                <p>With sea view</p>
                 {{else}}
                 <p>&nbsp;</p>
                 {{/if}}
@@ -36,7 +36,7 @@
                 </ul>
 
                 <div class="atoma">
-                    <span>{{this.room.tetragonika}} τ.μ. &nbsp;&nbsp;&nbsp; {{this.reservation.atoma}} Άτομα</span><br>
+                    <span>{{this.room.tetragonika}} sq.m. &nbsp;&nbsp;&nbsp; {{this.reservation.atoma}} Persons</span><br>
 
                     {{#each this.room.krebati}}
 
@@ -76,11 +76,11 @@
 
 
             <div class="book">
-                <p class="imer">Ημερομηνίες</p>
+                <p class="imer">Selected Dates</p>
                 <p> {{this.checkIn}} - {{this.checkOut}}</p>
-                <p class="kostos"> Kόστος: {{this.kostos}}€</p>
+                <p class="kostos"> Cost: {{this.kostos}}€</p>
                 {{#with reservation}}
-                <a href="/makeFirstBookPayment/{{this.roomName}}/{{this.amea}}/{{this.atoma}}/{{this.diamorfosi}}/{{this.checkInDate}}/{{this.checkInMonth}}/{{this.checkInYear}}/{{this.checkOutDate}}/{{this.checkOutMonth}}/{{this.checkOutYear}}{{#if this.theaStiThalasa}}/{{this.theaStiThalasa}}{{/if}}/{{this.kostos}}"> Κράτηση</a>
+                <a href="/makeFirstBookPayment/{{this.roomName}}/{{this.amea}}/{{this.atoma}}/{{this.diamorfosi}}/{{this.checkInDate}}/{{this.checkInMonth}}/{{this.checkInYear}}/{{this.checkOutDate}}/{{this.checkOutMonth}}/{{this.checkOutYear}}{{#if this.theaStiThalasa}}/{{this.theaStiThalasa}}{{/if}}/{{this.kostos}}"> Book</a>
                 {{/with}}
 
             </div>

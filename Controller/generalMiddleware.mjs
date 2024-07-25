@@ -19,7 +19,7 @@ async function getLocals(req,res,next){
 }
 
 function authorise(req,res,next){
-  
+  console.log(req.session.userID)
   if (!req.session.userID) {
       res.redirect('/login');
     } else {

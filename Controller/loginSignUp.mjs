@@ -149,19 +149,19 @@ async function signUpNewClient(req,res,next){
                 const user_id=await signUpModel.insertClient(onoma,eponimo,username,hashedPassword,email,tilefono)
                 req.session.userID=user_id
     
-                res.render('templates/signUp', { css: [ 'signup.css'], js:['signup.js'],loginned:1, message:'Η εγγραφή πραγματοποιήθηκε'});
+                res.render('templates/signUp', { css: [ 'signup.css'], js:['signup.js'],loginned:1, message:'Sign up succeeded'});
     
             }
             catch(err){
                 //eggrafike tautoxrona alos xristis me to idio onoma(patisan login kai oi elegxoi perasan prin kataxorithi stin basi enas apo tous xristes)
-                res.render('templates/signUp', { css: [ 'signup.css'], js:['signup.js'], message:'Η εγγραφή απέτυχε.'});
+                res.render('templates/signUp', { css: [ 'signup.css'], js:['signup.js'], message:'Sign up failed.'});
     
             }        
     
         }
         else{
     
-            res.render('templates/signUp', { css: [ 'signup.css'], js:['signup.js'], message:'Η εγγραφή απέτυχε.'});
+            res.render('templates/signUp', { css: [ 'signup.css'], js:['signup.js'], message:'Sign up failed.'});
         }
     
     }catch(error){

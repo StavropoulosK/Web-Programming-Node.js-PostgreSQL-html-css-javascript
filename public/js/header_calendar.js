@@ -23,18 +23,18 @@ let currentCalendarYear
 
 
 const monthMap = {
-    'Ιανουάριος': '01',
-    'Φεβρουάριος': '02',
-    'Μάρτιος': '03',
-    'Απρίλιος': '04',
-    'Μάιος': '05',
-    'Ιούνιος': '06',
-    'Ιούλιος': '07',
-    'Αύγουστος': '08',
-    'Σεπτέμβριος': '09',
-    'Οκτώβριος': '10',
-    'Νοέμβριος': '11',
-    'Δεκέμβριος': '12'
+    'January': '01',
+    'February': '02',
+    'March': '03',
+    'April': '04',
+    'May': '05',
+    'June': '06',
+    'July': '07',
+    'August': '08',
+    'September': '09',
+    'October': '10',
+    'November': '11',
+    'December': '12'
   };
 
 let currentDate=new Date();
@@ -49,7 +49,7 @@ async function updateCalendar(){
     const totalDays= lastDay.getDate();
     const firstDayIndex= firstDay.getDay()
     const lastDayIndex= lastDay.getDay()
-    const monthYearString= currentDate.toLocaleString('el', {month:'long', year:'numeric'})
+    const monthYearString= currentDate.toLocaleString('en', {month:'long', year:'numeric'})
    
     diamorfosi=selectBoxDiamorfosi.value
 
@@ -105,6 +105,7 @@ async function updateCalendar(){
         const date=new Date(currentYear,currentMonth,i);
         if(Number(currentCalendarMonth)-1==monthNow && currentCalendarYear==yearNow && i<dayNow){
             datesHTML += `<div class="date inactive" id="date${i}"><span>${i}</span><span>${times[i-1]}€</span></div>`
+            
 
         }
         else{
@@ -634,7 +635,16 @@ form.addEventListener("submit", (event) => {
     }
   });
 
-roomName=document.querySelector('.room-title h2').textContent
+const mapRoom={'Presidential Suite':'Υπερπολυτελή Σουίτα',
+                'Deluxe 2 Bedroom Suite':'Deluxe Σουίτα 2 Υπνοδωματίων',
+                'Deluxe 1 Bedroom Suite':'Deluxe Σουίτα 1 Υπνοδωματίου',
+                '2 Bedroom Apartment':'Διαμέρισμα 2 Υπνοδωματίων',
+                '1 Bedroom Apartment':'Διαμέρισμα 1 Υπνοδωματίου'
+            }
+
+const roomNameEnglish=document.querySelector('.room-title h2').textContent
+roomName=mapRoom[roomNameEnglish]
+
 
 
 updateCalendar()

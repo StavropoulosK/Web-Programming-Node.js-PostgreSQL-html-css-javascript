@@ -236,7 +236,7 @@ main .form_container{
   .elem{
       margin-left:1.8rem !important; 
       margin-bottom:2em;
-      width:190px;
+      width:210px;
   }
   
   .elem .elem2{
@@ -372,10 +372,11 @@ main .form_container{
     }
   
     #checkout .button{
+      font-size:1.5em;
       margin-top: 2em;
       margin-bottom:2em;
       right:0em;
-      height:4em;
+      height:3em;
       width:100%;
   
       padding: 10px 20px;

@@ -6,7 +6,7 @@
 
         <div class="wrapper">
 
-            <p id="welcome">Γίνετε Μέλος</p>
+            <p id="welcome">Become member</p>
 
             <div class="form_container">
 
@@ -15,7 +15,7 @@
                       
                     <div class="field">
                         <label for="onoma">
-                          <span >Όνομα:</span>
+                          <span >First name:</span>
                           <div class="inputContainer">
                             <input type="text" id="onoma" name="onoma" maxlength="40" onblur="checkField('onoma')" required/>
                             <p class="error" aria-live="polite"></p>
@@ -28,7 +28,7 @@
                                             
                     <div class="field">
                         <label for="eponimo">
-                          <span >Επώνυμο:</span>
+                          <span >Last name:</span>
                           <div class="inputContainer">
                             <input type="text" id="eponimo" name="eponimo" maxlength="40" onblur="checkField('eponimo')" required />
                             <p class="error" aria-live="polite"></p>
@@ -51,7 +51,7 @@
                       
                     <div class="field">
                         <label for="kodikos">
-                            <span >Κωδικός:</span>
+                            <span >Password:</span>
                             <div class="inputContainer">
                                 <input type="password" id="kodikos" name="kodikos" maxlength="40" onblur="checkField('kodikos')" required minlength="8" />
                                 <p class="error " aria-live="polite"></p>
@@ -62,7 +62,7 @@
 
                     <div class="field">
                         <label for="kodikosCheck">
-                          <span>Έλεγχος Κωδικού:</span>
+                          <span>Repeat password:</span>
                           <div class="inputContainer">
                                 <input type="password" id="kodikosCheck" name="kodikosCheck" maxlength="40" required onblur="checkField('kodikosCheck')" minlength="8" />
                                 <p class="error" aria-live="polite"></p>
@@ -86,7 +86,7 @@
 
                     <div class="field">
                         <label for="tilefono">
-                            <span >Τηλέφωνο:</span>
+                            <span >Phone:</span>
                             <div class="inputContainer">
                                 {{!-- Orisame to maxlength 14 giati o xristis mporei na theli na bali white space --}}
                                 <input type="tel" id="tilefono" maxlength="14" minlength="10" name="tilefono" onblur="checkField('tilefono')" required/>
@@ -101,7 +101,7 @@
                         
                     <p>
                         <span class="emptyHolder"></span>
-                        <input type="submit" class="button" value="Εγγραφή">
+                        <input type="submit" class="button" value="Sign up">
 
                     </p>
 

@@ -131,7 +131,7 @@ main .kratisis:first-of-type{
 
 .atoma .image_container{
   display: inline-block;
-  width:2em;
+  width:1.8em;
   height:1em ;
   overflow: hidden;
 
@@ -142,7 +142,7 @@ main .kratisis:first-of-type{
 }
 
 .atoma_bed{
-  display:inline-block
+  display:inline
 }
 
 .atoma div.atoma_bed:nth-of-type(1){
@@ -273,7 +273,7 @@ main .kratisis:first-of-type{
 }
 
 
-@media  (max-width: 1100px) {
+@media  (max-width: 1520px) {
 
     nav.flex-container{
         display: none;

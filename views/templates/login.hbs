@@ -6,29 +6,29 @@
 
         <div class="wrapper">
 
-            <p id="welcome">Καλώς ήρθατε</p>
+            <p id="welcome">Welcome</p>
 
             <div class="form_container">
 
                 <form class="login" action="/loginPost" method="post">
                     
-                        <input type="text" name="username" placeholder="Όνομα Χρήστη" required
-                        oninvalid="setCustomValidity('Παρακαλώ συμπληρώστε το όνομα χρήστη.')"
+                        <input type="text" name="username" placeholder="Username" required
+                        oninvalid="setCustomValidity('Please fill in your username.')"
                         oninput="this.setCustomValidity('')">
 
-                        <input type="password" name="password" placeholder="Κωδικός Πρόσβασης" required
-                        oninvalid="setCustomValidity('Παρακαλώ συμπληρώστε το κωδικό σας.')"
+                        <input type="password" name="password" placeholder="Password" required
+                        oninvalid="setCustomValidity('Please fill in your password.')"
                         oninput="this.setCustomValidity('')">
                         
 
-                        <input type="submit" class="button" value="Είσοδος">
+                        <input type="submit" class="button" value="Login">
                         
                         
                     </form>
                 <div class="container">
 
-                    <p class="{{#if failed}}active {{/if}} wrong_cred">Παρακαλώ ελέγξτε τα στοιχεία εισόδου και προσπαθήστε ξανά.</p>
-                    <div class="eggrafitext"> Μπορείτε να κάνετε <a href="/signup">εγγραφή</a> για να αποκτήσετε λογαριασμό.  </div>
+                    <p class="{{#if failed}}active {{/if}} wrong_cred">Please check your login details and try again.</p>
+                    <div class="eggrafitext"> You can <a href="/signup">sign up</a> to create an account.  </div>
                 </div>
             </div>
                 

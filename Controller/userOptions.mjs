@@ -56,102 +56,102 @@ async function showKratisis(req,res,next){
             yperpoliteli:{
                 className:"yperpoliteli",
                 img:'/resources/room_photos/yperpoliteli/dex_b.jpg',
-                titlos:'Υπερπολυτελή Σουίτα',
-                amenity:['Ζακούζι','Ιαπωνικές Τουαλέτες','Θέα στη Θάλασσα'],
+                titlos:'Presidential Suite',
+                amenity:['Jacuzzi','Japanese Toilets','Sea view'],
                 tetragonika:150,
-                krebati:[{onoma:'4 Ημίδιπλα Κρεβάτια',ikonaSrc:'/resources/icons/double_bed.png'}],
+                krebati:[{onoma:'4 semi-double beds',ikonaSrc:'/resources/icons/double_bed.png'}],
             },
             deluxe2_a:{
                 className:"deluxe2_a",
                 img:'/resources/room_photos/deluxe_2_room/break-649351_1280.jpg',
-                titlos:'Deluxe 2 Υπνοδωματια',
-                amenity:['Ιαπωνικές Τουαλέτες','Μοντέρνος σχεδιασμός','Θέα στη Θάλασσα'],
+                titlos:'Deluxe Two Bedroom Suite',
+                amenity:['Japanese Toilets','Modern design','Sea view'],
                 tetragonika:50,
-                krebati:[{onoma:'1 Διπλό Κρεβάτι',ikonaSrc:'/resources/icons/double_bed.png'},
-                         {onoma:'2 Μονά Κρεβάτια',ikonaSrc:'/resources/icons/single_bed.png'}]
+                krebati:[{onoma:'1 double bed',ikonaSrc:'/resources/icons/double_bed.png'},
+                        {onoma:'2 single beds',ikonaSrc:'/resources/icons/single_bed.png'}]
             },
             deluxe2_b:{
                 className:"deluxe2_b",
                 img:'/resources/room_photos/deluxe_2_room/break-649351_1280.jpg',
-                titlos:'Deluxe 2 Υπνοδωματια',
-                amenity:['Ιαπωνικές Τουαλέτες','Μοντέρνος σχεδιασμός','Θέα στη Θάλασσα'],
+                titlos:'Deluxe Two Bedroom Suite',
+                amenity:['Japanese Toilets','Modern design','Sea view'],
                 tetragonika:50,
-                krebati:[{onoma:' 4 Μονά Κρεβάτια',ikonaSrc:'/resources/icons/single_bed.png'}]
+                krebati:[{onoma:' 4 Single Beds',ikonaSrc:'/resources/icons/single_bed.png'}]
             },
             deluxe2_Amea_1:{
                 className:"deluxe2_Amea_1",
                 img:'/resources/room_photos/deluxe_2_room/break-649351_1280.jpg',
-                titlos:'Deluxe 2 Υπνοδωματια ΑΜΕΑ',
-                amenity:['Ιαπωνικές Τουαλέτες','Μοντέρνος σχεδιασμός','Θέα στη Θάλασσα'],
+                titlos:'Deluxe Two Bedroom Suite disabled-friendly',
+                amenity:['Japanese Toilets','Modern design','Sea view'],
                 tetragonika:50,
-                krebati:[{onoma:'1 Διπλό Κρεβάτι',ikonaSrc:'/resources/icons/double_bed.png'},
-                         {onoma:'2 Μονά Κρεβάτια',ikonaSrc:'/resources/icons/single_bed.png'}]
+                krebati:[{onoma:'1 double bed',ikonaSrc:'/resources/icons/double_bed.png'},
+                        {onoma:'2 single beds',ikonaSrc:'/resources/icons/single_bed.png'}]
             },
             deluxe2_Amea_2:{
                 className:"deluxe2_Amea_2",
                 img:'/resources/room_photos/deluxe_2_room/break-649351_1280.jpg',
-                titlos:'Deluxe 2 Υπνοδωματια ΑΜΕΑ',
-                amenity:['Ιαπωνικές Τουαλέτες','Μοντέρνος σχεδιασμός','Θέα στη Θάλασσα'],
+                titlos:'Deluxe Two Bedroom Suite disabled friendly',
+                amenity:['Japanese Toilets','Modern design','Sea view'],
                 tetragonika:50,
-                krebati:[{onoma:'4 Μονά Κρεβάτια',ikonaSrc:'/resources/icons/single_bed.png'}]
+                krebati:[{onoma:'4 single beds',ikonaSrc:'/resources/icons/single_bed.png'}]
             },
             deluxe1_1:{
                 className:"deluxe1_1",
                 img:'/resources/room_photos/deluxe_1_room/del1_2.jpg',
-                titlos:'Deluxe 1 Υπνοδωματιο',
-                amenity:['Ιαπωνικές Τουαλέτες','Μοντέρνος σχεδιασμός','Θέα στη Θάλασσα'],
+                titlos:'Deluxe One Bedroom Suite ',
+                amenity:['Japanese Toilets','Modern design','Sea view'],
                 tetragonika:40,
-                krebati:[{onoma:'2 Μονά Κρεβάτια',ikonaSrc:'/resources/icons/single_bed.png'}]
+                krebati:[{onoma:'2 single beds',ikonaSrc:'/resources/icons/single_bed.png'}]
             },
             deluxe1_2:{
                 className:"deluxe1_1",
                 img:'/resources/room_photos/deluxe_1_room/del1_2.jpg',
-                titlos:'Deluxe 1 Υπνοδωματιο',
-                amenity:['Ιαπωνικές Τουαλέτες','Μοντέρνος σχεδιασμός','Θέα στη Θάλασσα'],
+                titlos:'Deluxe One Bedroom Suite ',
+                amenity:['Japanese Toilets','Modern design','Sea view'],
                 tetragonika:40,
-                krebati:[{onoma:'1 Διπλό Κρεβάτι',ikonaSrc:'/resources/icons/double_bed.png'}]
+                krebati:[{onoma:'1 double bed',ikonaSrc:'/resources/icons/double_bed.png'}]
             },
             simple2_1:{
                 className:"simple2_1",
                 img:'/resources/room_photos/simple_2_room/apartment_2_room.jpg',
-                titlos:'Διαμέρισμα 2 Υπνοδωματίων',
-                amenity:['Νησιώτικη αρχιτεκτονική','Κλιματιστικό'],
+                titlos:'Two bedroom apartment',
+                amenity:['Aegean architecture','Air condition'],
                 tetragonika:35,
-                krebati:[{onoma:'1 Διπλό Κρεβάτι',ikonaSrc:'/resources/icons/double_bed.png'},
-                         {onoma:'2 Μονά Κρεβάτια',ikonaSrc:'/resources/icons/single_bed.png'}]
+                krebati:[{onoma:'1 double bed',ikonaSrc:'/resources/icons/double_bed.png'},
+                        {onoma:'2 single beds',ikonaSrc:'/resources/icons/single_bed.png'}]
             },
             simple2_3:{
                 className:"simple2_3",
                 img:'/resources/room_photos/simple_2_room/balcony.jpg',
-                titlos:'Διαμέρισμα 2 Υπνοδωματίων',
-                amenity:['Νησιώτικη αρχιτεκτονική','Κλιματιστικό'],
+                titlos:'Two bedroom apartment',
+                amenity:['Aegean architecture','Air condition'],
                 tetragonika:35,
-                krebati:[{onoma:' 4 Μονά Κρεβάτια',ikonaSrc:'/resources/icons/single_bed.png'}]
+                krebati:[{onoma:' 4 single beds',ikonaSrc:'/resources/icons/single_bed.png'}]
             },
             simple2_Amea1:{
                 className:"simple2_Amea1",
                 img:'/resources/room_photos/simple_2_room/balcony.jpg',
-                titlos:'Διαμέρισμα 2 Υπνοδωματίων ΑΜΕΑ',
-                amenity:['Νησιώτικη αρχιτεκτονική','Κλιματιστικό'],
+                titlos:'Two bedroom apartment disabled friendly',
+                amenity:['Aegean architecture','Air condition'],
                 tetragonika:35,
-                krebati:[{onoma:'1 Διπλό Κρεβάτι',ikonaSrc:'/resources/icons/double_bed.png'},
-                         {onoma:'2 Μονά Κρεβάτια',ikonaSrc:'/resources/icons/single_bed.png'}]
+                krebati:[{onoma:'1 double bed',ikonaSrc:'/resources/icons/double_bed.png'},
+                        {onoma:'2 single beds',ikonaSrc:'/resources/icons/single_bed.png'}]
             },
             simple2_Amea2:{
                 className:"simple2_Amea2",
                 img:'/resources/room_photos/simple_2_room/balcony.jpg',
-                titlos:'Διαμέρισμα 2 Υπνοδωματίων ΑΜΕΑ',
-                amenity:['Νησιώτικη αρχιτεκτονική','Κλιματιστικό'],
+                titlos:'Two bedroom apartment disabled friendly',
+                amenity:['Aegean architecture','Air condition'],
                 tetragonika:35,
-                krebati:[{onoma:'4 Μονά Κρεβάτια',ikonaSrc:'/resources/icons/single_bed.png'}]
+                krebati:[{onoma:'4 single beds',ikonaSrc:'/resources/icons/single_bed.png'}]
             },
             simple1_1:{
                 className:"simple1_1",
                 img:'/resources/room_photos/simple_1_room/living-room-8539168_1280.jpg',
-                titlos:'Διαμέρισμα 1 Υπνοδωματίου',
-                amenity:['Νησιώτικη αρχιτεκτονική','Κλιματιστικό'],
+                titlos:'One bedroom apartment ',
+                amenity:['Aegean architecture','Air condition'],
                 tetragonika:30,
-                krebati:[{onoma:'2 Μονά Κρεβάτια',ikonaSrc:'/resources/icons/single_bed.png'}]
+                krebati:[{onoma:'2 single beds',ikonaSrc:'/resources/icons/single_bed.png'}]
             }
         }
     
@@ -214,14 +214,14 @@ async function showKratisis(req,res,next){
     
             let katastasi=''
             if(cancelled==true){
-                katastasi='Ακυρωμένη'
+                katastasi='Cancelled'
             }
             else{
                 if(apomenoun==0){
-                    katastasi='Εξοφλημένη'
+                    katastasi='Paid'
                 }
                 else{
-                    katastasi='Προς εξόφληση'
+                    katastasi='To be paid'
                 }
             }
     
@@ -268,7 +268,7 @@ async function showKratisis(req,res,next){
                 notAkirosimo='1'
             }
     
-            if(katastasi=='Εξοφλημένη' && kritikiTime(checkIn)){
+            if(katastasi=='Cancelled' && kritikiTime(checkIn)){
                 oxiKritiki=''
             }
             else{
@@ -408,19 +408,19 @@ async function displayNextBookPayment(req,res,next){
     
     
         if(poso>xrostoumeno){
-            response='Το ποσό που πληρώνεται υπερβαίνει το χρωστούμενο'
+            response='The amount stated exceeds owed amount'
         }
         
         // aitima stin trapeza gia epibebaiosi tis sinalagis
         else if(await makePaymentToBank(cardHolderName,creditCard,cvv,poso)){
             await insertPayment(kratisiId,poso)
-            response='Η πληρωμή πραγματοποιήθηκε'
+            response='Payment made successfully'
             xrostoumeno=xrostoumeno-poso
             req.session.pliromena= pliromena+poso
     
         }
         else{
-            response='Τα στοιχεία της τράπεζας είναι λανθασμένα'
+            response='Card info are not correct'
         }
         
         

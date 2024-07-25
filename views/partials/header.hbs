@@ -7,12 +7,12 @@
           <div class="display_info" id="info_container">
             <ul>
               <li><a href="/"> <img src="/resources/sofa.png"></a></li>
-              <li><a href="/Aksiotheata">Αξιοθέατα </a></li>
+              <li><a href="/Aksiotheata">Discover </a></li>
             </ul>
           </div>
         </li>
         <li class="outer"><a href="/"> <img src="/resources/sofa.png"></a></li>
-        <li class="outer"><a href="/Aksiotheata">Αξιοθέατα </a></li>
+        <li class="outer"><a href="/Aksiotheata">Discover </a></li>
       </ul>
     </nav>
 
@@ -20,13 +20,13 @@
 
         {{#unless roomPage}}
             <div class="dropdowList">
-              <button class="dropbtn">Δωμάτια</button>
+              <button class="dropbtn">Rooms</button>
               <div class="dropdown-content">
-                <a href="/room/yperpoliteli">Υπερπολυτελή Σουίτα</a>
-                <a href="/room/deluxe2">Deluxe Σουίτα δύο Υπνοδωμάτια</a>
-                <a href="/room/deluxe1">Deluxe Σουίτα ένα Υπνοδωμάτιο</a>
-                <a href="/room/simple2">Διαμέρισμα δύο υπνοδωματίων</a>
-                <a href="/room/simple1">Διαμέρισμα ενός υπνοδωμάτιου</a>
+                <a href="/room/yperpoliteli">Presidential Suite</a>
+                <a href="/room/deluxe2">Deluxe 2 bedroom Suite</a>
+                <a href="/room/deluxe1">Deluxe 1 bedroom Suite</a>
+                <a href="/room/simple2">2 bedroom Apartment</a>
+                <a href="/room/simple1">1 bedroom Apartment</a>
 
               </div>
             </div> 
@@ -34,11 +34,11 @@
         {{/unless}}
 
         {{#if roomPage}}
-            <button  class="booking-button header" id="book_button">Κράτηση</button>
+            <button  class="booking-button header" id="book_button">Book</button>
         {{/if}}
 
         {{#unless loginned}}
-            <a href="/login" class="eggrafi">Εγγραφή / Σύνδεση </a>
+            <a href="/login" class="eggrafi">Login / Sign up </a>
 
         {{/unless}}
 
@@ -54,12 +54,12 @@
           
 
           <div class="check-in-date">
-            <p>Ημερ. Άφιξης</p> 
+            <p>Arrival Date</p> 
             <span class="check-inDate">-</span>           
           </div>
 
           <div class="check-out-date">
-            <p>Ημερ. Αναχώρησης</p>
+            <p>Departure Date</p>
             <span class="check-outDate">-</span>            
           </div>
 
@@ -67,7 +67,7 @@
 
 
           <div class="Amea">
-            <label for="amea" id="ameaLabel">ΑμεΑ</label>
+            <label for="amea" id="ameaLabel">Disabled</label>
             <input type="checkbox" name="checkbox" id="amea" class="checkbox-field">
             <label for="amea" class="checkbox-label"></label>
           </div>
@@ -76,7 +76,7 @@
 
 
           <div class="adult-count">
-            <p>Άτομα</p> 
+            <p>Persons</p> 
             <div class="numRow">
               <button type="button" class="countButton less">&#8722;</button>
               <button type="button" class="countButton more">&#43;</button> 
@@ -85,7 +85,7 @@
           </div>
 
           <div class="continue-button">
-            <button>Συνέχεια</button>
+            <button>Continue</button>
           </div>
           
       
@@ -102,13 +102,13 @@
             </button>
           </div>
           <div class="days">
-            <div class="day">Δευτ</div>
-            <div class="day">Τρ</div>
-            <div class="day">Τετ</div>
-            <div class="day">Πέμ</div>
-            <div class="day">Παρ</div>
-            <div class="day">Σάβ</div>
-            <div class="day">Κυρ</div>
+            <div class="day">Mon</div>
+            <div class="day">Tue</div>
+            <div class="day">Wed</div>
+            <div class="day">Thur</div>
+            <div class="day">Fr</div>
+            <div class="day">Sat</div>
+            <div class="day">Sun</div>
           </div>
           <div class="dates" id="dates">
           </div>
@@ -150,9 +150,9 @@
           {{/if}}
         </div>
         <hr>
-        <a href="/kratisis">Κρατήσεις</a>
-        <a href="/profile">Προφίλ</a>
-        <a href="/aposindesi">Aποσύνδεση</a>
+        <a href="/kratisis">Reservations</a>
+        <a href="/profile">Profile</a>
+        <a href="/aposindesi">Logout</a>
         
       </div>
 

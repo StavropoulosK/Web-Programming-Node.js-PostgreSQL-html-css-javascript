@@ -6,7 +6,7 @@ const form=document.querySelector('.paymentForm form')
 const poso=document.getElementById('poso')
 
 document.addEventListener('DOMContentLoaded',(ev)=>{
-    alert('The whole website was created for a learning project and nothing is real, the hotel doesnt exist and the reservations are imaginery.Όλη η ιστοσελίδα δημιουργήθηκε στα πλαίσια ενός project, όλα είναι φανταστικά, το ξενοδοχείο δεν υπάρχει και ούτε γίνονται πραγματικά κρατήσεις.')
+    alert('The whole website was created for a learning project and nothing is real, the hotel doesnt exist and the reservations are imaginery. Όλη η ιστοσελίδα δημιουργήθηκε στα πλαίσια ενός project, όλα είναι φανταστικά, το ξενοδοχείο δεν υπάρχει και ούτε γίνονται πραγματικά κρατήσεις.')
 })
 
 
@@ -68,6 +68,6 @@ form.addEventListener("submit", (event) => {
     const xrostoumenoPoso=Number( (document.getElementById('xrostoumenoPoso').textContent).split('€')[0])
     if(posoPliromis>xrostoumenoPoso){
         event.preventDefault()
-        document.querySelector('.response').textContent='Το ποσό πληρωμής υπερβαίνει το οφειλόμενο ποσό'
+        document.querySelector('.response').textContent='The amount stated exceeds owed amount'
     }
 })

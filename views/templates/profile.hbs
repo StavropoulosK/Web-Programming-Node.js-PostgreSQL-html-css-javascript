@@ -9,13 +9,13 @@
         <form action="/uploadProfile" method="post" id="profilePictureForm" enctype="multipart/form-data"> 
           <div class="profile">
             <div class="profileField">
-                <p class="label">Όνομα:</p>
+                <p class="label">First Name:</p>
                 <p>{{name}}</p>
 
             </div>
 
             <div class="profileField">
-              <p class="label">Επώνυμο:</p>
+              <p class="label">Last Name:</p>
               <p>{{surname}}</p>
 
             </div>
@@ -27,14 +27,14 @@
             </div>
 
             <div class="profileField" id="secLast">
-              <p class="label">Τηλέφωνο:</p>
+              <p class="label">Phone number:</p>
               <p>{{phone}}</p>
 
             </div>
 
             <div class="profileField">
               <label for="profileImage" class="custom-file-upload label" id="custom-text">
-                Επιλογή Εικόνας Προφίλ(μέχρι 1920x1280)
+                Chose profile picture(up to 1920x1280)
               </label>
               <input type="file" name="profileImage" id="profileImage" accept=" image/jpeg, image/png" />
             </div>
