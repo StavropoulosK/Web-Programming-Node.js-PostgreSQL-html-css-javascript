@@ -1,17 +1,17 @@
-## Εφαρμογή διαδικτυακών κρατήσεων ξενοδοχείου
+## Online hotel booking application
 
-Η παρούσα εργασία αποτελεί δημιούργημα των φοιτητών Σταυρόπουλου Κωνσταντίνου και Χαραλαμπόπουλου Δημήτριου του τμήματος Ηλεκτρολόγων Μηχανικών και Τεχνολογίας Λογισμικού του Πανεπιστημίου Πατρών για το μάθημα "Προγραμματισμός Διαδικτύου" με κωδικό ECE_ΓΚ802 για το ακαδημαϊκό έτος 2023-24.
+This project is the creation of the students Stavropoulos Constantinos and Charalambopoulos Dimitrios of the Department of Electrical Engineering and Computer Technology of the University of Patras for the course "Web Programming" for the academic year 2023-24.
 
-### Περίληψη εργασίας
+### Summary
 
-Η βασική ιδέα του πρότζεκτ είναι η δημιουργία ενός ολοκληρωμένου συστήματος ιστοσελίδας – βάσης δεδομένων που επιτρέπει μέσω της ιστοσελίδας την αναζήτηση διαθέσιμων ημερομηνιών, διαθέσιμων δωματίων, γενικών πληροφοριών για το ξενοδοχείο, καθώς και την δημιουργία κρατήσεων. Στόχος της εφαρμογής είναι η ευκολία του πελάτη στη δημιουργία κράτησης και αναζήτηση πληροφοριών μέσω του φιλικού στη χρήση περιβάλλοντος της ιστοσελίδας και η βελτίωση της οργάνωσης των δεδομένων του ξενοδοχείου και η αυτοματοποίηση της εισαγωγής των δεδομένων στη βάση δεδομένων. Ταυτόχρονα δώθηκε έμφαση στη προστασία των δεδομένων και στους έλεγχους για λανθασμένες εισαγωγές στοιχείων με την χρήση κατάλληλων περιορισμών. Η παρουσίαση της εργασίας πραγματοποιήθηκε μέσω της δημόσιας διεύθυνσης [BayHotel](https://bayhotel.fly.dev), η οποία δημιουργήθηκε με την χρήση της υπηρεσίας [fly.io](https://fly.io).
+The basic idea of ​​the project is the creation of an integrated website - database system that allows through the website the search for available dates, available rooms, general information about the hotel, as well as the creation of reservations. The objective of the application is to provide the customer a pleasant exprerience in creating a reservation and searching for information through the user-friendly environment of the website. Also very important is the improvement of the organization of the hotel data and the automation of the data entry into the database. At the same time, emphasis was placed on data protection and checks for incorrect data entry using appropriate restrictions. The presentation of the work was carried out through the public address [BayHotel](https://bayhotel.fly.dev), which was created using the [fly.io](https://fly.io) service.
 
-### Οδηγίες Εγκατάστασης
+### Installation instructions
 
-Για την εγκατάσταση της εφαρμογής απαιτείται η εγκατάσταση της [Node.js](https://nodejs.org/en/download/package-manager) και συγκεκριμένα την πιο πρόσφατη LTS έκδοση. Στην συνέχεια εκτελόντας στο terminal στον φάκελο του project τις εντολές `npm install` και `npm audit fix` σε αυτή την σειρά πραγματοποιείται η εγκατάσταση των αναγκαίων modules. Τέλος για την εκτέλεση του κώδικα αρκεί η εκτέλεση του κώδικα `node app.mjs`, καθώς το σύστημα στέλνει μια local σελίδα μέσα από την οποία υπάρχει πρόσβαση στην ιστοσελίδα. 
+Installing and running the application requires [Node.js](https://nodejs.org/en/download/package-manager) to be installed, specifically the latest LTS version. Then executing the commands `npm install` and `npm audit fix` in the terminal in the project folder in this order installs the necessary modules. Finally, to execute the code, it is sufficient to run the `node app.mjs` instruction, as the system sends a local page through which the website can be accessed.
 
-Βέβαια απαιτείται και η βάση δεδομένων, η οποία δεν συμπεριλαμβάνεται έτοιμη καθώς είναι δημιουργημένη σε PostgreSQL, όμως μπορεί εύκολα να δημιουργηθεί ακολουθούντας τα εξής βήματα:
-1.	Εγκατάσταση και ρύθμιση της [PostgreSQL](https://www.postgresql.org/download/)
-2.	Εγκατάσταση και ρύθμιση του [pgAdmin 4](https://www.pgadmin.org/download/)
-3.	Ανοίγουμε και τρέχουμε στο pgAdmin το αρχείο db.sql το οποίο βρίσκεται στον φάκελο data του project
-4.	Ανοίγουμε και τρέχουμε στο pgAdmin το αρχείο fill_price_catalogue.sql το οποίο βρίσκεται στον φάκελο data του project
+Of course it is also necessary to install the database, which is not included ready as it is created in PostgreSQL, but it can be easily created by following the following steps:
+1. Installing and configuring [PostgreSQL](https://www.postgresql.org/download/)
+2. Installing and configuring [pgAdmin 4](https://www.pgadmin.org/download/)
+3. Open and run in pgAdmin the db.sql file which is located in the data folder of the project
+4. Open and run in pgAdmin the fill_price_catalogue.sql file which is located in the data folder of the project
