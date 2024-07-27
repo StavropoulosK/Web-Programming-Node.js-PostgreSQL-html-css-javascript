@@ -9,6 +9,11 @@ function showAksiotheata(req,res){
     res.render('templates/aksiotheata', { css: ['aksiotheata.css']  });
 }
 
+function showTerms(req,res){
+
+    res.render('templates/terms', { css: ['terms.css']  });
+}
+
 function displayRoom(req,res){
     const profileImg=''
     const room=req.params.room
@@ -130,4 +135,4 @@ function displayRoom(req,res){
 }
 
 
-export {showFirstPage, showAksiotheata, displayRoom}
+export {showFirstPage, showAksiotheata, displayRoom, showTerms}
