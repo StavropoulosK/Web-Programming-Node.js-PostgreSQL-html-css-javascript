@@ -146,7 +146,7 @@ main .kratisis:first-of-type{
 }
 
 .atoma div.atoma_bed:nth-of-type(1){
-  margin-right:1em;
+  margin-right:0.5em;
 }
 
 
@@ -273,7 +273,7 @@ main .kratisis:first-of-type{
 }
 
 
-@media  (max-width: 1520px) {
+@media  (max-width: 1500px) {
 
     nav.flex-container{
         display: none;

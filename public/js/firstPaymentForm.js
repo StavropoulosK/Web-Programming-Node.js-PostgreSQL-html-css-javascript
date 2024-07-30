@@ -17,7 +17,7 @@ if(propliromi!==null){
 }
 
 document.addEventListener('DOMContentLoaded',(ev)=>{
-    alert('The whole website was created for a learning project and nothing is real, the hotel doesnt exist and the reservations are imaginery.Όλη η ιστοσελίδα δημιουργήθηκε στα πλαίσια ενός project, όλα είναι φανταστικά, το ξενοδοχείο δεν υπάρχει και ούτε γίνονται πραγματικά κρατήσεις.')
+    alert('The whole website was created for a learning project and nothing about the hotel is real, the hotel doesnt exist and the reservations are imaginery.Όλη η ιστοσελίδα δημιουργήθηκε στα πλαίσια ενός project, όλα όσα αναφέρονται για το ξενοδοχείο είναι πλασματικά, το ξενοδοχείο δεν υπάρχει και ούτε γίνονται πραγματικά κρατήσεις.')
 })
 
 
