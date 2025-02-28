@@ -1,6 +1,6 @@
 ## Online hotel booking application
 
-This project is the creation of the students Stavropoulos Constantinos and Charalambopoulos Dimitrios of the Department of Electrical Engineering and Computer Technology of the University of Patras for the course "Web Programming" for the academic year 2023-24.
+This project is the creation of the students Stavropoulos Konstantinos and Charalambopoulos Dimitrios of the Department of Electrical Engineering and Computer Technology of the University of Patras for the course "Web Programming" for the academic year 2023-24.
 
 ### Summary
 
